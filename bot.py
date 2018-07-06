@@ -28,13 +28,13 @@ async def on_message(message):
         await client.edit_message(pingm0, embed=pingm1)
 
 
-if message.content.startswith(prefix+'info'):
+  if message.content.startswith(prefix+'info'):
         
         user = message.author.name
         
         horario = datetime.datetime.now().strftime("%H:%M:%S")
         
-        serverinfo_embed = discord.Embed(title="\n", description="Abaixo está as informaçoes principais do servidor!", color=COR)
+        serverinfo_embed = discord.Embed(title="\n", description="Abaixo está as informaçoes principais do servidor!", color=0x00FFFF)
         serverinfo_embed.set_thumbnail(url=message.server.icon_url)
         serverinfo_embed.set_footer(text="{} • {}".format(user, horario))
         serverinfo_embed.add_field(name="Nome:", value=message.server.name, inline=True)
