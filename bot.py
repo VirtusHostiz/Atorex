@@ -40,7 +40,6 @@ async def on_message(message):
     serverinfo_embed.add_field(name="Canais de voz:", value=len([message.channel.mention for channel in message.server.channels if channel.type==discord.ChannelType.voice]), inline=True)
     serverinfo_embed.add_field(name="Membros:", value=len(message.server.members), inline=True)
     serverinfo_embed.add_field(name="Bots:", value=len([user.mention for user in message.server.members if user.bot]), inline=True)        
-    serverinfo_embed.add_field(name="Criado em:", value=message.server.created_at.strftime("%d %b %Y %H:%M"), inline=True)
     serverinfo_embed.add_field(name="Região:", value=str(message.server.region).title(), inline=True)
     await client.send_message(message.channel,embed=serverinfo_embed)
 
