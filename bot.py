@@ -29,7 +29,7 @@ async def on_message(message):
 
   if message.content.startswith(prefix+'info'):
     user = message.author.name
-    serverinfo_embed = discord.Embed(title="\n", description="Abaixo está as principais informações do servidor:", color=0x00FFFF)
+    serverinfo_embed = discord.Embed(title="\n", description="Abaixo está as principais informações do nosso servidor Discord:", color=0x00FFFF)
     serverinfo_embed.set_thumbnail(url=message.server.icon_url)
     serverinfo_embed.set_footer(text="Comando enviado por: {}.".format(user))
     serverinfo_embed.add_field(name="Nome:", value=message.server.name, inline=True)
