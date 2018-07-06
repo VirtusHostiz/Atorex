@@ -71,7 +71,7 @@ async def on_message(message):
       try:
         user = message.author.name
         usuario = message.mentions[0]
-          embed = discord.Embed(
+        embed = discord.Embed(
           title="Avatar do(a): {}".format(usuario.name),
           color=0xFFFFFF,
           description="[Clique aqui]("+usuario.avatar_url+") para ver o avatar!"
