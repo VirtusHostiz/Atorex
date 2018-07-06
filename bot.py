@@ -2,16 +2,17 @@ import discord
 import asyncio
 
 client = discord.Client()
+prefix = "/"
 
 @client.event
 async def on_ready():
-  await client.change_presence(game=discord.Game(name="/skell", type=2))
+  await client.change_presence(game=discord.Game(name=prefix+"skell", type=2))
   print('[BOT ONLINE COM SUCESSO]')
 
 
 @client.event
 async def on_message(message):
-  if message.content.lower().startswith('/skell'):
+  if message.content.lower().startswith(prefix+'skell'):
     await client.send_message(message.channel, "{},\n```fix\nSem palavras para descrever o ySkell!!!\n```".format(message.author.mention))
 
 
