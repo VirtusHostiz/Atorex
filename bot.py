@@ -16,6 +16,7 @@ async def on_message(message):
     await client.send_message(message.channel, "{},\n```diff\n- Este comando não está disponível no momento.\n```".format(message.author.mention))
 
 
+@client.event
 async def on_message(message):
   if message.content.lower().startswith(prefix+'ping'):
     timep = time.time()
@@ -26,6 +27,7 @@ async def on_message(message):
     await client.edit_message(pingm0, embed=pingm1)
 
 
+@client.event
 async def on_message(message):
   if message.content.startswith(prefix+'info'):
     user = message.author.name
