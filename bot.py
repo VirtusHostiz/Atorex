@@ -57,7 +57,7 @@ async def on_message(message):
       ban02_embed.set_thumbnail(url=message.server.icon_url)
       ban02_embed.set_footer(text="• Comando enviado por: {}.".format(user))
       return await client.send_message(message.channel,embed=ban02_embed)
-      await client.ban(user,delete_message_days=2)
+      await client.ban(usuario,delete_message_days=2)
     except:
       ban03_embed = discord.Embed(title="\n", description="Você deve espicificar um usuário para bani-lo.", color=0xFF0000)
       ban03_embed.set_thumbnail(url=message.server.icon_url)
