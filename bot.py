@@ -68,7 +68,6 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'avatar'):
-      try:
         user = message.author.name
         usuario = message.mentions[0]
         avatar_embed = discord.Embed(
