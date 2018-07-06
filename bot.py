@@ -5,7 +5,7 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-  print('BOT ONLINE')
+  print('[BOT ONLINE COM SUCESSO]')
 
 
 @client.event
