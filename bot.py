@@ -44,5 +44,18 @@ async def on_message(message):
     await client.send_message(message.channel,embed=serverinfo_embed)
 
 
+  if message.content.startswith(prefix+'ban'):
+    if not message.author.server_permissions.ban_members:
+      return await client.send_message(message.channel, "{},\n```diff\n- Você não tem permissão para executar este comando!\n```".format(message.author.mention))
+    try:
+      user = message.mentions[0]
+      await client.send_message(message.channel, "{},\nO usuário <@{}> foi banido com sucesso do nosso servidor!**".format(message.author.mention, user.id))
+      await client.ban(user,delete_message_days=1)
+    except:
+      await client.send_message(message.channel, "{},\n```fix\nVocê deve espicificar uma pessoa para bani-la!\n```").format(message.author.mention))
+    finally:
+      pass
+
+
 
 client.run('NDY0NjA0NDczOTMxODU3OTIx.DiBYJw.S2iTn7TXy7L9D1r1nLqryoaNOwg')
