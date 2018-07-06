@@ -22,7 +22,7 @@ async def on_message(message):
         emb = discord.Embed(title = 'Aguarde...', color = 0x00FF40)
         pingm0 = await client.send_message(message.channel, embed=emb)
         ping = time.time() - timep
-        pingm1 = discord.Embed(title = 'Pong!', description = '🏓 Ping - %.01f segundos' % ping, color=COR)
+        pingm1 = discord.Embed(title = 'Pong!', description = '🏓 Ping - %.01f segundos' % ping, color=0x00FF40)
         await client.edit_message(pingm0, embed=pingm1)
 
 
