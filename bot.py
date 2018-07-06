@@ -66,6 +66,7 @@ async def on_message(message):
     finally:
       pass
 
+
     if message.content.lower().startswith(prefix+'avatar'):
       try:
         user = message.author.name
