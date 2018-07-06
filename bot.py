@@ -45,14 +45,24 @@ async def on_message(message):
 
 
   if message.content.startswith(prefix+'ban'):
+    user = message.author.name
     if not message.author.server_permissions.ban_members:
-      return await client.send_message(message.channel, "{},\n```diff\n- Você não tem permissão para executar este comando!\n```".format(message.author.mention))
+      ban01_embed = discord.Embed(title="\n", description="Você não tem permissão para utilizar este comando.", color=0xFF0000)
+      ban01_embed.set_thumbnail(url=message.server.icon_url)
+      ban01_embed.set_footer(text="• Comando enviado por: {}.".format(user))
+      return await client.send_message(message.channel,embed=ban01_embed)
     try:
-      user = message.mentions[0]
-      await client.send_message(message.channel, "{},\n**O usuário <@{}> foi banido com sucesso do nosso servidor!**".format(message.author.mention, user.id))
-      await client.ban(user,delete_message_days=1)
+      usuario = message.mentions[0]
+      ban02_embed = discord.Embed(title="\n", description="O usuário <@{}> foi banido do servidor AtorexNetwork!".format(usuario.id), color=0xFF0000)
+      ban02_embed.set_thumbnail(url=message.server.icon_url)
+      ban02_embed.set_footer(text="• Comando enviado por: {}.".format(user))
+      return await client.send_message(message.channel,embed=ban02_embed)
+      await client.ban(user,delete_message_days=2)
     except:
-      await client.send_message(message.channel, "{},\n```fix\nVocê deve espicificar uma pessoa para bani-la!\n```".format(message.author.mention))
+      ban03_embed = discord.Embed(title="\n", description="Você deve espicificar um usuário para bani-lo.", color=0xFF0000)
+      ban03_embed.set_thumbnail(url=message.server.icon_url)
+      ban03_embed.set_footer(text="• Comando enviado por: {}.".format(user))
+      await client.send_message(message.channel,embed=ban03_embed)
     finally:
       pass
 
