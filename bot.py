@@ -19,7 +19,7 @@ async def on_message(message):
 
   if message.content.lower().startswith(prefix+'ping'):
         timep = time.time()
-        emb = discord.Embed(title = 'Aguarde...', color = COR)
+        emb = discord.Embed(title = 'Aguarde...', color = 0x00FF40)
         pingm0 = await client.send_message(message.channel, embed=emb)
         ping = time.time() - timep
         pingm1 = discord.Embed(title = 'Pong!', description = '🏓 Ping - %.01f segundos' % ping, color=COR)
