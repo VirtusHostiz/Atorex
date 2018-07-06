@@ -2,7 +2,6 @@ import discord
 import asyncio
 import time
 import datetime
-from datetime import datetime
 
 client = discord.Client()
 prefix = "/"
@@ -20,12 +19,12 @@ async def on_message(message):
 
 
   if message.content.lower().startswith(prefix+'ping'):
-        timep = time.time()
-        emb = discord.Embed(title = 'Aguarde...', color = 0x00FF40)
-        pingm0 = await client.send_message(message.channel, embed=emb)
-        ping = time.time() - timep
-        pingm1 = discord.Embed(title = 'Pong!', description = '🏓 Ping - %.01f segundos' % ping, color=0x00FF40)
-        await client.edit_message(pingm0, embed=pingm1)
+    timep = time.time()
+    emb = discord.Embed(title = 'Aguarde...', color = 0x00FF40)
+    pingm0 = await client.send_message(message.channel, embed=emb)
+    ping = time.time() - timep
+    pingm1 = discord.Embed(title = 'Pong!', description = '🏓 Ping - %.01f segundos' % ping, color=0x00FF40)
+    await client.edit_message(pingm0, embed=pingm1)
 
 
   if message.content.startswith(prefix+'info'):
