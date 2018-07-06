@@ -5,6 +5,7 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
+  await client.change_status(game=discord.Game(name='/skell'))
   print('[BOT ONLINE COM SUCESSO]')
 
 
