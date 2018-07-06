@@ -52,7 +52,7 @@ async def on_message(message):
       await client.send_message(message.channel, "{},\nO usuário <@{}> foi banido com sucesso do nosso servidor!**".format(message.author.mention, user.id))
       await client.ban(user,delete_message_days=1)
     except:
-      await client.send_message(message.channel, "{},\n```fix\nVocê deve espicificar uma pessoa para bani-la!\n```").format(message.author.mention))
+      await client.send_message(message.channel, "{},\n```fix\nVocê deve espicificar uma pessoa para bani-la!\n```".format(message.author.mention))
     finally:
       pass
 
