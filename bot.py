@@ -53,7 +53,7 @@ async def on_message(message):
       return await client.send_message(message.channel,embed=ban01_embed)
     try:
       usuario = message.mentions[0]
-      ban02_embed = discord.Embed(title="\n", description="O usuário <@{}> foi banido do servidor AtorexNetwork!".format(usuario.id), color=0xFF0000)
+      ban02_embed = discord.Embed(title="\n", description="O usuário <@{}> foi banido do servidor Discord AtorexNetwork!".format(usuario.id), color=0xFF0000)
       ban02_embed.set_thumbnail(url=message.server.icon_url)
       ban02_embed.set_footer(text="• Comando enviado por: {}.".format(user))
       await client.send_message(message.channel,embed=ban02_embed)
