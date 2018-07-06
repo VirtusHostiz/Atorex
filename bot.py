@@ -66,6 +66,19 @@ async def on_message(message):
     finally:
       pass
 
+    if message.content.lower().startswith(prefix+'avatar'):
+      try:
+        user = message.author.name
+        usuario = message.mentions[0]
+          embed = discord.Embed(
+          title="Avatar do(a): {}".format(usuario.name),
+          color=0xFFFFFF,
+          description="[Clique aqui]("+usuario.avatar_url+") para ver o avatar!"
+            )
+          embed.set_image(url=usuario.avatar_url)
+          embed.set_footer(text="• Comando enviado por: {}.".format(user))
+        await client.send_message(message.channel, embed=embed)
+
 
 
 client.run('NDY0NjA0NDczOTMxODU3OTIx.DiBYJw.S2iTn7TXy7L9D1r1nLqryoaNOwg')
