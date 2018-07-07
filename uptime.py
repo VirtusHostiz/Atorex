@@ -4,7 +4,7 @@ import random
 import time
 import datetime
 
-prefix = "/"
+prefix = '/'
 
 client = discord.Client()
 
