@@ -3,6 +3,8 @@ import asyncio
 import time
 import datetime
 
+import uptime
+
 client = discord.Client()
 prefix = "/"
 
