@@ -48,7 +48,7 @@ async def on_message(message):
     await client.send_message(message.channel,embed=serverinfo_embed)
 
 
-  if message.content.startswith('yuptime'):
+  if message.content.startswith(prefix+'uptime'):
     uptimeemb = discord.Embed(
       title="Uptime",
         color=0x000000,
