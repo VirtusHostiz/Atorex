@@ -2,7 +2,6 @@ import discord
 import asyncio
 import time
 import datetime
-
 import uptime
 
 client = discord.Client()
@@ -14,7 +13,6 @@ async def on_ready():
   print('[BOT ONLINE COM SUCESSO]')
 
 
-@client.event
 async def on_message(message):
   if message.content.lower().startswith(prefix+'comandos'):
     await client.send_message(message.channel, "{},\n```diff\n- Este comando não está disponível no momento.\n```".format(message.author.mention))
