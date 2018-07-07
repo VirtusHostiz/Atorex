@@ -44,18 +44,5 @@ async def on_message(message):
     await client.send_message(message.channel,embed=serverinfo_embed)
 
 
-  if message.content.lower().startswith(prefix+'falar'):
-    if message.author.server_permissions.administrator:
-      try:
-        msg = str(message.content).replace(prefix+"falar", "")
-        embed = discord.Embed(description=msg, color=0xFF8000)
-        await client.send_message(message.channel, embed=embed)
-        await client.delete_message(message)
-      except:
-        return await client.send_message(message.channel, "Digite algo!")
-      else:
-        return await client.send_message(message.channel, "Sem permissão!")
-
-
 
 client.run('NDY0NjA0NDczOTMxODU3OTIx.DiBYJw.S2iTn7TXy7L9D1r1nLqryoaNOwg')
