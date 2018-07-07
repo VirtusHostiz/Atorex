@@ -4,9 +4,8 @@ import random
 import time
 import datetime
 
-prefix = '/'
-
 client = discord.Client()
+prefix = "/"
 
 seconds = 0
 minutes = 0
