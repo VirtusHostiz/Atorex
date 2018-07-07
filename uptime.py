@@ -13,7 +13,7 @@ hour = 0
 
 @client.event    
 async def on_message(message):    
-    if message.content.startswith(prefix+'uptime'):
+    if message.content.startswith('uptime'):
         uptimeemb = discord.Embed(
             title="Uptime",
             color=0x000000,
@@ -42,8 +42,6 @@ async def uptime():
         if minutes == 60:
             minutes = 0
             hour += 1
-
-
 
 
 
