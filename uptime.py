@@ -42,3 +42,9 @@ async def uptime():
         if minutes == 60:
             minutes = 0
             hour += 1
+
+
+
+
+
+client.run('NDY0NjA0NDczOTMxODU3OTIx.DiBYJw.S2iTn7TXy7L9D1r1nLqryoaNOwg')
