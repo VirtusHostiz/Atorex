@@ -52,7 +52,7 @@ async def on_message(message):
         await client.send_message(message.channel, embed=embed)
         await client.delete_message(message)
       except:
-        return await  client.send_message(message.channel, "Digite algo!")
+        return await client.send_message(message.channel, "Digite algo!")
       else:
         return await client.send_message(message.channel, "Sem permissão!")
 
