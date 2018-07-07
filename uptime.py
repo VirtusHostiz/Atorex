@@ -11,7 +11,7 @@ client = discord.Client()
 seconds = 0
 minutes = 0
 hour = 0
-    
+
 @client.event    
 async def on_message(message):    
     if message.content.startswith(prefix+'uptime'):
