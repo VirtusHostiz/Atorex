@@ -2,7 +2,7 @@ import discord
 import asyncio
 import time
 import datetime
-import uptime
+import uptime.py
 
 client = discord.Client()
 prefix = "/"
