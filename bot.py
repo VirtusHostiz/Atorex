@@ -46,7 +46,7 @@ async def on_message(message):
       role = ",".join([r.name for r in user.roles if r.name!="@everyone"])
       userjoinedat = str(user.joined_at).split('.', 1)[0]
       usercreatedat = str(user.created_at).split('.', 1)[0]
-      embed =discord.Embed(
+      embed = discord.Embed(
         title=":pushpin:Informações pessoais do",
         color=0x690FC3,
         description=user.name
