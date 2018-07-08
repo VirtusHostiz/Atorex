@@ -101,19 +101,19 @@ async def on_message(message):
       user = message.mentions[0]
       avatar_embed =discord.Embed(
         title="Avatar de {}:".format(user.name),
-        color=0xFFFFFF
+        color=0x00BFFF,
       )
       avatar_embed.set_image(url=user.avatar_url)
-      avatar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator), color=0x00BFFF)
+      avatar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator)
       await client.send_message(message.channel, embed=avatar_embed)
     except IndexError:
       user2 = message.author
       avatar_embed2 = discord.Embed(
         title="Avatar de {}:".format(user2.name),
-        color=0xFFFFFF,
+        color=0x00BFFF,
       )
       avatar_embed2.set_image(url=user2.avatar_url)
-      avatar_embed2.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator), color=0x00BFFF)
+      avatar_embed2.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator)
       await client.send_message(message.channel, embed=avatar_embed2)
     finally:
       pass
