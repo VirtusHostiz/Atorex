@@ -25,10 +25,10 @@ async def on_message(message):
       reiniciar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       return await client.send_message(message.channel, embed=reiniciar_embed)
     try:
-      os.system("python bot.py reload")
-      reiniciar2_embed = discord.Embed(title="BOT sendo reiniciado...", color=0xFF0000)
+      reiniciar2_embed = discord.Embed(title="BOT sendo reiniciado...", color=0x00FF00)
       reiniciar2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       return await client.send_message(message.channel, embed=reiniciar2_embed)
+      os.system("python bot.py")
     finally:
       pass
 
