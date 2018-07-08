@@ -119,5 +119,32 @@ async def on_message(message):
       pass
 
 
+  if message.content.lower().startswith(prefix+'ban'):
+    if not message.author.server_permissions.ban_members:
+      ban_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+      ban_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      return await client.send_message(message.channel, embed=ban_embed)
+    try:
+      user = message.mentions[0]
+      canal = await client.get_channel("465637883500298240)
+      ban2_embed = discord.Embed(title="Usuário banido com sucesso do servidor Discord.", color=0x00BFFF)
+      ban2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      return await client.send_message(message.channel, embed=ban2_embed)
+      ban3_embed = discord.Embed(
+        title="Banimento",
+        color=0xFF0000
+      )
+      ban3_embed.add_field(name="Usuário banido:", value=user)
+      ban3_embed.add_field(name="ID do usuário:", value=user.id)
+      ban3_embed.add_field(name="Motivo:", value=message.content[27:])
+      ban3_embed.add_field(name="Autor:", value=message.author.mention)
+      await client.send_message(canal, embed=ban3_embed)
+      await client.ban(user, delete_message_days=7)
+    except:
+      await client.send_message(message.channel, "**Você deve especificar um usuario!**")
+    finally:
+      pass
+
+
 
 client.run('NDY0NjA0NDczOTMxODU3OTIx.DiBYJw.S2iTn7TXy7L9D1r1nLqryoaNOwg')
