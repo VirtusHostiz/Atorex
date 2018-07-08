@@ -23,7 +23,7 @@ async def on_message(message):
     if not message.author.id == "322488685973209109":
       reiniciar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
       reiniciar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-    return await client.send_message(message.channel, embed=reiniciar_embed)
+      await client.send_message(message.channel, embed=reiniciar_embed)
     try:
       reiniciar2_embed = discord.Embed(title=":pushpin: Reiniciando...", color=0x00FF00)
       reiniciar2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
