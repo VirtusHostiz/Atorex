@@ -20,11 +20,11 @@ async def on_message(message):
 
   if message.content.lower().startswith(prefix+'ping'):
     timep = time.time()
-    emb = discord.Embed(title = 'Aguarde...', color = 0x00FF40)
-    pingm0 = await client.send_message(message.channel, embed=emb)
+    ping_embed = discord.Embed(title = 'Aguarde...', color = 0x00FF40)
+    pingm0 = await client.send_message(message.channel, embed=ping_embed)
     ping = time.time() - timep
-    pingm1 = discord.Embed(title = 'Pong!', description = '🏓 Ping - %.01f segundos' % ping, color=0x00FF40)
-    await client.edit_message(pingm0, embed=pingm1)
+    ping2_embed = discord.Embed(title = 'Pong!', description = '🏓 Ping - %.01f segundos' % ping, color=0x00FF40)
+    await client.edit_message(pingm0, embed=ping2_embed)
 
 
   if message.content.startswith(prefix+'serverinfo'):
@@ -46,37 +46,37 @@ async def on_message(message):
       role = ",".join([r.name for r in user.roles if r.name!="@everyone"])
       userjoinedat = str(user.joined_at).split('.', 1)[0]
       usercreatedat = str(user.created_at).split('.', 1)[0]
-      embed = discord.Embed(
+      userinfo_embed = discord.Embed(
         title=":pushpin:Informações pessoais do",
         color=0x690FC3,
         description=user.name
       )
-      embed.add_field(name=":door:Entrou no servidor em:", value=userjoinedat, inline=True)
-      embed.add_field(name="📅Conta criada em:", value=usercreatedat, inline=True)
-      embed.add_field(name="💻ID:", value=user.id, inline=True)
-      embed.add_field(name=":label:Tag:", value=user.discriminator, inline=True)
-      embed.add_field(name="Cargos:", value=role, inline=True)
-      embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-      embed.set_thumbnail(url=user.avatar_url)
-      await client.send_message(message.channel,embed=embed)
+      userinfo_embed.add_field(name=":door:Entrou no servidor em:", value=userjoinedat, inline=True)
+      userinfo_embed.add_field(name="📅Conta criada em:", value=usercreatedat, inline=True)
+      userinfo_embed.add_field(name="💻ID:", value=user.id, inline=True)
+      userinfo_embed.add_field(name=":label:Tag:", value=user.discriminator, inline=True)
+      userinfo_embed.add_field(name="Cargos:", value=role, inline=True)
+      userinfo_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      userinfo_embed.set_thumbnail(url=user.avatar_url)
+      await client.send_message(message.channel, embed=userinfo_embed)
     except IndexError:
       user2 = message.author
       role2 = ",".join([r.name for r in message.author.roles if r.name!= "@everyone"])
       userjoinedat2 = str(user2.joined_at).split('.', 1)[0]
       usercreatedat2 = str(user2.created_at).split('.', 1)[0]
-      embed2 = discord.Embed(
+      userinfo_embed2 = discord.Embed(
         title=":pushpin:Informações pessoais do",
         color=0x690FC3,
         description=user2.name
       )
-      embed2.add_field(name=":door:Entrou no servidor em:", value=userjoinedat2, inline=True)
-      embed2.add_field(name="📅Conta criada em:", value=usercreatedat2, inline=True)
-      embed2.add_field(name="💻ID:", value=user2.id, inline=True)
-      embed2.add_field(name=":label:Tag:", value=user2.discriminator, inline=True)
-      embed2.add_field(name="Cargos:", value=role2, inline=True)
-      embed2.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-      embed2.set_thumbnail(url=message.author.avatar_url)
-      await client.send_message(message.channel,embed=embed2)
+      userinfo_embed2.add_field(name=":door:Entrou no servidor em:", value=userjoinedat2, inline=True)
+      userinfo_embed2.add_field(name="📅Conta criada em:", value=usercreatedat2, inline=True)
+      userinfo_embed2.add_field(name="💻ID:", value=user2.id, inline=True)
+      userinfo_embed2.add_field(name=":label:Tag:", value=user2.discriminator, inline=True)
+      userinfo_embed2.add_field(name="Cargos:", value=role2, inline=True)
+      userinfo_embed2.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      userinfo_embed2.set_thumbnail(url=message.author.avatar_url)
+      await client.send_message(message.channel, embed=userinfo_embed2)
     finally:
       pass
 
@@ -84,22 +84,22 @@ async def on_message(message):
   if message.content.lower().startswith(prefix+'avatar'):
       try:
         user = message.mentions[0]
-        embed =discord.Embed(
+        avatar_embed =discord.Embed(
           title="Avatar de {}:".format(user.name),
           color=0xFFFFFF
         )
-        embed.set_image(url=user.avatar_url)
-        embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-        await client.send_message(message.channel,embed=embed)
+        avatar_embed.set_image(url=user.avatar_url)
+        avatar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+        await client.send_message(message.channel, embed=avatar_embed)
       except IndexError:
         user2 = message.author
-        embed2 = discord.Embed(
+        avatar_embed2 = discord.Embed(
           title="Avatar de {}:".format(user2.name),
           color=0xFFFFFF,
         )
-        embed2.set_image(url=user2.avatar_url)
-        embed2.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-        await client.send_message(message.channel,embed=embed2)
+        avatar_embed2.set_image(url=user2.avatar_url)
+        avatar_embed2.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+        await client.send_message(message.channel, embed=avatar_embed2)
 
 
 
