@@ -152,7 +152,7 @@ async def on_message(message):
       cargo_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       return await client.send_message(message.channel, embed=cargo_embed)
     try:
-      user = message.mentions[0]
+      user = message.mentions[0].strip("<>@")
       cargo = str(message.content).strip(" ")
       cargo2 = cargo.split()
       print(cargo)
