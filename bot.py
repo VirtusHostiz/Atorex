@@ -146,11 +146,23 @@ async def on_message(message):
       pass
 
 
-  if message.content.lower().startswith(prefix+'cargo'):
-    user = message.mentions[0]
-    xtx = message.content.split(' ')
-    role = discord.utils.find(lambda r: r.name == xtx[1], message.server.roles)
-    await client.add_roles(user, role)
+  if message.content.lower().startswith(prefix+'darcargo'):
+    if not message.author.server_permissions.administrator:
+      cargo_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+      cargo_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      return await client.send_message(message.channel, embed=cargo_embed)
+    try:
+      user = message.mentions[0]
+      cargo = str(message.content).strip(" ")
+      cargo2 = cargo.split()
+      role = discord.utils.find(lambda r: r.name == cargo2[2], message.server.roles)
+      canal = client.get_channel("465637883500298240")
+      cargo2_embed = discord.Embed(title="O usuário **{}** foi adicionado ao cargo **{}**!".format(user, cargo), color=0xFF0000)
+      cargo2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      await client.add_roles(user, role)
+      await client.send_message(canal, embed=cargo2_embed)
+    finally:
+      pass
 
 
 
