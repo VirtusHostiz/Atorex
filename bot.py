@@ -105,7 +105,7 @@ async def on_message(message):
       )
       avatar_embed.set_image(url=user.avatar_url)
       avatar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator)
-    return await client.send_message(message.channel, embed=avatar_embed)
+      await client.send_message(message.channel, embed=avatar_embed)
     except IndexError:
       user2 = message.author
       avatar_embed2 = discord.Embed(
@@ -114,7 +114,7 @@ async def on_message(message):
       )
       avatar_embed2.set_image(url=user2.avatar_url)
       avatar_embed2.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator)
-    return await client.send_message(message.channel, embed=avatar_embed2)
+      await client.send_message(message.channel, embed=avatar_embed2)
     finally:
       pass
 
@@ -123,7 +123,7 @@ async def on_message(message):
     if not message.author.server_permissions.ban_members:
       ban_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
       ban_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-    return await client.send_message(message.channel, embed=ban_embed)
+      await client.send_message(message.channel, embed=ban_embed)
     try:
       user = message.mentions[0]
       canal = await client.get_channel("465637883500298240")
