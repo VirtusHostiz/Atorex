@@ -37,7 +37,7 @@ async def on_message(message):
     serverinfo_embed.add_field(name="Canais de texto:", value=len([message.channel.mention for channel in message.server.channels if channel.type==discord.ChannelType.text]), inline=True)
     serverinfo_embed.add_field(name="Canais de voz:", value=len([message.channel.mention for channel in message.server.channels if channel.type==discord.ChannelType.voice]), inline=True)
     serverinfo_embed.add_field(name="Usuários:", value=len(message.server.members), inline=True)     
-    await client.send_message(message.channel,embed=serverinfo_embed)
+    await client.send_message(message.channel, embed=serverinfo_embed)
 
 
   if message.content.lower().startswith(prefix+'userinfo'):
