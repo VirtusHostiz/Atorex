@@ -47,7 +47,7 @@ async def on_message(message):
       userjoinedat = str(user.joined_at).split('.', 1)[0]
       usercreatedat = str(user.created_at).split('.', 1)[0]
       userinfo_embed = discord.Embed(
-        title=":pushpin:Informações pessoais do",
+        title=":pushpin:Informações pessoais de:",
         color=0x690FC3,
         description=user.name
       )
@@ -65,7 +65,7 @@ async def on_message(message):
       userjoinedat2 = str(user2.joined_at).split('.', 1)[0]
       usercreatedat2 = str(user2.created_at).split('.', 1)[0]
       userinfo_embed2 = discord.Embed(
-        title=":pushpin:Informações pessoais do",
+        title=":pushpin:Informações pessoais de:",
         color=0x690FC3,
         description=user2.name
       )
