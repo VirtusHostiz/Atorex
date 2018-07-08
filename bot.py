@@ -106,7 +106,7 @@ async def on_message(message):
       avatar_embed.set_image(url=user.avatar_url)
       avatar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator)
       await client.send_message(message.channel, embed=avatar_embed)
-    except IndexError:
+    except:
       user2 = message.author
       avatar_embed2 = discord.Embed(
         title="Avatar de {}:".format(user2.name),
