@@ -156,7 +156,7 @@ async def on_message(message):
       cargo = str(message.content).strip(" ")
       cargo2 = cargo.split()
       role = discord.utils.find(lambda r: r.name == cargo2[2], message.server.roles)
-      canal = client.get_channel("464089569969831938")
+      canal = client.get_channel("465637883500298240")
       cargo2_embed = discord.Embed(title="O usuário {} foi adicionado ao cargo {}!".format(user, role), color=0x00BFFF)
       cargo2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       await client.add_roles(user, role)
