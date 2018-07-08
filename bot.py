@@ -18,10 +18,11 @@ async def on_message(message):
     await client.send_message(message.channel, "{},\n```diff\n- Este comando não está disponível no momento.\n```".format(message.author.mention))
 
 
-  if message.content.lower().startswith(prefix+'reiniciar') and message.author.id == "322488685973209109":
-      await client.send_message(message.channel, "Reiniciando...")
+  if message.content.lower().startswith(prefix+'reiniciar'): 
+    if not message.author.id == "322488685973209109":
+      return await client.send_message(message.channel, "Sem permissão")
     try:
-      await client.send_message(message.channel, "Serm permissão")
+      await client.send_message(message.channel, "Reiniciando...")
 
 
   if message.content.lower().startswith(prefix+'ping'):
