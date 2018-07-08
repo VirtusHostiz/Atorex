@@ -58,7 +58,7 @@ async def on_message(message):
       embed.add_field(name="Cargos:", value=role, inline=True)
       embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       embed.set_thumbnail(url=user.avatar_url)
-      await client.send_message(message.channel, embed=embed)
+      await client.send_message(message.channel,embed=embed)
     except IndexError:
       user2 = message.author
       role2 = ",".join([r.name for r in message.author.roles if r.name!= "@everyone"])
@@ -76,7 +76,7 @@ async def on_message(message):
       embed2.add_field(name="Cargos:", value=role2, inline=True)
       embed2.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       embed2.set_thumbnail(url=message.author.avatar_url)
-      await client.send_message(message.channel, embed=embed2)
+      await client.send_message(message.channel,embed=embed2)
     finally:
       pass
 
