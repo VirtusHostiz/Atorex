@@ -31,7 +31,7 @@ async def on_message(message):
     user = message.author.name
     serverinfo_embed = discord.Embed(title="\n", description="Principais informações do nosso servidor Discord:", color=0x00FFFF)
     serverinfo_embed.set_thumbnail(url=message.server.icon_url)
-    serverinfo_embed.set_footer(text="• Comando enviado por {}.".format(user))
+    serverinfo_embed.set_footer(text="• Comando enviado por {}#[].".format(user, user.discriminator))
     serverinfo_embed.add_field(name="Nome:", value=message.server.name, inline=True)
     serverinfo_embed.add_field(name="ID:", value=message.server.id, inline=True)
     serverinfo_embed.add_field(name="Dono:", value=message.server.owner.mention)
@@ -45,20 +45,20 @@ async def on_message(message):
       try:
         user = message.mentions[0]
         embed =discord.Embed(
-          title="Avatar de: {}".format(user.name),
+          title="Avatar de {}:".format(user.name),
           color=0xFFFFFF
         )
         embed.set_image(url=user.avatar_url)
-        embed.set_footer(text="Pedido por {}#{}".format(message.author.name, message.author.discriminator))
+        embed.set_footer(text="• Pedido por {}#{}.".format(message.author.name, message.author.discriminator))
         await client.send_message(message.channel, embed=embed)
       except IndexError:
         user2 = message.author
         embed2 = discord.Embed(
-          title="Avatar de: {}".format(user2.name),
+          title="Avatar de {}:".format(user2.name),
           color=0xFFFFFF,
         )
         embed2.set_image(url=user2.avatar_url)
-        embed2.set_footer(text="Pedido por {}#{}".format(message.author.name, message.author.discriminator))
+        embed2.set_footer(text="• Pedido por {}#{}.".format(message.author.name, message.author.discriminator))
         await client.send_message(message.channel, embed=embed2)
 
 
