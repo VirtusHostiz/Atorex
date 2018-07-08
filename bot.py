@@ -66,11 +66,11 @@ async def on_message(message):
         color=0x690FC3,
         description=user.name
       )
-      userinfo_embed.add_field(name=":door:Entrou no servidor em:", value=userjoinedat, inline=True)
-      userinfo_embed.add_field(name="📅Conta criada em:", value=usercreatedat, inline=True)
-      userinfo_embed.add_field(name="💻ID:", value=user.id, inline=True)
-      userinfo_embed.add_field(name=":label:Tag:", value=user.discriminator, inline=True)
-      userinfo_embed.add_field(name="Cargos:", value=role, inline=True)
+      userinfo_embed.add_field(name=":door: Entrou no servidor em:", value=userjoinedat, inline=True)
+      userinfo_embed.add_field(name="📅 Conta criada em:", value=usercreatedat, inline=True)
+      userinfo_embed.add_field(name="💻 ID:", value=user.id, inline=True)
+      userinfo_embed.add_field(name=":label: Tag:", value=user.discriminator, inline=True)
+      userinfo_embed.add_field(name=" Cargos:", value=role, inline=True)
       userinfo_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       userinfo_embed.set_thumbnail(url=user.avatar_url)
       await client.send_message(message.channel, embed=userinfo_embed)
@@ -84,11 +84,11 @@ async def on_message(message):
         color=0x690FC3,
         description=user2.name
       )
-      userinfo_embed2.add_field(name=":door:Entrou no servidor em:", value=userjoinedat2, inline=True)
-      userinfo_embed2.add_field(name="📅Conta criada em:", value=usercreatedat2, inline=True)
-      userinfo_embed2.add_field(name="💻ID:", value=user2.id, inline=True)
-      userinfo_embed2.add_field(name=":label:Tag:", value=user2.discriminator, inline=True)
-      userinfo_embed2.add_field(name="Cargos:", value=role2, inline=True)
+      userinfo_embed2.add_field(name=":door: Entrou no servidor em:", value=userjoinedat2, inline=True)
+      userinfo_embed2.add_field(name="📅 Conta criada em:", value=usercreatedat2, inline=True)
+      userinfo_embed2.add_field(name="💻 ID:", value=user2.id, inline=True)
+      userinfo_embed2.add_field(name=":label: Tag:", value=user2.discriminator, inline=True)
+      userinfo_embed2.add_field(name=" Cargos:", value=role2, inline=True)
       userinfo_embed2.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       userinfo_embed2.set_thumbnail(url=message.author.avatar_url)
       await client.send_message(message.channel, embed=userinfo_embed2)
