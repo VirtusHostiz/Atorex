@@ -155,6 +155,7 @@ async def on_message(message):
       user = message.mentions[0]
       cargo = str(message.content).strip(" ")
       cargo2 = cargo.split()
+      print(cargo)
       role = discord.utils.find(lambda r: r.name == cargo[1], message.server.roles)
       canal = client.get_channel("465637883500298240")
       cargo2_embed = discord.Embed(title="O usuário **{}** foi adicionado ao cargo **{}**!".format(user, cargo), color=0xFF0000)
