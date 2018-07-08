@@ -29,19 +29,37 @@ async def on_message(message):
 
   if message.content.startswith(prefix+'serverinfo'):
     user = message.author.name
-    serverinfo_embed = discord.Embed(title="\n", description="Abaixo está as principais informações do nosso servidor Discord:", color=0x00FFFF)
+    serverinfo_embed = discord.Embed(title="\n", description="Principais informações do nosso servidor Discord:", color=0x00FFFF)
     serverinfo_embed.set_thumbnail(url=message.server.icon_url)
-    serverinfo_embed.set_footer(text="• Comando enviado por: {}.".format(user))
+    serverinfo_embed.set_footer(text="• Comando enviado por {}.".format(user))
     serverinfo_embed.add_field(name="Nome:", value=message.server.name, inline=True)
-    serverinfo_embed.add_field(name="Dono:", value=message.server.owner.mention)
     serverinfo_embed.add_field(name="ID:", value=message.server.id, inline=True)
-    serverinfo_embed.add_field(name="Cargos:", value=len(message.server.roles), inline=True)
+    serverinfo_embed.add_field(name="Dono:", value=message.server.owner.mention)
     serverinfo_embed.add_field(name="Canais de texto:", value=len([message.channel.mention for channel in message.server.channels if channel.type==discord.ChannelType.text]), inline=True)
     serverinfo_embed.add_field(name="Canais de voz:", value=len([message.channel.mention for channel in message.server.channels if channel.type==discord.ChannelType.voice]), inline=True)
-    serverinfo_embed.add_field(name="Membros:", value=len(message.server.members), inline=True)
-    serverinfo_embed.add_field(name="Bots:", value=len([user.mention for user in message.server.members if user.bot]), inline=True)        
-    serverinfo_embed.add_field(name="Região:", value=str(message.server.region).title(), inline=True)
+    serverinfo_embed.add_field(name="Usuários:", value=len(message.server.members), inline=True)     
     await client.send_message(message.channel,embed=serverinfo_embed)
+
+
+  if message.content.lower().startswith(prefix+'avatar'):
+      try:
+        user = message.mentions[0]
+        embed =discord.Embed(
+          title="Avatar de: {}".format(user.name),
+          color=0xFFFFFF
+        )
+        embed.set_image(url=user.avatar_url)
+        embed.set_footer(text="Pedido por {}#{}".format(message.author.name, message.author.discriminator))
+        await client.send_message(message.channel, embed=embed)
+        except IndexError:
+          user2 = message.author
+          embed2 = discord.Embed(
+            title="Avatar de: {}".format(user2.name),
+            color=0xFFFFFF,
+          )
+          embed2.set_image(url=user2.avatar_url)
+          embed2.set_footer(text="Pedido por {}#{}".format(message.author.name, message.author.discriminator))
+          await client.send_message(message.channel, embed=embed2)
 
 
 
