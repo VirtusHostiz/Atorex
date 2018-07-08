@@ -104,17 +104,17 @@ async def on_message(message):
         color=0x00BFFF,
       )
       avatar_embed.set_image(url=user.avatar_url)
-      avatar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator)
+      avatar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       await client.send_message(message.channel, embed=avatar_embed)
     except:
       user2 = message.author
-      avatar_embed2 = discord.Embed(
+      avatar2_embed = discord.Embed(
         title="Avatar de {}:".format(user2.name),
         color=0x00BFFF,
       )
-      avatar_embed2.set_image(url=user2.avatar_url)
-      avatar_embed2.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator)
-      await client.send_message(message.channel, embed=avatar_embed2)
+      avatar2_embed.set_image(url=user2.avatar_url)
+      avatar2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      await client.send_message(message.channel, embed=avatar2_embed)
     finally:
       pass
 
