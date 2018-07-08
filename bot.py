@@ -1,4 +1,5 @@
 import discord
+import os
 import asyncio
 import time
 import datetime
@@ -20,9 +21,14 @@ async def on_message(message):
 
   if message.content.lower().startswith(prefix+'reiniciar'): 
     if not message.author.id == "322488685973209109":
-      return await client.send_message(message.channel, "Sem permissão")
+      reiniciar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+      reiniciar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      return await client.send_message(message.channel, embed=reiniciar_embed)
     try:
-      await client.send_message(message.channel, "Reiniciando...")
+      os.system("python bot.py reload")
+      reiniciar2_embed = discord.Embed(title="BOT sendo reiniciado...", color=0xFF0000)
+      reiniciar2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      return await client.send_message(message.channel, embed=reiniciar2_embed)
     finally:
       pass
 
