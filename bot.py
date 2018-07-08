@@ -18,6 +18,13 @@ async def on_message(message):
     await client.send_message(message.channel, "{},\n```diff\n- Este comando não está disponível no momento.\n```".format(message.author.mention))
 
 
+  if message.content.lower().startswith(prefix+'reiniciar') and message.author.id == "322488685973209109":
+    try:
+      await client.send_message(message.channel, "Reiniciando...")
+    except IndexError:
+      await client.send_message(message.channel, "Serm permissão")
+
+
   if message.content.lower().startswith(prefix+'ping'):
     timep = time.time()
     ping_embed = discord.Embed(title = 'Aguarde...', color = 0x00FF40)
