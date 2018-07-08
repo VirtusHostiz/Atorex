@@ -19,9 +19,8 @@ async def on_message(message):
 
 
   if message.content.lower().startswith(prefix+'reiniciar') and message.author.id == "322488685973209109":
-    try:
       await client.send_message(message.channel, "Reiniciando...")
-    except IndexError:
+    try:
       await client.send_message(message.channel, "Serm permissão")
 
 
