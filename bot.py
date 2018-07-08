@@ -104,7 +104,7 @@ async def on_message(message):
         color=0xFFFFFF
       )
       avatar_embed.set_image(url=user.avatar_url)
-      avatar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      avatar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator), color=0x00BFFF)
       await client.send_message(message.channel, embed=avatar_embed)
     except IndexError:
       user2 = message.author
@@ -113,7 +113,7 @@ async def on_message(message):
         color=0xFFFFFF,
       )
       avatar_embed2.set_image(url=user2.avatar_url)
-      avatar_embed2.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      avatar_embed2.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator), color=0x00BFFF)
       await client.send_message(message.channel, embed=avatar_embed2)
     finally:
       pass
