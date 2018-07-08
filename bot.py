@@ -161,6 +161,8 @@ async def on_message(message):
       cargo2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       await client.add_roles(user, role)
       await client.send_message(canal, embed=cargo2_embed)
+    except discord.errors.Forbidden:
+      return await client.send_message(message.channel, embed=cargo_embed)
     finally:
       pass
 
