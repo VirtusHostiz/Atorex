@@ -157,7 +157,7 @@ async def on_message(message):
       uid = message.content[7:]
       user = await client.get_user_info(uid)
       canal = client.get_channel("465673373201203210")
-      unban2_embed = discord.Embed(title="Usuário desbanido com sucesso do servidor Discord.", color=0x00BFFF)
+      unban2_embed = discord.Embed(title="Usuário desbanido com sucesso do servidor Discord.", color=0x00FF00)
       unban2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       await client.send_message(message.channel, embed=unban2_embed)
       unban3_embed = discord.Embed(
