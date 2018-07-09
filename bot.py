@@ -20,7 +20,7 @@ async def on_message(message):
 
 
     if message.content.startswith(prefix+'reiniciar'):
-        if not message.author.id == "32248868597320910":
+        if not message.author.id == "322488685973209109":
             reiniciar_embed = discord.Embed(
                 title="Você não tem permissões necessárias para utilizar este comando.",
                 color=0x00FF00
