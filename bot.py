@@ -67,7 +67,7 @@ async def on_message(message):
             )
             return await client.send_message(message.channel, embed=ban_embed)
         try:
-            usuario = message.mentions[]
+            usuario = message.mentions[0]
             canal = client.get_channel("465673373201203210")
             ban_embed02 = discord.Embed(
                 title="Usuário banido com sucesso do Discord!",
