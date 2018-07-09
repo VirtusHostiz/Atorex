@@ -34,12 +34,12 @@ async def on_message(message):
 
 
   if message.content.lower().startswith(prefix+'ping'):
-    timep = time.time()
-    ping_embed = discord.Embed(title = 'Aguarde...', color = 0x00FF40)
-    pingm0 = await client.send_message(message.channel, embed=ping_embed)
-    ping = time.time() - timep
-    ping2_embed = discord.Embed(title = 'Pong!', description = '🏓 Ping - %.01f segundos' % ping, color=0x00FF40)
-    await client.edit_message(pingm0, embed=ping2_embed)
+    channel = message.channel
+    t1 = time.perf_counter()
+    await client.send_typing(channel)
+    t2 = time.perf_counter()
+    ping_embed = discord.Embed(title='Pong!', description="🏓 Ping - {}ms".format(round((t2 - t1) * 1000)))
+    await client.send_message(message.channel, embed=ping_embed)
 
 
   if message.content.startswith(prefix+'serverinfo'):
