@@ -87,7 +87,7 @@ async def on_message(message):
         try:
             limpar = int(message.content[7:]) + 1
             clear_embed02 = discord.Embed(
-                title=":pencil: Foram apagadas {} mensagens com sucesso!".format(lim), 
+                title=":pencil: Foram apagadas {} mensagens com sucesso!".format(limpar), 
                 color=0x00FF00
             )
             clear_embed02.set_footer(
