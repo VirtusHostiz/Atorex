@@ -206,20 +206,19 @@ async def on_message(message):
 
 
   if message.content.lower().startswith(prefix+'falar'):
-    if message.author.server_permissions.kick_members:
-      try:
-        msg = str(message.content).replace(prefix+"falar", "")
-        falar_embed = discord.Embed(description=msg, color=0x00BFFF)
-        await client.send_message(message.channel, embed=falar_embed)
-        return await client.delete_message(message)
-      except:
-        falar2_embed = discord.Embed(title="Utilize o comando: '/falar <mensagem>'.", color=0xFF0000)
-        falar2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-        return await client.send_message(message.channel, embed=falar2_embed)
-      else:
-        falar3_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
-        falar3_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-        return await client.send_message(message.channel, embed=falar3_embed)
+    if not message.author.server_permissions.kick_members:
+      falar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+      falar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      return await client.send_message(message.channel, embed=falar_embed)
+    try:
+      msg = str(message.content).replace(prefix+"falar", "")
+      falar2_embed = discord.Embed(description=msg, color=0x00BFFF)
+      await client.send_message(message.channel, embed=falar2_embed)
+      return await client.delete_message(message)
+    except:
+      falar3_embed = discord.Embed(title="Utilize o comando: '/falar <mensagem>'.", color=0xFF0000)
+      falar3_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      return await client.send_message(message.channel, embed=falar3_embed)
 
 
 
