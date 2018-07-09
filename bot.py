@@ -131,7 +131,7 @@ async def on_message(message):
       ban2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       await client.send_message(message.channel, embed=ban2_embed)
       ban3_embed = discord.Embed(
-        title="Banimento ocorrido",
+        title="Banimento ocorrido:",
         color=0xFF0000
       )
       ban3_embed.add_field(name="Usuário banido:", value=user)
@@ -161,7 +161,7 @@ async def on_message(message):
       unban2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       await client.send_message(message.channel, embed=unban2_embed)
       unban3_embed = discord.Embed(
-        title="Desbanimento ocorrido",
+        title="Desbanimento ocorrido:",
         color=0xFF0000
       )
       unban3_embed.add_field(name="ID do usuário:", value=user)
@@ -169,8 +169,8 @@ async def on_message(message):
       await client.send_message(canal, embed=unban3_embed)
       await client.unban(message.server, user)
     except:
-      ban4_embed = discord.Embed(title="Utilize o comando: '/unban <ID do usuário>'.", color=0xFF0000)
-      ban4_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      unban4_embed = discord.Embed(title="Utilize o comando: '/unban <ID do usuário>'.", color=0xFF0000)
+      unban4_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       await client.send_message(message.channel, embed=unban4_embed)
     finally:
       pass
@@ -188,7 +188,7 @@ async def on_message(message):
       kick2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       await client.send_message(message.channel, embed=kick2_embed)
       kick3_embed = discord.Embed(
-        title="Expulsão ocorrida",
+        title="Expulsão ocorrida:",
         color=0xFF0000
       )
       kick3_embed.add_field(name="Usuário expulso:", value=user)
