@@ -209,7 +209,7 @@ async def on_message(message):
     if message.author.server_permissions.kick_members:
       try:
         msg = str(message.content).replace(prefix+"falar", "")
-        falar_embed = discord.Embed(description=msg, color=0xFF0000)
+        falar_embed = discord.Embed(description=msg, color=0x00BFFF)
         await client.send_message(message.channel, embed=falar_embed)
         return await client.delete_message(message)
       except:
