@@ -54,3 +54,7 @@ async def on_message(message):
             color=0x00BFFF
         )
         await client.send_message(message.channel, embed=ping_embed)
+
+
+
+client.run('NDY0NjA0NDczOTMxODU3OTIx.DiBYJw.S2iTn7TXy7L9D1r1nLqryoaNOwg')
