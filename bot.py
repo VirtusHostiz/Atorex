@@ -148,5 +148,34 @@ async def on_message(message):
       pass
 
 
+  if message.content.lower().startswith(prefix+'kick'):
+    if not message.author.server_permissions.kick_members:
+      kick_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+      kick_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      await client.send_message(message.channel, embed=kick_embed)
+    try:
+      user = message.mentions[0]
+      canal = client.get_channel("465673373201203210")
+      kick2_embed = discord.Embed(title="Usuário expulso com sucesso do servidor Discord.", color=0x00BFFF)
+      kick2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      await client.send_message(message.channel, embed=kick2_embed)
+      kick3_embed = discord.Embed(
+        title="Expulsão ocorrida",
+        color=0xFF0000
+      )
+      kick3_embed.add_field(name="Usuário expulso:", value=user)
+      kick3_embed.add_field(name="ID do usuário:", value=user.id)
+      kick3_embed.add_field(name="Motivo:", value=message.content[27:])
+      kick3_embed.add_field(name="Autor:", value=message.author.mention)
+      await client.send_message(canal, embed=kick3_embed)
+      await client.kick(user)
+    except:
+      kick4_embed = discord.Embed(title="Utilize o comando: '/kick @usuário <motivo>'.", color=0xFF0000)
+      kick4_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      await client.send_message(message.channel, embed=ban4_embed)
+    finally:
+      pass
+
+
 
 client.run('NDY0NjA0NDczOTMxODU3OTIx.DiBYJw.S2iTn7TXy7L9D1r1nLqryoaNOwg')
