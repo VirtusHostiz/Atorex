@@ -70,6 +70,8 @@ async def on_message(message):
                 text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator)
             )
             return await client.send_message(message.channel, embed=falar_embed03)
+        finally:
+            pass
 
 
     if message.content.startswith(prefix+'ping'):
@@ -137,6 +139,8 @@ async def on_message(message):
                 text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator)
             )
             return await client.send_message(message.channel, embed=ban_embed04)
+        finally:
+            pass
 
 
 
