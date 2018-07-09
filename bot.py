@@ -28,7 +28,7 @@ async def on_message(message):
             reiniciar_embed.set_footer(
                 text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator)
             )
-            await client.send_message(message.channel, embed=reiniciar_embed)
+            return await client.send_message(message.channel, embed=reiniciar_embed)
         try:
             reiniciar_embed02 = discord.Embed(
                 title=":pushpin: Reiniciando...",
