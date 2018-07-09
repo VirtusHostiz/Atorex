@@ -141,7 +141,9 @@ async def on_message(message):
       await client.send_message(canal, embed=ban3_embed)
       await client.ban(user, delete_message_days=7)
     except:
-      await client.send_message(message.channel, "**Você deve especificar um usuario!**")
+      ban4_embed = discord.Embed(title="Utilize o comando: '/ban @usuário <motivo>'.", color=0xFF0000)
+      ban4_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      await client.send_message(message.channel, embed=ban4_embed)
     finally:
       pass
 
