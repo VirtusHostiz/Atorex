@@ -16,14 +16,14 @@ async def on_ready():
 @client.event
 async def on_message(message):
   if message.content.lower().startswith(prefix+'comandos'):
-    await client.send_message(message.channel, "{},\n```diff\n- Este comando não está disponível no momento.\n```".format(message.author.mention))
+    return await client.send_message(message.channel, "{},\n```diff\n- Este comando não está disponível no momento.\n```".format(message.author.mention))
 
 
   if message.content.lower().startswith(prefix+'reiniciar'): 
     if not message.author.id == "322488685973209109":
       reiniciar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
       reiniciar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-      await client.send_message(message.channel, embed=reiniciar_embed)
+      return await client.send_message(message.channel, embed=reiniciar_embed)
     try:
       reiniciar2_embed = discord.Embed(title=":pushpin: Reiniciando...", color=0x00FF00)
       reiniciar2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
@@ -39,7 +39,7 @@ async def on_message(message):
     await client.send_typing(channel)
     t2 = time.perf_counter()
     ping_embed = discord.Embed(title='Pong!', description="🏓 Ping - {}ms".format(round((t2 - t1) * 1000)), color=0x00BFFF)
-    await client.send_message(message.channel, embed=ping_embed)
+    return await client.send_message(message.channel, embed=ping_embed)
 
 
   if message.content.startswith(prefix+'serverinfo'):
@@ -52,7 +52,7 @@ async def on_message(message):
     serverinfo_embed.add_field(name="Canais de texto:", value=len([message.channel.mention for channel in message.server.channels if channel.type==discord.ChannelType.text]), inline=True)
     serverinfo_embed.add_field(name="Canais de voz:", value=len([message.channel.mention for channel in message.server.channels if channel.type==discord.ChannelType.voice]), inline=True)
     serverinfo_embed.add_field(name="Usuários:", value=len(message.server.members), inline=True)     
-    await client.send_message(message.channel, embed=serverinfo_embed)
+    return await client.send_message(message.channel, embed=serverinfo_embed)
 
 
   if message.content.lower().startswith(prefix+'userinfo'):
@@ -73,7 +73,7 @@ async def on_message(message):
       userinfo_embed.add_field(name=" Cargos:", value=role, inline=True)
       userinfo_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       userinfo_embed.set_thumbnail(url=user.avatar_url)
-      await client.send_message(message.channel, embed=userinfo_embed)
+      return await client.send_message(message.channel, embed=userinfo_embed)
     except IndexError:
       user2 = message.author
       role2 = ",".join([r.name for r in message.author.roles if r.name!= "@everyone"])
@@ -91,7 +91,7 @@ async def on_message(message):
       userinfo_embed2.add_field(name=" Cargos:", value=role2, inline=True)
       userinfo_embed2.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       userinfo_embed2.set_thumbnail(url=message.author.avatar_url)
-      await client.send_message(message.channel, embed=userinfo_embed2)
+      return await client.send_message(message.channel, embed=userinfo_embed2)
     finally:
       pass
 
@@ -105,7 +105,7 @@ async def on_message(message):
       )
       avatar_embed.set_image(url=user.avatar_url)
       avatar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-      await client.send_message(message.channel, embed=avatar_embed)
+      return await client.send_message(message.channel, embed=avatar_embed)
     except:
       user2 = message.author
       avatar2_embed = discord.Embed(
@@ -114,7 +114,7 @@ async def on_message(message):
       )
       avatar2_embed.set_image(url=user2.avatar_url)
       avatar2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-      await client.send_message(message.channel, embed=avatar2_embed)
+      return await client.send_message(message.channel, embed=avatar2_embed)
     finally:
       pass
 
@@ -139,7 +139,7 @@ async def on_message(message):
       ban3_embed.add_field(name="Motivo:", value=message.content[27:])
       ban3_embed.add_field(name="Autor:", value=message.author.mention)
       await client.send_message(canal, embed=ban3_embed)
-      await client.ban(user, delete_message_days=7)
+      return await client.ban(user, delete_message_days=7)
     except:
       ban4_embed = discord.Embed(title="Utilize o comando: '/ban @usuário <motivo>'.", color=0xFF0000)
       ban4_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
@@ -167,7 +167,7 @@ async def on_message(message):
       unban3_embed.add_field(name="ID do usuário:", value=user)
       unban3_embed.add_field(name="Autor:", value=message.author.mention)
       await client.send_message(canal, embed=unban3_embed)
-      await client.unban(message.server, user)
+      return await client.unban(message.server, user)
     except:
       unban4_embed = discord.Embed(title="Utilize o comando: '/unban <ID do usuário>'.", color=0xFF0000)
       unban4_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
@@ -196,7 +196,7 @@ async def on_message(message):
       kick3_embed.add_field(name="Motivo:", value=message.content[27:])
       kick3_embed.add_field(name="Autor:", value=message.author.mention)
       await client.send_message(canal, embed=kick3_embed)
-      await client.kick(user)
+      return await client.kick(user)
     except:
       kick4_embed = discord.Embed(title="Utilize o comando: '/kick @usuário <motivo>'.", color=0xFF0000)
       kick4_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
@@ -211,7 +211,7 @@ async def on_message(message):
         msg = str(message.content).replace(prefix+"falar", "")
         falar_embed = discord.Embed(description=msg, color=0xFF0000)
         await client.send_message(message.channel, embed=falar_embed)
-        await client.delete_message(message)
+        return await client.delete_message(message)
       except:
         falar2_embed = discord.Embed(title="Utilize o comando: '/falar <mensagem>'.", color=0xFF0000)
         falar2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
