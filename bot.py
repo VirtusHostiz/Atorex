@@ -126,7 +126,7 @@ async def on_message(message):
       await client.send_message(message.channel, embed=ban_embed)
     try:
       user = message.mentions[0]
-      canal = client.get_channel("465637883500298240")
+      canal = client.get_channel("463953018518241281")
       ban2_embed = discord.Embed(title="Usuário banido com sucesso do servidor Discord.", color=0x00BFFF)
       ban2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       await client.send_message(message.channel, embed=ban2_embed)
@@ -156,7 +156,7 @@ async def on_message(message):
       cargo = str(message.content).strip(" ")
       cargo2 = cargo.split()
       role = discord.utils.find(lambda r: r.name == cargo2[2], message.server.roles)
-      canal = client.get_channel("464088369769611265")
+      canal = client.get_channel("463950917251891210")
       cargo2_embed = discord.Embed(title="O usuário {} foi adicionado ao cargo {}!".format(user, role), color=0x00BFFF)
       cargo2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       await client.add_roles(user, role)
