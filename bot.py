@@ -223,12 +223,12 @@ async def on_message(message):
 
   if message.content.lower().startswith(prefix+'clear'):
     if not message.author.server_permissions.manage_messages:
-      clear_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando!", color=0xFF0000)
+      clear_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
       clear_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       return await client.send_message(message.channel, embed=clear_embed)
     try:
       lim = int(message.content[7:]) + 1
-      clear2_embed = discord.Embed(title=":pencil: Foram apagadas {} mensagens com sucesso.".format(lim), color=0x00FF00)
+      clear2_embed = discord.Embed(title=":pencil: Foram apagadas {} mensagens com sucesso!".format(lim), color=0x00FF00)
       clear2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       await client.purge_from(message.channel, limit=lim)
       return await client.send_message(message.channel, embed=clear2_embed)
