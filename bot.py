@@ -56,7 +56,7 @@ async def on_message(message):
         try:
             mensagem = str(message.content).replace(prefix+"falar", "")
             falar_embed02 = discord.Embed(
-                description=mensagem, 
+                title=mensagem, 
                 color=0x00BFFF
             )
             await client.delete_message(message)
