@@ -71,7 +71,7 @@ async def on_message(message):
             canal = client.get_channel("465673373201203210")
             ban_embed02 = discord.Embed(
                 title="Usuário banido com sucesso do Discord!",
-                color=0xFF000
+                color=0x00BFFF
             )
             ban_embed02.set_footer(
                 text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator)
@@ -102,7 +102,7 @@ async def on_message(message):
         except:
             ban_embed04 = discord.Embed(
                 title="Utilize o comando: '/ban @usuário <motivo>'.",
-                color=0xFF000
+                color=0xFF0000
             )
             ban_embed04.set_footer(
                 text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator)
