@@ -9,7 +9,7 @@ prefix = "/"
 
 @client.event
 async def on_ready():
-    awayt client.change_presence(game=discord.Game(name=prefix+'comandos', type=2))
+    await client.change_presence(game=discord.Game(name=prefix+'comandos', type=2))
     print('[BOT ONLINE]')
 
 
