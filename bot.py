@@ -107,7 +107,7 @@ async def on_message(message):
             ban_embed04.set_footer(
                 text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator)
             )
-            await client.send_message(message.channel, embed=ban_embed04)
+            return await client.send_message(message.channel, embed=ban_embed04)
 
 
 
