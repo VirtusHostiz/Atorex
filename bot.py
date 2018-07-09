@@ -230,6 +230,7 @@ async def on_message(message):
       lim = int(message.content[7:]) + 1
       clear2_embed = discord.Embed(title="Foram apagadas {} mensagens.".format(lim), color=0x00FF00)
       clear2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+      await client.purge_from(message.channel, limit=lim)
       return await client.send_message(message.channel, embed=clear2_embed)
     except:
       clear3_embed = discord.Embed(title="Utilize o comando: '/clear <quantidade de mensagens>'.", color=0xFF0000)
