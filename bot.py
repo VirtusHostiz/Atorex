@@ -205,5 +205,22 @@ async def on_message(message):
       pass
 
 
+  if message.content.lower().startswith(prefix+'falar'):
+    if message.author.server_permissions.kick_members:
+      try:
+        msg = str(message.content).replace(prefix+"falar", "")
+        falar_embed = discord.Embed(description=msg, color=0xFF0000)
+        await client.send_message(message.channel, embed=falar_embed)
+        await client.delete_message(message)
+      except:
+        falar2_embed = discord.Embed(title="Utilize o comando: '/falar <mensagem>'.", color=0xFF0000)
+        falar2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+        return await client.send_message(message.channel, embed=falar2_embed)
+      else:
+        falar3_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+        falar3_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+        return await client.send_message(message.channel, embed=falar3_embed)
+
+
 
 client.run('NDY0NjA0NDczOTMxODU3OTIx.DiBYJw.S2iTn7TXy7L9D1r1nLqryoaNOwg')
