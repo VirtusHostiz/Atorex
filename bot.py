@@ -131,7 +131,7 @@ async def on_message(message):
       ban2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
       await client.send_message(message.channel, embed=ban2_embed)
       ban3_embed = discord.Embed(
-        title="Banimento",
+        title="Banimento ocorrido",
         color=0xFF0000
       )
       ban3_embed.add_field(name="Usuário banido:", value=user)
