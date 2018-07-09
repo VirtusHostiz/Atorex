@@ -123,7 +123,7 @@ async def on_message(message):
     if not message.author.server_permissions.ban_members:
       ban_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
       ban_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-      await client.send_message(message.channel, embed=ban_embed)
+      return await client.send_message(message.channel, embed=ban_embed)
     try:
       user = message.mentions[0]
       canal = client.get_channel("465673373201203210")
@@ -143,7 +143,7 @@ async def on_message(message):
     except:
       ban4_embed = discord.Embed(title="Utilize o comando: '/ban @usuário <motivo>'.", color=0xFF0000)
       ban4_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-      await client.send_message(message.channel, embed=ban4_embed)
+      return await client.send_message(message.channel, embed=ban4_embed)
     finally:
       pass
 
@@ -152,7 +152,7 @@ async def on_message(message):
     if not message.author.server_permissions.ban_members:
       unban_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
       unban_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-      await client.send_message(message.channel, embed=unban_embed)
+      return await client.send_message(message.channel, embed=unban_embed)
     try:
       uid = message.content[7:]
       user = await client.get_user_info(uid)
@@ -171,7 +171,7 @@ async def on_message(message):
     except:
       unban4_embed = discord.Embed(title="Utilize o comando: '/unban <ID do usuário>'.", color=0xFF0000)
       unban4_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-      await client.send_message(message.channel, embed=unban4_embed)
+      return await client.send_message(message.channel, embed=unban4_embed)
     finally:
       pass
 
@@ -180,7 +180,7 @@ async def on_message(message):
     if not message.author.server_permissions.kick_members:
       kick_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
       kick_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-      await client.send_message(message.channel, embed=kick_embed)
+      return await client.send_message(message.channel, embed=kick_embed)
     try:
       user = message.mentions[0]
       canal = client.get_channel("465673373201203210")
@@ -200,7 +200,7 @@ async def on_message(message):
     except:
       kick4_embed = discord.Embed(title="Utilize o comando: '/kick @usuário <motivo>'.", color=0xFF0000)
       kick4_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-      await client.send_message(message.channel, embed=kick4_embed)
+      return await client.send_message(message.channel, embed=kick4_embed)
     finally:
       pass
 
