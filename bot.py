@@ -172,7 +172,7 @@ async def on_message(message):
     except:
       kick4_embed = discord.Embed(title="Utilize o comando: '/kick @usuário <motivo>'.", color=0xFF0000)
       kick4_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-      await client.send_message(message.channel, embed=ban4_embed)
+      await client.send_message(message.channel, embed=kick4_embed)
     finally:
       pass
 
