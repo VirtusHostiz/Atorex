@@ -105,6 +105,10 @@ async def on_message(message):
             ban_embed04 = discord.Embed(title="Utilize o comando: '/ban @usuário <motivo>'.", color=0xFF0000)
             ban_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=ban_embed04)
+        except IndexError:
+            ban_embed04 = discord.Embed(title="Ocorreu um erro ao banir este usuário!", color=0xFF0000)
+            ban_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=ban_embed04)
         finally:
             pass
 
@@ -127,8 +131,16 @@ async def on_message(message):
             unban_embed03.add_field(name="Autor:", value=message.author.mention)
             await client.send_message(canal, embed=unban_embed03)
             await client.unban(message.server, user)
+        except discord.errors.Forbidden:
+            ban_embed04 = discord.Embed(title="Utilize o comando: '/unban <ID do usuário>'.", color=0xFF0000)
+            ban_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=ban_embed04)
+        except IndexError:
+            ban_embed04 = discord.Embed(title="Ocorreu um erro ao desbanir este usuário!", color=0xFF0000)
+            ban_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=ban_embed04)
         except discord.errors.NotFound:
-            unban_embed04 = discord.Embed(title="Utilize o comando: '/unban <ID do usuário>'.", color=0xFF0000)
+            unban_embed04 = discord.Embed(title="Ocorreu um erro ao desbanir este usuário!", color=0xFF0000)
             unban_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=unban_embed04)
         finally:
