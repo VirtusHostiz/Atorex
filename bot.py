@@ -24,7 +24,6 @@ async def on_message(message):
             reiniciar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0x00FF00)
             reiniciar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=reiniciar_embed)
-
         try:
             reiniciar_embed02 = discord.Embed(title=":pushpin: Reiniciando...", color=0x00FF00)
             reiniciar_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
@@ -40,7 +39,7 @@ async def on_message(message):
 
         try:
             mensagem = str(message.content).replace(prefix+"falar", "")
-            
+
             falar_embed02 = discord.Embed(title=mensagem, color=0x00BFFF)
             await client.delete_message(message)
             await client.send_message(message.channel, embed=falar_embed02)
