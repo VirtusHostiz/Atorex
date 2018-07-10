@@ -165,5 +165,36 @@ async def on_message(message):
             pass
 
 
+    if message.content.lower().startswith(prefix+'mute'):
+        if not message.author.server_permissions.kick_members:
+            mute_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+            mute_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=mute_embed)
+        if not message.content[27:]:
+            mute_embed02 = discord.Embed(title="Utilize o comando: '/mute @usuário <motivo>'.", color=0xFF0000)
+            mute_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=mute_embed02)
+        try:
+            user = message.mentions[0]
+            canal = client.get_channel("465673373201203210")
+            cargo = discord.utils.find(lambda r: r.name == "Mutado", message.server.roles)
+            mute_embed03 = discord.Embed(title="Usuário mutado no servidor Discord com sucesso!", color=0x00BFFF)
+            mute_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            mute_embed04 = discord.Embed(title="Usuário mutado!", color=0xFF0000)
+            mute_embed04.add_field(name="Usuário:", value=user)
+            mute_embed04.add_field(name="ID do usuário:", value=user.id)
+            mute_embed04.add_field(name="Motivo:", value=message.content[27:])
+            mute_embed04.add_field(name="Autor:", value=message.author.mention)
+            await client.add_roles(user, cargo)
+            await client.send_message(message.channel, embed=mute_embed03)
+            await client.send_message(canal, embed=mute_embed04)
+        except discord.errors.Forbidden:
+            mute_embed05 = discord.Embed(title="Utilize o comando: '/mute @usuário <motivo>'.", color=0xFF0000)
+            mute_embed05.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=mute_embed05)
+        finally:
+            pass
+
+
 
 client.run('NDY0NjA0NDczOTMxODU3OTIx.DiBYJw.S2iTn7TXy7L9D1r1nLqryoaNOwg')
