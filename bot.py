@@ -85,7 +85,9 @@ async def on_message(message):
             ban_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=ban_embed)
         if not message.content[27:]:
-            return await client.send_message(message.channel, "Insira um motivo")
+            ban_embed04 = discord.Embed(title="Utilize o comando: '/ban @usuário <motivo>'.", color=0xFF0000)
+            ban_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=ban_embed04)
         try:
             user = message.mentions[0]
             canal = client.get_channel("465673373201203210")
