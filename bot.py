@@ -110,6 +110,10 @@ async def on_message(message):
             unban_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             unban_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=unban_embed)
+        if message.content[:27]:
+            unban_embed00 = discord.Embed(title="Utilize o comando: '/unban <ID do usuário>'.", color=0xFF0000)
+            unban_embed00.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=unban_embed00)
         try:
             uid = message.content[7:]
             user = await client.get_user_info(uid)
