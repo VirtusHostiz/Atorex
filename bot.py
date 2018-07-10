@@ -29,6 +29,8 @@ async def on_message(message):
             reiniciar_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=reiniciar_embed02)
             os.system("python bot.py reload")
+        finally:
+            pass
 
 
     if message.content.startswith(prefix+'falar'):
@@ -45,6 +47,8 @@ async def on_message(message):
             falar_embed03 = discord.Embed(title="Utilize o comando: '/falar <mensagem>'.", color=0xFF0000)
             falar_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=falar_embed03)
+        finally:
+            pass
 
 
     if message.content.lower().startswith(prefix+'clear'):
@@ -62,6 +66,8 @@ async def on_message(message):
             clear_embed03 = discord.Embed(title="Utilize o comando: '/clear <quantidade de mensagens>'.", color=0xFF0000)
             clear_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=clear_embed03)
+        finally:
+            pass
 
 
     if message.content.startswith(prefix+'ping'):
@@ -99,6 +105,8 @@ async def on_message(message):
             ban_embed05 = discord.Embed(title="Utilize o comando: '/ban @usuário <motivo>'.",color=0xFF0000)
             ban_embed05.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=ban_embed05)
+        finally:
+            pass
 
 
     if message.content.startswith(prefix+'unban'):
@@ -122,6 +130,8 @@ async def on_message(message):
             unban_embed04 = discord.Embed(title="Utilize o comando: '/unban <ID do usuário>'.", color=0xFF0000)
             unban_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=unban_embed04)
+        finally:
+            pass
 
 
 
