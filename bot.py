@@ -120,12 +120,12 @@ async def on_message(message):
             canal = client.get_channel("465673373201203210")
             unban_embed02 = discord.Embed(title="Usuário desbanido do servidor Discord com sucesso!", color=0x00BFFF)
             unban_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            await client.send_message(message.channel, embed=unban_embed02)
             unban_embed03 = discord.Embed(title="Usuário desbanido!", color=0x00FF00)
             unban_embed03.add_field(name="Usuário:", value=user)
             unban_embed03.add_field(name="ID do usuário:", value=user.id)
             unban_embed03.add_field(name="Autor:", value=message.author.mention)
             await client.unban(message.server, user)
+            await client.send_message(message.channel, embed=unban_embed02)
             await client.send_message(canal, embed=unban_embed03)
         except:
             unban_embed04 = discord.Embed(title="Utilize o comando: '/unban <ID do usuário>'.", color=0xFF0000)
@@ -192,6 +192,32 @@ async def on_message(message):
             mute_embed05 = discord.Embed(title="Utilize o comando: '/mute @usuário <motivo>'.", color=0xFF0000)
             mute_embed05.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=mute_embed05)
+        finally:
+            pass
+
+
+    if message.content.lower().startswith(prefix+'unmute'):
+        if not message.author.server_permissions.kick_members:
+            unmute_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+            unmute_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=unmute_embed)
+        try:
+            user = message.mentions[0]
+            canal = client.get_channel("465673373201203210")
+            cargo = discord.utils.find(lambda r: r.name == "Mutado", message.server.roles)
+            unmute_embed02 = discord.Embed(title="Usuário desmutado no servidor Discord com sucesso!", color=0x00BFFF)
+            unmute_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            unmute_embed03 = discord.Embed(title="Usuário desmutado!", color=0x00FF00)
+            unmute_embed03.add_field(name="Usuário:", value=user)
+            unmute_embed03.add_field(name="ID do usuário:", value=user.id)
+            unmute_embed03.add_field(name="Autor:", value=message.author.mention)
+            await client.remove_roles(user, cargo)
+            await client.send_message(message.channel, embed=unmute_embed02)
+            await client.send_message(canal, embed=unmute_embed03)
+        except discord.errors.Forbidden:
+            unmute_embed04 = discord.Embed(title="Utilize o comando: '/unmute @usuário'.", color=0xFF0000)
+            unmute_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=unmute_embed04)
         finally:
             pass
 
