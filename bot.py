@@ -79,7 +79,7 @@ async def on_message(message):
         await client.send_message(message.channel, embed=ping_embed)
 
 
-    if message.content.lower().startswith('!ban'):
+    if message.content.lower().startswith(prefix+'ban'):
         if not message.author.server_permissions.ban_members:
             ban_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             ban_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
@@ -88,7 +88,7 @@ async def on_message(message):
             return await client.send_message(message.channel, "Insira um motivo")
         try:
             user = message.mentions[0]
-            canal = client.get_channel("462781693657481216")
+            canal = client.get_channel("465673373201203210")
             ban_embed02 = discord.Embed(title="Usuário banido com sucesso do servidor Discord!", color=0x00BFFF)
             ban_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             ban_embed03 = discord.Embed(title="Usuário banido!", color=0xFF0000)
