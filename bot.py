@@ -7,6 +7,10 @@ import datetime
 client = discord.Client()
 prefix = "/"
 
+seconds = 0
+minutes = 0
+hour = 0
+
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name=prefix+'comandos', type=2))
@@ -136,7 +140,7 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'kick'):
-        if not message.author.server_permissions.ban_members:
+        if not message.author.server_permissions.kick_members:
             kick_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             kick_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=kick_embed)
@@ -154,7 +158,7 @@ async def on_message(message):
             kick_embed04.add_field(name="ID do usuário:", value=user.id)
             kick_embed04.add_field(name="Motivo:", value=message.content[27:])
             kick_embed04.add_field(name="Autor:", value=message.author.mention)
-            await client.ban(user, delete_message_days=7)
+            await client.kick(user)
             await client.send_message(message.channel, embed=kick_embed03)
             await client.send_message(canal, embed=kick_embed04)
         except discord.errors.Forbidden:
@@ -163,6 +167,34 @@ async def on_message(message):
             return await client.send_message(message.channel, embed=kick_embed05)
         finally:
             pass
+
+
+    if message.content.startswith(prefix+'uptime'):
+        uptimeemb = discord.Embed(
+            title="Uptime",
+            color=0x000000,
+            description="`Estou online faz {0} horas, {1} minutos e {2} segundos|{3}. `".format(hour, minutes, seconds, message.server)
+        )
+        await client.send_message(message.channel, embed=uptimeemb)
+
+
+async def uptime():
+    await client.wait_until_ready()
+    global seconds
+    seconds = 0
+    global minutes
+    minutes = 0
+    global hour
+    hour = 0
+    while not client.is_closed:
+        seconds += 1
+        if seconds == 60:
+            seconds = 0
+            minutes += 1
+        await asyncio.sleep(1)
+        if minutes == 60:
+            minutes = 0
+            hour += 1
 
 
 
