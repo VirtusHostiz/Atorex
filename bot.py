@@ -58,7 +58,7 @@ async def on_message(message):
             return await client.send_message(message.channel, embed=clear_embed)
         try:
             limpar = int(message.content[7:]) + 1
-            clear_embed02 = discord.Embed(title=":pencil: Foram apagadas {} mensagens com sucesso!".format(limpar), color=0x00FF00))
+            clear_embed02 = discord.Embed(title=":pencil: Foram apagadas {} mensagens com sucesso!".format(limpar), color=0x00FF00)
             clear_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.purge_from(message.channel, limit=limpar)
             await client.send_message(message.channel, embed=clear_embed02)
