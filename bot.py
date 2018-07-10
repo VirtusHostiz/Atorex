@@ -96,7 +96,7 @@ async def on_message(message):
             ban_embed03.add_field(name="ID do usuário:", value=user.id)
             ban_embed03.add_field(name="Motivo:", value=message.content[27:])
             ban_embed03.add_field(name="Autor:", value=message.author.mention)
-            await client.ban(user, deleted_message_days=7)
+            await client.ban(user, delete_message_days=7)
             await client.send_message(message.channel, embed=ban_embed02)
             await client.send_message(canal, embed=ban_embed03)
         except discord.errors.Forbidden:
