@@ -120,7 +120,7 @@ async def on_message(message):
             unban_embed03 = discord.Embed(title="Usuário desbanido!",color=0x00FF00)
             unban_embed03.add_field(name="ID do usuário:", value=usuario)
             unban_embed03.add_field(name="Autor:", value=message.author.mention)
-            await client.send_message(canal, embed=unban_embed03)
+            await client.send_message(message.canal, embed=unban_embed03)
             await client.unban(message.server, usuario)
         except:
             unban_embed04 = discord.Embed(title="Utilize o comando: '/unban <ID do usuário>'.", color=0xFF0000)
