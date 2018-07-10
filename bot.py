@@ -87,20 +87,20 @@ async def on_message(message):
         try:
             user = message.mentions[0]
             canal = client.get_channel("465673373201203210")
-            ban2_embed = discord.Embed(title="Usuário banido com sucesso do servidor Discord!", color=0x00BFFF)
-            ban2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            await client.send_message(message.channel, embed=ban2_embed)
-            ban3_embed = discord.Embed(title="Banimento ocorrido:", color=0xFF0000)
-            ban3_embed.add_field(name="Usuário banido:", value=user)
-            ban3_embed.add_field(name="ID do usuário:", value=user.id)
-            ban3_embed.add_field(name="Motivo:", value=message.content[27:])
-            ban3_embed.add_field(name="Autor:", value=message.author.mention)
-            await client.send_message(canal, embed=ban3_embed)
+            ban_embed02 = discord.Embed(title="Usuário banido com sucesso do servidor Discord!", color=0x00BFFF)
+            ban_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.send_message(message.channel, embed=ban_embed02)
+            ban_embed03 = discord.Embed(title="Usuário banido!", color=0xFF0000)
+            ban_embed03.add_field(name="Usuário:", value=user)
+            ban_embed03.add_field(name="ID do usuário:", value=user.id)
+            ban_embed03.add_field(name="Motivo:", value=message.content[27:])
+            ban_embed03.add_field(name="Autor:", value=message.author.mention)
+            await client.send_message(canal, embed=ban_embed03)
             await client.ban(user, delete_message_days=7)
         except:
-            ban4_embed = discord.Embed(title="Utilize o comando: '/ban @usuário <motivo>'.", color=0xFF0000)
-            ban4_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=ban4_embed)
+            ban_embed04 = discord.Embed(title="Utilize o comando: '/ban @usuário <motivo>'.", color=0xFF0000)
+            ban_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=ban_embed04)
         finally:
             pass
 
@@ -114,18 +114,19 @@ async def on_message(message):
             uid = message.content[7:]
             user = await client.get_user_info(uid)
             canal = client.get_channel("465673373201203210")
-            unban2_embed = discord.Embed(title="Usuário desbanido com sucesso do servidor Discord!", color=0x00BFFF)
-            unban2_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            await client.send_message(message.channel, embed=unban2_embed)
-            unban3_embed = discord.Embed(title="Desbanimento ocorrido:", color=0x00FF00)
-            unban3_embed.add_field(name="ID do usuário:", value=user)
-            unban3_embed.add_field(name="Autor:", value=message.author.mention)
-            await client.send_message(canal, embed=unban3_embed)
+            unban_embed02 = discord.Embed(title="Usuário desbanido com sucesso do servidor Discord!", color=0x00BFFF)
+            unban_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.send_message(message.channel, embed=unban_embed02)
+            unban_embed03 = discord.Embed(title="Usuário desbanido!", color=0x00FF00)
+            ban_embed03.add_field(name="Usuário:", value=user)
+            unban_embed03.add_field(name="ID do usuário:", value=user.id)
+            unban_embed03.add_field(name="Autor:", value=message.author.mention)
+            await client.send_message(canal, embed=unban_embed03)
             await client.unban(message.server, user)
         except:
-            unban4_embed = discord.Embed(title="Utilize o comando: '/unban <ID do usuário>'.", color=0xFF0000)
-            unban4_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=unban4_embed)
+            unban_embed04 = discord.Embed(title="Utilize o comando: '/unban <ID do usuário>'.", color=0xFF0000)
+            unban_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=unban_embed04)
         finally:
             pass
 
