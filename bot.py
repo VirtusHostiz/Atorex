@@ -84,24 +84,21 @@ async def on_message(message):
             ban_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             ban_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=ban_embed)
+        if not message.content == message.content[27:]:
+            return await client.send_message(message.channel, 'Insira um motivo')
         try:
-            if message.content[:27]:
-                ban_embed00 = discord.Embed(title="Utilize o comando: '/ban @usuário <motivo>'.", color=0xFF0000)
-                ban_embed00.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-                return await client.send_message(message.channel, embed=ban_embed00)
-            else:
-                user = message.mentions[0]
-                canal = client.get_channel("465673373201203210")
-                ban_embed02 = discord.Embed(title="Usuário banido com sucesso do servidor Discord!", color=0x00BFFF)
-                ban_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-                await client.send_message(message.channel, embed=ban_embed02)
-                ban_embed03 = discord.Embed(title="Usuário banido!", color=0xFF0000)
-                ban_embed03.add_field(name="Usuário:", value=user)
-                ban_embed03.add_field(name="ID do usuário:", value=user.id)
-                ban_embed03.add_field(name="Motivo:", value=message.content[27:])
-                ban_embed03.add_field(name="Autor:", value=message.author.mention)
-                await client.send_message(canal, embed=ban_embed03)
-                await client.ban(user, delete_message_days=7)
+            user = message.mentions[0]
+            canal = client.get_channel("465673373201203210")
+            ban_embed02 = discord.Embed(title="Usuário banido com sucesso do servidor Discord!", color=0x00BFFF)
+            ban_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.send_message(message.channel, embed=ban_embed02)
+            ban_embed03 = discord.Embed(title="Usuário banido!", color=0xFF0000)
+            ban_embed03.add_field(name="Usuário:", value=user)
+            ban_embed03.add_field(name="ID do usuário:", value=user.id)
+            ban_embed03.add_field(name="Motivo:", value=message.content[27:])
+            ban_embed03.add_field(name="Autor:", value=message.author.mention)
+            await client.send_message(canal, embed=ban_embed03)
+            await client.ban(user, delete_message_days=7)
         except:
             ban_embed04 = discord.Embed(title="Utilize o comando: '/ban @usuário <motivo>'.", color=0xFF0000)
             ban_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
