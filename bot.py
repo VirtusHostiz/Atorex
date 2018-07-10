@@ -97,7 +97,7 @@ async def on_message(message):
             ban_embed03.add_field(name="Autor:", value=message.author.mention)
             await client.send_message(canal, embed=ban_embed03)
             await client.ban(user, delete_message_days=7)
-        except as e:
+        except Exception as e:
             ban_embed04 = discord.Embed(title="Utilize o comando: '/ban @usuário <motivo>'.", color=0xFF0000)
             ban_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=ban_embed04)
