@@ -84,7 +84,7 @@ async def on_message(message):
             ban_embed = discord.Embed(title="Você não tem permissão necessárias para utilizar este comando.", color=0xFF000)
             ban_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=ban_embed)
-        if message.content != [:27]:
+        if message.content[] != [27]:
             ban_embed02 = discord.Embed(title="Utilize o comando: '/ban @usuário <motivo>'.", color=0xFF0000)
             ban_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=ban_embed02)
