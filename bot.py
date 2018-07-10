@@ -51,7 +51,7 @@ async def on_message(message):
             pass
 
 
-    if message.content.lower().startswith(prefix+'clear'):
+    if message.content.startswith(prefix+'clear'):
         if not message.author.server_permissions.manage_messages:
             clear_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             clear_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
