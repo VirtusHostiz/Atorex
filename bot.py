@@ -165,8 +165,7 @@ async def on_message(message):
             pass
 
 
-
-    if message.content.lower().startswith(prefix+'emote"):
+    if message.content.lower().startswith(prefix+'emote'):
         server = message.server
         emote = [str(x) for x in server.emote]
         lista = " ".join(emote)
