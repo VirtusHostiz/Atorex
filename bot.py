@@ -36,7 +36,7 @@ async def on_message(message):
     if message.content.startswith(prefix+'falar'):
         if not message.author.server_permissions.kick_members:
             falar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
-            falar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator)
+            falar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=falar_embed)
         try:
             mensagem = str(message.content).replace(prefix+"falar", "")
