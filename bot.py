@@ -165,12 +165,5 @@ async def on_message(message):
             pass
 
 
-    if message.content.lower().startswith(prefix+'votar'):
-        vote = discord.Embed(title= "Votação", color=0x00BFFF, description='O que vocês acham sobre: {}?'.format(message.content[7:]))
-        vote = await client.send_message(message.channel, embed=vote)
-        await client.add_reaction(vote, "✅")
-        await client.add_reaction(vote, "❎")
-
-
 
 client.run('NDY0NjA0NDczOTMxODU3OTIx.DiBYJw.S2iTn7TXy7L9D1r1nLqryoaNOwg')
