@@ -166,4 +166,14 @@ async def on_message(message):
 
 
 
+    if message.content.lower().startswith(prefix+'emote"):
+        server = message.server
+        emote = [str(x) for x in server.emote]
+        lista = " ".join(emote)
+        embed1 = discord.Embed(colour=0x000000)
+        embed1.add_field(name="Emotes [" + str(len(emote)) + "]", value=lista[:993])
+        await client.send_message(message.channel, embed=embed1)
+
+
+
 client.run('NDY0NjA0NDczOTMxODU3OTIx.DiBYJw.S2iTn7TXy7L9D1r1nLqryoaNOwg')
