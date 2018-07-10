@@ -86,7 +86,7 @@ async def on_message(message):
             return await client.send_message(message.channel, embed=ban_embed)
         try:
             usuario = message.mentions[0]
-            canal = await client.get_channel("465673373201203210")
+            canal = client.get_channel("465673373201203210")
             ban_embed03 = discord.Embed(title="Usuário banido com sucesso do Discord!", color=0x00BFFF)
             ban_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=ban_embed03)
