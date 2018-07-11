@@ -140,7 +140,7 @@ async def on_message(message):
             kick_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             kick_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=kick_embed)
-        if not message.content[27:]:
+        if not message.content[28:]:
             kick_embed02 = discord.Embed(title="Utilize o comando: '/kick @usuário <motivo>'.", color=0xFF0000)
             kick_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=kick_embed02)
@@ -152,7 +152,7 @@ async def on_message(message):
             kick_embed04 = discord.Embed(title="Usuário expulso!", color=0xFF0000)
             kick_embed04.add_field(name="Usuário:", value=user)
             kick_embed04.add_field(name="ID do usuário:", value=user.id)
-            kick_embed04.add_field(name="Motivo:", value=message.content[27:])
+            kick_embed04.add_field(name="Motivo:", value=message.content[28:])
             kick_embed04.add_field(name="Autor:", value=message.author.mention)
             await client.kick(user)
             await client.send_message(message.channel, embed=kick_embed03)
@@ -170,7 +170,7 @@ async def on_message(message):
             mute_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             mute_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=mute_embed)
-        if not message.content[27:]:
+        if not message.content[28:]:
             mute_embed02 = discord.Embed(title="Utilize o comando: '/mute @usuário <motivo>'.", color=0xFF0000)
             mute_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=mute_embed02)
@@ -183,7 +183,7 @@ async def on_message(message):
             mute_embed04 = discord.Embed(title="Usuário mutado!", color=0xFF0000)
             mute_embed04.add_field(name="Usuário:", value=user)
             mute_embed04.add_field(name="ID do usuário:", value=user.id)
-            mute_embed04.add_field(name="Motivo:", value=message.content[27:])
+            mute_embed04.add_field(name="Motivo:", value=message.content[28:])
             mute_embed04.add_field(name="Autor:", value=message.author.mention)
             await client.add_roles(user, cargo)
             await client.send_message(message.channel, embed=mute_embed03)
@@ -227,7 +227,7 @@ async def on_message(message):
             kick_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             kick_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=kick_embed)
-        if not message.content[27:]:
+        if not message.content[31:]:
             kick_embed02 = discord.Embed(title="Utilize o comando: '/alertar @usuário <motivo>'.", color=0xFF0000)
             kick_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=kick_embed02)
@@ -242,7 +242,7 @@ async def on_message(message):
             kick_embed05 = discord.Embed(title="Usuário alertado!", color=0xFF0000)
             kick_embed05.add_field(name="Usuário:", value=user)
             kick_embed05.add_field(name="ID do usuário:", value=user.id)
-            kick_embed05.add_field(name="Motivo:", value=message.content[27:])
+            kick_embed05.add_field(name="Motivo:", value=message.content[31:])
             kick_embed05.add_field(name="Autor:", value=message.author.mention)
             await client.send_message(message.channel, embed=kick_embed03)
             await client.send_message(user, "{},".format(message.author.mention))
