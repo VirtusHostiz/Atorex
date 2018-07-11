@@ -340,15 +340,18 @@ async def on_message(message):
             votar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=votar_embed)
         if not message.content[7:]:
-            warn_embed02 = discord.Embed(title="Utilize o comando: '/warn @usuário <motivo>'.", color=0xFF0000)
+            warn_embed02 = discord.Embed(title="Utilize o comando: '/votar <assunto>'.", color=0xFF0000)
             warn_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=warn_embed02)
         try:
             canal = client.get_channel("464097786191806474")
-            votar_embed03 = discord.Embed(title= "Votação!", description='O que vocês acham sobre: {}?'.format(message.content[7:], color=0x00BFFF))
+            votar_embed03 = discord.Embed(title="Votação iniciado com sucesso no servidor Discord!", color=0x00BFFF)
+            votar_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            votar_embed04 = discord.Embed(title= "Votação!", description='O que vocês acham sobre: {}?'.format(message.content[7:], color=0x00BFFF))
             await client.send_message(canal, embed=votar_embed03)
-            await client.add_reaction(vote, "✅")
-            await client.add_reaction(vote, "❎")
+            votar = await client.send_message(canal, embed=votar_embed04)
+            await client.add_reaction(votar, "✅")
+            await client.add_reaction(votar, "❎")
         finally:
             pass
 
