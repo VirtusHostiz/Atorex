@@ -125,6 +125,10 @@ async def on_message(message):
             clear_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             clear_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=clear_embed)
+        if not message.content[7:]:
+            ban_embed04 = discord.Embed(title="Utilize o comando: '/clear <quantidade>'.", color=0xFF0000)
+            ban_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=ban_embed04)
         try:
             lim = int(message.content[7:]) + 1
             await client.purge_from(message.channel, limit=lim)
