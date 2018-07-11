@@ -115,7 +115,7 @@ async def on_message(message):
 
     if message.content.lower().startswith(prefix+'convidar'):
         convite = await client.create_invite(message.channel, max_uses=0, max_age=0)
-        covite_embed = discord.Embed(title="📬 Convite gerado!", color=0xE0FFFF, description="Link : {}\n".format(convite))
+        covite_embed = discord.Embed(title="📬 Convite gerado!", description="Link : {}\n".format(convite), color=0x00FF00)
         covite_embed.add_field(name="Canal:", value=convite.channel)
         await client.send_message(message.channel, embed=covite_embed)
 
