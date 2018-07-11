@@ -16,7 +16,9 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.content.startswith(prefix+'comandos'):
-        await client.send_message(message.channel, "{},\n```diff\n- Este comando não está disponível no momento.\n```".format(message.author.mention))
+            comandos_embed = discord.Embed(title="Este comando não está disponível no momento!", color=0xFF0000)
+            comandos_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=comandos_embed)
 
 
     if message.content.startswith(prefix+'reiniciar'):
@@ -34,7 +36,7 @@ async def on_message(message):
 
 
     if message.content.startswith(prefix+'falar'):
-        if not message.author.server_permissions.kick_members:
+        if not message.author.server_permissions.ban_members:
             falar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             falar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=falar_embed)
