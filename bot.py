@@ -67,7 +67,7 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'denunciar'):
-        if not message.content[27:]:
+        if not message.content[33:]:
             denunciar_embed = discord.Embed(title="Utilize o comando: '/denunciar @usuário <motivo>'.", color=0xFF0000)
             denunciar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=denunciar_embed)
@@ -79,7 +79,7 @@ async def on_message(message):
             denunciar_embed03 = discord.Embed(title="Usuário denunciado!", color=0xFF0000)
             denunciar_embed03.add_field(name="Usuário:", value=user)
             denunciar_embed03.add_field(name="ID do usuário:", value=user.id)
-            denunciar_embed03.add_field(name="Motivo:", value=message.content[27:])
+            denunciar_embed03.add_field(name="Motivo:", value=message.content[33:])
             denunciar_embed03.add_field(name="Autor:", value=message.author.mention)
             await client.send_message(message.channel, embed=denunciar_embed02)
             await client.send_message(canal, embed=denunciar_embed03)
@@ -113,6 +113,13 @@ async def on_message(message):
             pass
 
 
+        if message.content.lower().startswith(prefix+'convidar'):
+            convite = await client.create_invite(message.channel, max_uses=0, max_age=0)
+            covite_embed = discord.Embed(title="**📬 Convite gerado!**", color=0xE0FFFF, description="Link : {}\n".format(convite))
+            covite_embed.add_field(name="Canal", value=convite.channel)
+            await client.send_message(message.channel, embed=covite_embed)
+
+
     if message.content.startswith(prefix+'falar'):
         if not message.author.server_permissions.ban_members:
             falar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
@@ -137,7 +144,7 @@ async def on_message(message):
             clear_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=clear_embed)
         try:
-            limpar = int(message.content[7:]) + 2
+            limpar = int(message.content[7:]) + 1
             clear_embed02 = discord.Embed(title=":pencil: Foram apagadas {} mensagens com sucesso!".format(limpar), color=0x00FF00)
             clear_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.purge_from(message.channel, limit=limpar)
