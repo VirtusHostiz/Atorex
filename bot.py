@@ -126,13 +126,15 @@ async def on_message(message):
             clear_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=clear_embed)
         if not message.content[7:]:
-            ban_embed04 = discord.Embed(title="Utilize o comando: '/clear <quantidade>'.", color=0xFF0000)
-            ban_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=ban_embed04)
+            clear_embed02 = discord.Embed(title="Utilize o comando: '/clear <quantidade>'.", color=0xFF0000)
+            clear_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=clear_embed02)
         try:
             lim = int(message.content[7:]) + 1
+            clear_embed03 = discord.Embed(title=":pencil: Foram apagadas {} mensagens com sucesso!".format(lim), color=0x00FF00)
+            clear_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.purge_from(message.channel, limit=lim)
-            await client.send_message(message.channel, '{} mensagens foram deletadas com sucesso ,por {}'.format(lim, message.author.mention))
+            await client.send_message(message.channel, embed=clear_embed03)
         finally:
             pass
 
