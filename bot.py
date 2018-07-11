@@ -122,12 +122,13 @@ async def on_message(message):
 
     if message.content.lower().startswith(prefix+'clear'):
         if not message.author.server_permissions.manage_messages:
-            await client.send_message(message.channel, ":no_good:**Sem permissão!**")
+            clear_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+            clear_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=clear_embed)
         try:
             lim = int(message.content[7:]) + 1
             await client.purge_from(message.channel, limit=lim)
-            await client.send_message(message.channel, '{} mensagens foram deletadas com sucesso ,por {}'.format(lim,
-                                                                                                            message.author.mention))
+            await client.send_message(message.channel, '{} mensagens foram deletadas com sucesso ,por {}'.format(lim, message.author.mention))
         finally:
             pass
 
