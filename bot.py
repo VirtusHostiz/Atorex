@@ -336,16 +336,17 @@ async def on_message(message):
 
     if message.content.lower().startswith(prefix+'votar'):
         if not message.author.server_permissions.ban_members:
-            unban_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
-            unban_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=unban_embed)
+            votar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+            votar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=votar_embed)
+        if not message.content[7:]:
+            warn_embed02 = discord.Embed(title="Utilize o comando: '/warn @usuário <motivo>'.", color=0xFF0000)
+            warn_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=warn_embed02)
         try:
-            vote = discord.Embed(
-                title= "Votação!",
-                color=0x00BFFF,
-                description='O que vocês acham sobre: {}?'.format(message.content[7:])
-            )
-            vote = await client.send_message(message.channel, embed=vote)
+            canal = client.get_channel("464097786191806474")
+            votar_embed03 = discord.Embed(title= "Votação!", description='O que vocês acham sobre: {}?'.format(message.content[7:], color=0x00BFFF))
+            await client.send_message(canal, embed=votar_embed03)
             await client.add_reaction(vote, "✅")
             await client.add_reaction(vote, "❎")
         finally:
