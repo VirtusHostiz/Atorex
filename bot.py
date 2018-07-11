@@ -15,6 +15,20 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    if message.content.startswith(prefix+'reiniciar'):
+        if not message.author.id == "322488685973209109":
+            reiniciar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+            reiniciar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=reiniciar_embed)
+        try:
+            reiniciar_embed02 = discord.Embed(title=":pushpin: Reiniciando...", color=0x00FF00)
+            reiniciar_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.send_message(message.channel, embed=reiniciar_embed02)
+            os.system("python bot.py restart")
+        finally:
+            pass
+
+
     if message.content.startswith(prefix+'comandos'):
             comandos_embed = discord.Embed(title="Este comando não está disponível no momento, está em criação!", color=0xFF0000)
             comandos_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
@@ -43,18 +57,13 @@ async def on_message(message):
             await client.send_message(message.channel, embed=form_embed)
 
 
-    if message.content.startswith(prefix+'reiniciar'):
-        if not message.author.id == "322488685973209109":
-            reiniciar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
-            reiniciar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=reiniciar_embed)
-        try:
-            reiniciar_embed02 = discord.Embed(title=":pushpin: Reiniciando...", color=0x00FF00)
-            reiniciar_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            await client.send_message(message.channel, embed=reiniciar_embed02)
-            os.system("python bot.py restart")
-        finally:
-            pass
+    if message.content.startswith(prefix+'ping'):
+        canal = message.channel
+        tempo01 = time.perf_counter()
+        await client.send_typing(canal)
+        tempo02 = time.perf_counter()
+        ping_embed = discord.Embed(title="Pong!", description="🏓 Ping - {}ms".format(round((tempo02 - tempo01) * 1000)), color=0x00BFFF)
+        await client.send_message(message.channel, embed=ping_embed)
 
 
     if message.content.startswith(prefix+'falar'):
@@ -92,15 +101,6 @@ async def on_message(message):
             return await client.send_message(message.channel, embed=clear_embed03)
         finally:
             pass
-
-
-    if message.content.startswith(prefix+'ping'):
-        canal = message.channel
-        tempo01 = time.perf_counter()
-        await client.send_typing(canal)
-        tempo02 = time.perf_counter()
-        ping_embed = discord.Embed(title="Pong!", description="🏓 Ping - {}ms".format(round((tempo02 - tempo01) * 1000)), color=0x00BFFF)
-        await client.send_message(message.channel, embed=ping_embed)
 
 
     if message.content.lower().startswith(prefix+'ban'):
@@ -246,13 +246,13 @@ async def on_message(message):
             pass
 
 
-    if message.content.lower().startswith(prefix+'alertar'):
+    if message.content.lower().startswith(prefix+'warn'):
         if not message.author.server_permissions.kick_members:
             kick_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             kick_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=kick_embed)
-        if not message.content[31:]:
-            kick_embed02 = discord.Embed(title="Utilize o comando: '/alertar @usuário <motivo>'.", color=0xFF0000)
+        if not message.content[28:]:
+            kick_embed02 = discord.Embed(title="Utilize o comando: '/warn @usuário <motivo>'.", color=0xFF0000)
             kick_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=kick_embed02)
         try:
@@ -261,19 +261,19 @@ async def on_message(message):
             kick_embed03 = discord.Embed(title="Usuário alertado no servidor Discord com sucesso!", color=0x00BFFF)
             kick_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             kick_embed04 = discord.Embed(title="Você foi alertado!", color=0xFF0000)
-            kick_embed04.add_field(name="Motivo:", value=message.content[31:])
+            kick_embed04.add_field(name="Motivo:", value=message.content[28:])
             kick_embed04.add_field(name="Autor:", value=message.author.mention)
             kick_embed05 = discord.Embed(title="Usuário alertado!", color=0xFF0000)
             kick_embed05.add_field(name="Usuário:", value=user)
             kick_embed05.add_field(name="ID do usuário:", value=user.id)
-            kick_embed05.add_field(name="Motivo:", value=message.content[31:])
+            kick_embed05.add_field(name="Motivo:", value=message.content[28:])
             kick_embed05.add_field(name="Autor:", value=message.author.mention)
             await client.send_message(message.channel, embed=kick_embed03)
             await client.send_message(user, "{},".format(user.mention))
             await client.send_message(user, embed=kick_embed04)
             await client.send_message(canal, embed=kick_embed05)
         except discord.errors.Forbidden:
-            kick_embed05 = discord.Embed(title="Utilize o comando: '/alertar @usuário <motivo>'.", color=0xFF0000)
+            kick_embed05 = discord.Embed(title="Utilize o comando: '/warn @usuário <motivo>'.", color=0xFF0000)
             kick_embed05.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=kick_embed05)
         finally:
