@@ -23,7 +23,7 @@ async def on_message(message):
 
     if message.content.startswith(prefix+'jogar'):
             jogar_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
-            jogar_embed.add_field(name="Para jogar utilize o IP:", value="ATOREXMC.NET", inline=true)
+            jogar_embed.add_field(name="Para jogar utilize o IP:", value="ATOREXMC.NET", inline=True)
             jogar_embed.add_field(name="Versão:", value="1.8.x")
             jogar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=jogar_embed)
