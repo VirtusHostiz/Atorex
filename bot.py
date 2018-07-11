@@ -30,11 +30,11 @@ async def on_message(message):
 
 
     if message.content.startswith(prefix+'loja'):
-            jogar_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
-            jogar_embed.add_field(name="Acesse nossa loja:", value="http://loja.atorexmc.com/")
-            jogar_embed.add_field(name="Compre pontos e garanta itens especiais!")
-            jogar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            await client.send_message(message.channel, embed=jogar_embed)
+            loja_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
+            loja_embed.add_field(name="Acesse nossa loja:", value="http://loja.atorexmc.com/")
+            loja_embed.add_field(name="Compre pontos e garanta itens especiais!", value="")
+            loja_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.send_message(message.channel, embed=loja_embed)
 
 
     if message.content.startswith(prefix+'reiniciar'):
