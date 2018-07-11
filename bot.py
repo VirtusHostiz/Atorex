@@ -222,5 +222,39 @@ async def on_message(message):
             pass
 
 
+    if message.content.lower().startswith(prefix+'alertar'):
+        if not message.author.server_permissions.kick_members:
+            kick_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+            kick_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=kick_embed)
+        if not message.content[27:]:
+            kick_embed02 = discord.Embed(title="Utilize o comando: '/alertar @usuário <motivo>'.", color=0xFF0000)
+            kick_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=kick_embed02)
+        try:
+            user = message.mentions[0]
+            canal = client.get_channel("465673373201203210")
+            kick_embed03 = discord.Embed(title="Usuário alertado no servidor Discord com sucesso!", color=0x00BFFF)
+            kick_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            kick_embed04 = discord.Embed(title="Você foi alertado!", color=0xFF0000)
+            kick_embed04.add_field(name="Motivo:", value=message.content[27:])
+            kick_embed04.add_field(name="Autor:", value=message.author.mention)
+            kick_embed05 = discord.Embed(title="Usuário alertado!", color=0xFF0000)
+            kick_embed05.add_field(name="Usuário:", value=user)
+            kick_embed05.add_field(name="ID do usuário:", value=user.id)
+            kick_embed05.add_field(name="Motivo:", value=message.content[27:])
+            kick_embed05.add_field(name="Autor:", value=message.author.mention)
+            await client.send_message(message.channel, embed=kick_embed03)
+            await client.send_message(canal, "{},".format(message.author.mention))
+            await client.send_message(user, embed=kick_embed04)
+            await client.send_message(user, embed=kick_embed05)
+        except discord.errors.Forbidden:
+            kick_embed05 = discord.Embed(title="Utilize o comando: '/alertar @usuário <motivo>'.", color=0xFF0000)
+            kick_embed05.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=kick_embed05)
+        finally:
+            pass
+
+
 
 client.run('NDY0NjA0NDczOTMxODU3OTIx.DiBYJw.S2iTn7TXy7L9D1r1nLqryoaNOwg')
