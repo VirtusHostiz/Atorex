@@ -115,8 +115,8 @@ async def on_message(message):
 
     if message.content.lower().startswith(prefix+'convidar'):
         convite = await client.create_invite(message.channel, max_uses=0, max_age=0)
-        covite_embed = discord.Embed(title="**📬 Convite gerado!**", color=0xE0FFFF, description="Link : {}\n".format(convite))
-        covite_embed.add_field(name="Canal", value=convite.channel)
+        covite_embed = discord.Embed(title="📬 Convite gerado!", color=0xE0FFFF, description="Link : {}\n".format(convite))
+        covite_embed.add_field(name="Canal:", value=convite.channel)
         await client.send_message(message.channel, embed=covite_embed)
 
 
@@ -125,16 +125,20 @@ async def on_message(message):
             clear_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             clear_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=clear_embed)
+        if not message.content[7:]:
+            ban_embed02 = discord.Embed(title="Utilize o comando: '/clear <quantidade>'.", color=0xFF0000)
+            ban_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=ban_embed02)
         try:
-            limpar = int(message.content[7:]) + 1
-            clear_embed02 = discord.Embed(title=":pencil: Foram apagadas {} mensagens com sucesso!".format(limpar), color=0x00FF00)
-            clear_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            await client.purge_from(message.channel, limit=limpar)
-            await client.send_message(message.channel, embed=clear_embed02)
-        except:
-            clear_embed03 = discord.Embed(title="Utilize o comando: '/clear <quantidade de mensagens>'.", color=0xFF0000)
+            lim = int(message.content[7:]) + 1
+            clear_embed03 = discord.Embed(title=":pencil: Foram apagadas {} mensagens com sucesso!".format(lim), color=0x00FF00)
             clear_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=clear_embed03)
+            await client.purge_from(message.channel, limit=lim)
+            await client.send_message(message.channel, embed=clear_embed03)
+        except discord.errors.Forbidden:
+            clear_embed04 = discord.Embed(title="Utilize o comando: '/clear <quantidade>'.", color=0xFF0000)
+            clear_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=clear_embed04)
         finally:
             pass
 
