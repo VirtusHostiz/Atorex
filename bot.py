@@ -237,7 +237,7 @@ async def on_message(message):
             kick_embed03 = discord.Embed(title="Usuário alertado no servidor Discord com sucesso!", color=0x00BFFF)
             kick_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             kick_embed04 = discord.Embed(title="Você foi alertado!", color=0xFF0000)
-            kick_embed04.add_field(name="Motivo:", value=message.content[27:])
+            kick_embed04.add_field(name="Motivo:", value=message.content[31:])
             kick_embed04.add_field(name="Autor:", value=message.author.mention)
             kick_embed05 = discord.Embed(title="Usuário alertado!", color=0xFF0000)
             kick_embed05.add_field(name="Usuário:", value=user)
