@@ -16,7 +16,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.content.startswith(prefix+'comandos'):
-            comandos_embed = discord.Embed(title="Este comando não está disponível no momento!", color=0xFF0000)
+            comandos_embed = discord.Embed(title="Este comando não está disponível no momento, está em criação!", color=0xFF0000)
             comandos_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=comandos_embed)
 
@@ -32,9 +32,15 @@ async def on_message(message):
     if message.content.startswith(prefix+'loja'):
             loja_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
             loja_embed.add_field(name="Acesse nossa loja:", value="http://loja.atorexmc.com/")
-            loja_embed.add_field(name="Compre pontos e garanta itens especiais!", value=" ")
+            loja_embed.add_field(name="Compre pontos e garanta itens especiais!", value="ㅤ")
             loja_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=loja_embed)
+
+
+    if message.content.startswith(prefix+'form'):
+            form_embed = discord.Embed(title="Formulário não está disponível no momento, vagas encerradas!", color=0xFF0000)
+            form_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.send_message(message.channel, embed=form_embed)
 
 
     if message.content.startswith(prefix+'reiniciar'):
