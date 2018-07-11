@@ -29,13 +29,13 @@ async def on_message(message):
             pass
 
 
-    if message.content.startswith(prefix+'comandos'):
+    if message.content.lower().startswith(prefix+'comandos'):
             comandos_embed = discord.Embed(title="Este comando não está disponível no momento, está em criação!", color=0xFF0000)
             comandos_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=comandos_embed)
 
 
-    if message.content.startswith(prefix+'jogar'):
+    if message.content.lower().startswith(prefix+'jogar'):
             jogar_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
             jogar_embed.add_field(name="Para jogar utilize o IP:", value="ATOREXMC.NET", inline=False)
             jogar_embed.add_field(name="Versão:", value="1.8.x", inline=False)
@@ -43,7 +43,7 @@ async def on_message(message):
             await client.send_message(message.channel, embed=jogar_embed)
 
 
-    if message.content.startswith(prefix+'loja'):
+    if message.content.lower().startswith(prefix+'loja'):
             loja_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
             loja_embed.add_field(name="Acesse nossa loja:", value="http://loja.atorexmc.com/", inline=False)
             loja_embed.add_field(name="Compre pontos e garanta itens especiais!", value="O prazo para confirmação do pagamento é de até 3 dias úteis.", inline=False)
@@ -51,13 +51,13 @@ async def on_message(message):
             await client.send_message(message.channel, embed=loja_embed)
 
 
-    if message.content.startswith(prefix+'form'):
+    if message.content.lower().startswith(prefix+'form'):
             form_embed = discord.Embed(title="O formulário não está disponível no momento, as vagas estão encerradas!", color=0xFF0000)
             form_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=form_embed)
 
 
-    if message.content.startswith(prefix+'ping'):
+    if message.content.lower().startswith(prefix+'ping'):
         canal = message.channel
         tempo01 = time.perf_counter()
         await client.send_typing(canal)
@@ -77,10 +77,10 @@ async def on_message(message):
             denunciar_embed02 = discord.Embed(title="O usuário foi denunciado com sucesso no servidor Discord!", color=0x00BFFF)
             denunciar_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             denunciar_embed03 = discord.Embed(title="Usuário denunciado!", color=0xFF0000)
-            denunciar_embed03.add_field(name="Usuário:", value=user)
-            denunciar_embed03.add_field(name="ID do usuário:", value=user.id)
-            denunciar_embed03.add_field(name="Motivo:", value=message.content[33:])
-            denunciar_embed03.add_field(name="Autor:", value=message.author.mention)
+            denunciar_embed03.add_field(name="Usuário:", value=user, inline=False)
+            denunciar_embed03.add_field(name="ID do usuário:", value=user.id, inline=False)
+            denunciar_embed03.add_field(name="Motivo:", value=message.content[33:], inline=False)
+            denunciar_embed03.add_field(name="Autor:", value=message.author.mention, inline=False)
             await client.send_message(message.channel, embed=denunciar_embed02)
             await client.send_message(canal, embed=denunciar_embed03)
         except discord.errors.Forbidden:
@@ -101,8 +101,8 @@ async def on_message(message):
             denunciar_embed02 = discord.Embed(title="Sua sugestão foi enviada com sucesso!", color=0x00BFFF)
             denunciar_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             denunciar_embed03 = discord.Embed(title="Nova sugestão!", color=0xFF0000)
-            denunciar_embed03.add_field(name="Sugestão:", value=message.content[8:])
-            denunciar_embed03.add_field(name="Autor:", value=message.author.mention)
+            denunciar_embed03.add_field(name="Sugestão:", value=message.content[8:], inline=False)
+            denunciar_embed03.add_field(name="Autor:", value=message.author.mention, inline=False)
             await client.send_message(message.channel, embed=denunciar_embed02)
             await client.send_message(canal, embed=denunciar_embed03)
         except discord.errors.Forbidden:
@@ -113,32 +113,14 @@ async def on_message(message):
             pass
 
 
-        if message.content.lower().startswith(prefix+'convidar'):
-            convite = await client.create_invite(message.channel, max_uses=0, max_age=0)
-            covite_embed = discord.Embed(title="**📬 Convite gerado!**", color=0xE0FFFF, description="Link : {}\n".format(convite))
-            covite_embed.add_field(name="Canal", value=convite.channel)
-            await client.send_message(message.channel, embed=covite_embed)
+    if message.content.lower().startswith(prefix+'convidar'):
+        convite = await client.create_invite(message.channel, max_uses=0, max_age=0)
+        covite_embed = discord.Embed(title="**📬 Convite gerado!**", color=0xE0FFFF, description="Link : {}\n".format(convite))
+        covite_embed.add_field(name="Canal", value=convite.channel)
+        await client.send_message(message.channel, embed=covite_embed)
 
 
-    if message.content.startswith(prefix+'falar'):
-        if not message.author.server_permissions.ban_members:
-            falar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
-            falar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=falar_embed)
-        try:
-            mensagem = str(message.content).replace(prefix+"falar", "")
-            falar_embed02 = discord.Embed(title=mensagem, color=0x00BFFF)
-            await client.delete_message(message)
-            await client.send_message(message.channel, embed=falar_embed02)
-        except:
-            falar_embed03 = discord.Embed(title="Utilize o comando: '/falar <mensagem>'.", color=0xFF0000)
-            falar_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=falar_embed03)
-        finally:
-            pass
-
-
-    if message.content.startswith(prefix+'clear'):
+    if message.content.lower().startswith(prefix+'clear'):
         if not message.author.server_permissions.manage_messages:
             clear_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             clear_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
@@ -153,6 +135,24 @@ async def on_message(message):
             clear_embed03 = discord.Embed(title="Utilize o comando: '/clear <quantidade de mensagens>'.", color=0xFF0000)
             clear_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=clear_embed03)
+        finally:
+            pass
+
+
+    if message.content.lower().startswith(prefix+'falar'):
+        if not message.author.server_permissions.ban_members:
+            falar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+            falar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=falar_embed)
+        try:
+            mensagem = str(message.content).replace(prefix+"falar", "")
+            falar_embed02 = discord.Embed(title=mensagem, color=0x00BFFF)
+            await client.delete_message(message)
+            await client.send_message(message.channel, embed=falar_embed02)
+        except:
+            falar_embed03 = discord.Embed(title="Utilize o comando: '/falar <mensagem>'.", color=0xFF0000)
+            falar_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=falar_embed03)
         finally:
             pass
 
@@ -172,10 +172,10 @@ async def on_message(message):
             ban_embed02 = discord.Embed(title="O usuário foi banido com sucesso no servidor Discord!", color=0x00BFFF)
             ban_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             ban_embed03 = discord.Embed(title="Usuário banido!", color=0xFF0000)
-            ban_embed03.add_field(name="Usuário:", value=user)
-            ban_embed03.add_field(name="ID do usuário:", value=user.id)
-            ban_embed03.add_field(name="Motivo:", value=message.content[27:])
-            ban_embed03.add_field(name="Autor:", value=message.author.mention)
+            ban_embed03.add_field(name="Usuário:", value=user, inline=False)
+            ban_embed03.add_field(name="ID do usuário:", value=user.id, inline=False)
+            ban_embed03.add_field(name="Motivo:", value=message.content[27:], inline=False)
+            ban_embed03.add_field(name="Autor:", value=message.author.mention, inline=False)
             await client.ban(user, delete_message_days=7)
             await client.send_message(message.channel, embed=ban_embed02)
             await client.send_message(canal, embed=ban_embed03)
@@ -199,9 +199,9 @@ async def on_message(message):
             unban_embed02 = discord.Embed(title="O usuário foi desbanido com sucesso no servidor Discord!", color=0x00BFFF)
             unban_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             unban_embed03 = discord.Embed(title="Usuário desbanido!", color=0x00FF00)
-            unban_embed03.add_field(name="Usuário:", value=user)
-            unban_embed03.add_field(name="ID do usuário:", value=user.id)
-            unban_embed03.add_field(name="Autor:", value=message.author.mention)
+            unban_embed03.add_field(name="Usuário:", value=user, inline=False)
+            unban_embed03.add_field(name="ID do usuário:", value=user.id, inline=False)
+            unban_embed03.add_field(name="Autor:", value=message.author.mention, inline=False)
             await client.unban(message.server, user)
             await client.send_message(message.channel, embed=unban_embed02)
             await client.send_message(canal, embed=unban_embed03)
@@ -228,10 +228,10 @@ async def on_message(message):
             kick_embed03 = discord.Embed(title="O usuário foi expulso com sucesso no servidor Discord!", color=0x00BFFF)
             kick_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             kick_embed04 = discord.Embed(title="Usuário expulso!", color=0xFF0000)
-            kick_embed04.add_field(name="Usuário:", value=user)
-            kick_embed04.add_field(name="ID do usuário:", value=user.id)
-            kick_embed04.add_field(name="Motivo:", value=message.content[28:])
-            kick_embed04.add_field(name="Autor:", value=message.author.mention)
+            kick_embed04.add_field(name="Usuário:", value=user, inline=False)
+            kick_embed04.add_field(name="ID do usuário:", value=user.id, inline=False)
+            kick_embed04.add_field(name="Motivo:", value=message.content[28:], inline=False)
+            kick_embed04.add_field(name="Autor:", value=message.author.mention, inline=False)
             await client.kick(user)
             await client.send_message(message.channel, embed=kick_embed03)
             await client.send_message(canal, embed=kick_embed04)
@@ -259,10 +259,10 @@ async def on_message(message):
             mute_embed03 = discord.Embed(title="O usuário foi mutado com sucesso no servidor Discord!", color=0x00BFFF)
             mute_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             mute_embed04 = discord.Embed(title="Usuário mutado!", color=0xFF0000)
-            mute_embed04.add_field(name="Usuário:", value=user)
-            mute_embed04.add_field(name="ID do usuário:", value=user.id)
-            mute_embed04.add_field(name="Motivo:", value=message.content[28:])
-            mute_embed04.add_field(name="Autor:", value=message.author.mention)
+            mute_embed04.add_field(name="Usuário:", value=user, inline=False)
+            mute_embed04.add_field(name="ID do usuário:", value=user.id, inline=False)
+            mute_embed04.add_field(name="Motivo:", value=message.content[28:], inline=False)
+            mute_embed04.add_field(name="Autor:", value=message.author.mention, inline=False)
             await client.add_roles(user, cargo)
             await client.send_message(message.channel, embed=mute_embed03)
             await client.send_message(canal, embed=mute_embed04)
@@ -286,9 +286,9 @@ async def on_message(message):
             unmute_embed02 = discord.Embed(title="O usuário foi desmutado com sucesso no servidor Discord!", color=0x00BFFF)
             unmute_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             unmute_embed03 = discord.Embed(title="Usuário desmutado!", color=0x00FF00)
-            unmute_embed03.add_field(name="Usuário:", value=user)
-            unmute_embed03.add_field(name="ID do usuário:", value=user.id)
-            unmute_embed03.add_field(name="Autor:", value=message.author.mention)
+            unmute_embed03.add_field(name="Usuário:", value=user, inline=False)
+            unmute_embed03.add_field(name="ID do usuário:", value=user.id, inline=False)
+            unmute_embed03.add_field(name="Autor:", value=message.author.mention, inline=False)
             await client.remove_roles(user, cargo)
             await client.send_message(message.channel, embed=unmute_embed02)
             await client.send_message(canal, embed=unmute_embed03)
@@ -315,13 +315,13 @@ async def on_message(message):
             warn_embed03 = discord.Embed(title="O usuário foi alertado com sucesso no servidor Discord!", color=0x00BFFF)
             warn_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             warn_embed04 = discord.Embed(title="Você foi alertado!", color=0xFF0000)
-            warn_embed04.add_field(name="Motivo:", value=message.content[28:])
-            warn_embed04.add_field(name="Autor:", value=message.author.mention)
+            warn_embed04.add_field(name="Motivo:", value=message.content[28:], inline=False)
+            warn_embed04.add_field(name="Autor:", value=message.author.mention, inline=False)
             warn_embed05 = discord.Embed(title="Usuário alertado!", color=0xFF0000)
-            warn_embed05.add_field(name="Usuário:", value=user)
-            warn_embed05.add_field(name="ID do usuário:", value=user.id)
-            warn_embed05.add_field(name="Motivo:", value=message.content[28:])
-            warn_embed05.add_field(name="Autor:", value=message.author.mention)
+            warn_embed05.add_field(name="Usuário:", value=user, inline=False)
+            warn_embed05.add_field(name="ID do usuário:", value=user.id, inline=False)
+            warn_embed05.add_field(name="Motivo:", value=message.content[28:], inline=False)
+            warn_embed05.add_field(name="Autor:", value=message.author.mention, inline=False)
             await client.send_message(message.channel, embed=warn_embed03)
             await client.send_message(user, "{},".format(user.mention))
             await client.send_message(user, embed=warn_embed04)
