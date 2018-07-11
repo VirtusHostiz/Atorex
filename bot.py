@@ -245,7 +245,7 @@ async def on_message(message):
             kick_embed05.add_field(name="Motivo:", value=message.content[31:])
             kick_embed05.add_field(name="Autor:", value=message.author.mention)
             await client.send_message(message.channel, embed=kick_embed03)
-            await client.send_message(user, "{},".format(message.author.mention))
+            await client.send_message(user, "{},".format(user.mention))
             await client.send_message(user, embed=kick_embed04)
             await client.send_message(canal, embed=kick_embed05)
         except discord.errors.Forbidden:
