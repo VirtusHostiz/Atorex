@@ -66,6 +66,13 @@ async def on_message(message):
         await client.send_message(message.channel, embed=ping_embed)
 
 
+    if message.content.lower().startswith(prefix+'convidar'):
+        convite = await client.create_invite(message.channel, max_uses=0, max_age=0)
+        covite_embed = discord.Embed(title="📬 Convite gerado!", description="Link : {}\n".format(convite), color=0x00BFFF)
+        covite_embed.add_field(name="Canal:", value=convite.channel)
+        await client.send_message(message.channel, embed=covite_embed)
+
+
     if message.content.lower().startswith(prefix+'denunciar'):
         if not message.content[33:]:
             denunciar_embed = discord.Embed(title="Utilize o comando: '/denunciar @usuário <motivo>'.", color=0xFF0000)
@@ -111,13 +118,6 @@ async def on_message(message):
             return await client.send_message(message.channel, embed=denunciar_embed04)
         finally:
             pass
-
-
-    if message.content.lower().startswith(prefix+'convidar'):
-        convite = await client.create_invite(message.channel, max_uses=0, max_age=0)
-        covite_embed = discord.Embed(title="📬 Convite gerado!", description="Link : {}\n".format(convite), color=0x00FF00)
-        covite_embed.add_field(name="Canal:", value=convite.channel)
-        await client.send_message(message.channel, embed=covite_embed)
 
 
     if message.content.lower().startswith(prefix+'clear'):
