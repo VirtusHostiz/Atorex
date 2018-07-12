@@ -358,7 +358,7 @@ async def on_message(message):
             canal = client.get_channel("464097786191806474")
             votar_embed03 = discord.Embed(title="Votação iniciado com sucesso no servidor Discord!", color=0x00BFFF)
             votar_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            votar_embed04 = discord.Embed(title="Votação!", description='O que vocês acham sobre: {}?'.format(message.content[7:]), color=0x00BFFF)
+            votar_embed04 = discord.Embed(title="Votação!", description="O que vocês acham sobre: {}?".format(message.content[7:]), color=0x00BFFF)
             votar_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=votar_embed03)
             votar = await client.send_message(canal, embed=votar_embed04)
@@ -366,6 +366,17 @@ async def on_message(message):
             await client.add_reaction(votar, "❎")
         finally:
             pass
+
+
+
+@client.event
+    async def on_member_join(member):
+        canal = client.get_channel("452558746590380032")
+        cargo = discord.utils.find(lambda r: r.name == "Membro", member.server.roles)
+        entrar_embed = discord.Embed(title="**{}** seja bem-vindo(a) ao servidor Discord do **Atorex Network**!".format(member.mention), description="IP do servidor: **ATOREXMC.NET**", color=0x00BFFF)
+        entrar_embed.add_field(name="Site do servidor: **http://loja.atorexmc.com/**", value="Utilize **/comandos** para saber os comandos do BOT.", inline=False)
+        await client.send_message(canal, embed=entrar_embed)
+        await client.add_roles(member, cargo)
 
 
 
