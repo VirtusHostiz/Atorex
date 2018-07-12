@@ -30,7 +30,17 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'comandos'):
-            comandos_embed = discord.Embed(title="Este comando não está disponível no momento, está em criação!", color=0xFF0000)
+            comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0xFF0000)
+            comandos_embed.add_field(name="# Membros:", value="→ /comandos", inline=False)
+            comandos_embed.add_field(name="→ /jogar", value="→ /loja", inline=False)
+            comandos_embed.add_field(name="→ /form", value="→ /ping", inline=False)
+            comandos_embed.add_field(name="→ /convidar", value="→ /denunciar", inline=False)
+            comandos_embed.add_field(name="→ /sugerir", value="", inline=False)
+            comandos_embed.add_field(name="# Staff:", value="→ /clear <quantidade>", inline=False)
+            comandos_embed.add_field(name="→ /falar <mensagem>", value="→ /ban @usuário <motivo>", inline=False)
+            comandos_embed.add_field(name="→ /unban <ID do usuário>", value="→ /kick @usuário <motivo>", inline=False)
+            comandos_embed.add_field(name="→ /mute @usuário <motivo>", value="→ /unmute @usuário", inline=False)
+            comandos_embed.add_field(name="→ /warn @usuário <motivo>", value="→ /votar <assunto>", inline=False)
             comandos_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=comandos_embed)
 
