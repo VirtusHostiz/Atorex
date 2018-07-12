@@ -373,9 +373,9 @@ async def on_message(message):
 async def on_member_join(member):
     canal = client.get_channel("452558746590380032")
     cargo = discord.utils.find(lambda r: r.name == "Membro", member.server.roles)
-    entrar_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
-    entrar_embed.add_field(name="**{}** seja bem-vindo(a) ao servidor Discord do **Atorex Network**!".format(member.mention), value="IP do servidor: **ATOREXMC.NET**", inline=False)
-    entrar_embed.add_field(name="Site do servidor: **http://loja.atorexmc.com/**", value="Utilize **/comandos** para saber os comandos do BOT.", inline=False)
+    entrar_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="**{}** seja bem-vindo(a) ao servidor Discord do **Atorex Network**!".format(member.mention), color=0x00BFFF)
+    entrar_embed.add_field(name="IP do servidor: **ATOREXMC.NET**", value="Loja do servidor: **http://loja.atorexmc.com/**", inline=False)
+    entrar_embed.add_field(name="Formulário: Não disponível no momento.", value="Utilize **/comandos** para saber os comandos do BOT.", inline=False)
     await client.send_message(canal, embed=entrar_embed)
     await client.add_roles(member, cargo)
 
