@@ -58,7 +58,7 @@ async def on_message(message):
             loja_embed.add_field(name="Acesse nosso site:", value="http://atorexmc.com/", inline=False)
             loja_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=loja_embed)
- 
+
 
     if message.content.lower().startswith(prefix+'form'):
             form_embed = discord.Embed(title="O formulário não está disponível no momento, as vagas estão encerradas!", color=0xFF0000)
