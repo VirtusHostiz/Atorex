@@ -80,6 +80,7 @@ async def on_message(message):
         convite = await client.create_invite(message.channel, max_uses=0, max_age=0)
         covite_embed = discord.Embed(title="📬 Convite gerado!", description="Link : {}\n".format(convite), color=0x00BFFF)
         covite_embed.add_field(name="Canal:", value=convite.channel)
+        covite_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
         await client.send_message(message.channel, embed=covite_embed)
 
 
