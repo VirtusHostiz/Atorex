@@ -1,1 +1,1 @@
-Atorex: python "bot.py"
+Atorex: python "BOT_Atorex.py"
