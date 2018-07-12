@@ -358,7 +358,7 @@ async def on_message(message):
             canal = client.get_channel("464097786191806474")
             votar_embed03 = discord.Embed(title="Votação iniciado com sucesso no servidor Discord!", color=0x00BFFF)
             votar_embed03.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            votar_embed04 = discord.Embed(title= "Votação!", description='O que vocês acham sobre: {}?'.format(message.content[7:]), color=0x00BFFF)
+            votar_embed04 = discord.Embed(title="Votação!", description='O que vocês acham sobre: {}?'.format(message.content[7:]), color=0x00BFFF)
             votar_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=votar_embed03)
             votar = await client.send_message(canal, embed=votar_embed04)
