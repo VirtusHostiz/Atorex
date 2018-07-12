@@ -32,7 +32,7 @@ async def on_message(message):
     if message.content.lower().startswith(prefix+'comandos'):
             comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
             comandos_embed.add_field(name="# Membros:", value="→ /comandos", inline=False)
-            comandos_embed.add_field(name="→ /jogar", value="→ /loja", inline=False)
+            comandos_embed.add_field(name="→ /jogar", value="→ /site", inline=False)
             comandos_embed.add_field(name="→ /form", value="→ /ping", inline=False)
             comandos_embed.add_field(name="→ /convidar", value="→ /denunciar @usuário <motivo>", inline=False)
             comandos_embed.add_field(name="→ /sugerir <sugestão>", value="ㅤ", inline=False)
@@ -53,10 +53,9 @@ async def on_message(message):
             await client.send_message(message.channel, embed=jogar_embed)
 
 
-    if message.content.lower().startswith(prefix+'loja'):
+    if message.content.lower().startswith(prefix+'site'):
             loja_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
-            loja_embed.add_field(name="Acesse nossa loja:", value="http://loja.atorexmc.com/", inline=False)
-            loja_embed.add_field(name="Compre pontos e garanta itens especiais!", value="O prazo para confirmação do pagamento é de até 3 dias úteis.", inline=False)
+            loja_embed.add_field(name="Acesse nosso site::", value="http://atorexmc.com/", inline=False)
             loja_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=loja_embed)
 
@@ -374,7 +373,7 @@ async def on_member_join(member):
     canal = client.get_channel("452558746590380032")
     cargo = discord.utils.find(lambda r: r.name == "Membro", member.server.roles)
     entrar_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="**{}** seja bem-vindo(a) ao servidor Discord do **Atorex Network**!".format(member.mention), color=0x00BFFF)
-    entrar_embed.add_field(name="IP do servidor: **ATOREXMC.NET**", value="Loja do servidor: **http://loja.atorexmc.com/**", inline=False)
+    entrar_embed.add_field(name="IP do servidor: ATOREXMC.NET", value="Site do servidor: **http://atorexmc.com/**", inline=False)
     entrar_embed.add_field(name="Formulário: Não disponível no momento.", value="Utilize **/comandos** para saber os comandos do BOT.", inline=False)
     await client.send_message(canal, embed=entrar_embed)
     await client.add_roles(member, cargo)
