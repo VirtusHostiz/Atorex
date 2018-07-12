@@ -35,7 +35,7 @@ async def on_message(message):
             comandos_embed.add_field(name="→ /jogar", value="→ /loja", inline=False)
             comandos_embed.add_field(name="→ /form", value="→ /ping", inline=False)
             comandos_embed.add_field(name="→ /convidar", value="→ /denunciar", inline=False)
-            comandos_embed.add_field(name="→ /sugerir", value="", inline=False)
+            comandos_embed.add_field(name="→ /sugerir", value="ㅤ", inline=False)
             comandos_embed.add_field(name="# Staff:", value="→ /clear <quantidade>", inline=False)
             comandos_embed.add_field(name="→ /falar <mensagem>", value="→ /ban @usuário <motivo>", inline=False)
             comandos_embed.add_field(name="→ /unban <ID do usuário>", value="→ /kick @usuário <motivo>", inline=False)
