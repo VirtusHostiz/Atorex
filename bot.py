@@ -370,7 +370,7 @@ async def on_message(message):
 
 @client.event
 async def on_member_join(member):
-    canal = client.get_channel("452558746590380032")
+    canal = client.get_channel("467096925087465489")
     cargo = discord.utils.find(lambda r: r.name == "Membro", member.server.roles)
     entrar_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="**{}** seja bem-vindo(a) ao servidor Discord do **Atorex Network**!".format(member.mention), color=0x00BFFF)
     entrar_embed.add_field(name="IP do servidor: ATOREXMC.NET", value="Site do servidor: **http://atorexmc.com/**", inline=False)
