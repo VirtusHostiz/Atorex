@@ -30,7 +30,7 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'comandos'):
-            comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0xFF0000)
+            comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
             comandos_embed.add_field(name="# Membros:", value="→ /comandos", inline=False)
             comandos_embed.add_field(name="→ /jogar", value="→ /loja", inline=False)
             comandos_embed.add_field(name="→ /form", value="→ /ping", inline=False)
