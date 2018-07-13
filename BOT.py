@@ -114,7 +114,7 @@ async def on_message(message):
             denunciar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=denunciar_embed)
         try:
-            canal = client.get_channel("457887056207675393")
+            canal = client.get_channel("466708423409664031")
             denunciar_embed02 = discord.Embed(title="Sua sugestão foi enviada com sucesso!", color=0x00BFFF)
             denunciar_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             denunciar_embed03 = discord.Embed(title="Nova sugestão!", color=0xFF0000)
@@ -124,6 +124,28 @@ async def on_message(message):
             await client.send_message(canal, embed=denunciar_embed03)
         except discord.errors.Forbidden:
             denunciar_embed04 = discord.Embed(title="Utilize o comando: '/sugerir <sugestão>'.", color=0xFF0000)
+            denunciar_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=denunciar_embed04)
+        finally:
+            pass
+
+
+    if message.content.lower().startswith(prefix+'solicitar'):
+        if not message.content[9:]:
+            denunciar_embed = discord.Embed(title="Utilize o comando: '/soliciar <link do vídeo>'.", color=0xFF0000)
+            denunciar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=denunciar_embed)
+        try:
+            canal = client.get_channel("457887056207675393")
+            denunciar_embed02 = discord.Embed(title="Sua solicitação foi enviada com sucesso!", color=0x00BFFF)
+            denunciar_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            denunciar_embed03 = discord.Embed(title="Nova solicitação de TAG!", color=0xFF0000)
+            denunciar_embed03.add_field(name="Link do vídeo:", value=message.content[8:], inline=False)
+            denunciar_embed03.add_field(name="Autor:", value=message.author.mention, inline=False)
+            await client.send_message(message.channel, embed=denunciar_embed02)
+            await client.send_message(canal, embed=denunciar_embed03)
+        except discord.errors.Forbidden:
+            denunciar_embed04 = discord.Embed(title="Utilize o comando: '/solicitar <link do vídeo>'.", color=0xFF0000)
             denunciar_embed04.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=denunciar_embed04)
         finally:
