@@ -136,7 +136,7 @@ async def on_message(message):
             denunciar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=denunciar_embed)
         try:
-            canal = client.get_channel("457887056207675393")
+            canal = client.get_channel("467135084076597249")
             denunciar_embed02 = discord.Embed(title="Sua solicitação foi enviada com sucesso!", color=0x00BFFF)
             denunciar_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             denunciar_embed03 = discord.Embed(title="Nova solicitação de TAG!", color=0xFF0000)
