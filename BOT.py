@@ -30,12 +30,12 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'comandos'):
-            comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
-            comandos_embed.add_field(name="# Membros:", value="→ /comandos", inline=False)
-            comandos_embed.add_field(name="→ /jogar", value="→ /site", inline=False)
-            comandos_embed.add_field(name="→ /form", value="→ /ping", inline=False)
-            comandos_embed.add_field(name="→ /convidar", value="→ /denunciar @usuário <motivo>", inline=False)
-            comandos_embed.add_field(name="→ /sugerir <sugestão>", value="ㅤ", inline=False)
+            comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="# Membros:", color=0x00BFFF)
+            comandos_embed.add_field(name="→ /comandos", value="→ /jogar", inline=False)
+            comandos_embed.add_field(name="→ /site", value="→ /form", inline=False)
+            comandos_embed.add_field(name="→ /ping", value="→ /convidar", inline=False)
+            comandos_embed.add_field(name="→ /denunciar @usuário <motivo>", value="→ /sugerir <sugestão>", inline=False)
+            comandos_embed.add_field(name="→ /solicitar <link do vídeo>", value="ㅤ", inline=False)
             comandos_embed.add_field(name="# Staff:", value="→ /clear <quantidade>", inline=False)
             comandos_embed.add_field(name="→ /falar <mensagem>", value="→ /ban @usuário <motivo>", inline=False)
             comandos_embed.add_field(name="→ /unban <ID do usuário>", value="→ /kick @usuário <motivo>", inline=False)
@@ -131,7 +131,7 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'solicitar'):
-        if not message.content[9:]:
+        if not message.content[11:]:
             denunciar_embed = discord.Embed(title="Utilize o comando: '/soliciar <link do vídeo>'.", color=0xFF0000)
             denunciar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=denunciar_embed)
@@ -140,7 +140,7 @@ async def on_message(message):
             denunciar_embed02 = discord.Embed(title="Sua solicitação foi enviada com sucesso!", color=0x00BFFF)
             denunciar_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             denunciar_embed03 = discord.Embed(title="Nova solicitação de TAG!", color=0xFF0000)
-            denunciar_embed03.add_field(name="Link do vídeo:", value=message.content[8:], inline=False)
+            denunciar_embed03.add_field(name="Link do vídeo:", value=message.content[11:], inline=False)
             denunciar_embed03.add_field(name="Autor:", value=message.author.mention, inline=False)
             await client.send_message(message.channel, embed=denunciar_embed02)
             await client.send_message(canal, embed=denunciar_embed03)
