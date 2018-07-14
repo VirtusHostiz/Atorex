@@ -47,41 +47,25 @@ async def on_message(message):
         msg_user = message.author
 
 
-    if message.content.lower().startswith(prefix+'commands'):
-            comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="# Membros:", color=0x00BFFF)
-            comandos_embed.add_field(name="→ /comandos", value="→ /jogar", inline=False)
-            comandos_embed.add_field(name="→ /site", value="→ /form", inline=False)
-            comandos_embed.add_field(name="→ /ping", value="→ /convidar", inline=False)
-            comandos_embed.add_field(name="→ /denunciar @usuário <motivo>", value="→ /sugerir <sugestão>", inline=False)
-            comandos_embed.add_field(name="→ /solicitar <link do vídeo>", value="ㅤ", inline=False)
-            comandos_embed.add_field(name="# Staff:", value="→ /clear <quantidade>", inline=False)
-            comandos_embed.add_field(name="→ /falar <mensagem>", value="→ /ban @usuário <motivo>", inline=False)
-            comandos_embed.add_field(name="→ /unban <ID do usuário>", value="→ /kick @usuário <motivo>", inline=False)
-            comandos_embed.add_field(name="→ /mute @usuário <motivo>", value="→ /unmute @usuário", inline=False)
-            comandos_embed.add_field(name="→ /warn @usuário <motivo>", value="→ /votar <assunto>", inline=False)
-            comandos_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            await client.send_message(message.channel, embed=comandos_embed)
-
-
     if message.content.lower().startswith(prefix+'jogar'):
-            jogar_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
-            jogar_embed.add_field(name="Para jogar utilize o IP:", value="ATOREXMC.NET", inline=False)
-            jogar_embed.add_field(name="Versão:", value="1.8.x", inline=False)
-            jogar_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            await client.send_message(message.channel, embed=jogar_embed)
+        jogar_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
+        jogar_embed.add_field(name="Para jogar utilize o IP:", value="ATOREXMC.NET", inline=False)
+        jogar_embed.add_field(name="Versão:", value="1.8.x", inline=False)
+        jogar_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+        await client.send_message(message.channel, embed=jogar_embed)
 
 
     if message.content.lower().startswith(prefix+'site'):
-            loja_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
-            loja_embed.add_field(name="Acesse nosso site:", value="http://atorexmc.com/", inline=False)
-            loja_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            await client.send_message(message.channel, embed=loja_embed)
+        loja_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
+        loja_embed.add_field(name="Acesse nosso site:", value="http://atorexmc.com/", inline=False)
+        loja_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+        await client.send_message(message.channel, embed=loja_embed)
 
 
     if message.content.lower().startswith(prefix+'form'):
-            form_embed = discord.Embed(title="Formulário: https://www.atorexmc.com/formulario.html", color=0x00BFFF)
-            form_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            await client.send_message(message.channel, embed=form_embed)
+        form_embed = discord.Embed(title="Formulário: https://www.atorexmc.com/formulario.html", color=0x00BFFF)
+        form_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+        await client.send_message(message.channel, embed=form_embed)
 
 
     if message.content.lower().startswith(prefix+'ping'):
