@@ -408,6 +408,29 @@ async def on_message(message):
             pass
 
 
+    if message.content.lower().startswith(prefix+'darcargo'):
+        if not message.author.server_permissions.Administrator:
+            darcargo_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+            darcargo_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=darcargo_embed)
+        try:
+            user = message.mentions[0]
+            cargo = message.content[10:]
+            canal = client.get_channel("464089569969831938")
+            darcargo_embed02 = discord.Embed(title="O usuário foi adicionado ao cargo com sucesso no servidor Discord!", color=0x00BFFF)
+            darcargo_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            darcargo_embed03 = discord.Embed(title="O usuário {} foi adicionado ao cargo {}!".format(user, cargo), color=0x00BFFF)
+            await client.add_roles(user, cargo)
+            await client.send_message(message.channel, embed=darcargo_embed02)
+            await client.send_message(canal, embed=darcargo_embed03)
+        except:
+            unban_embed04 = discord.Embed(title="Utilize o comando: '/unban <ID do usuário>'.", color=0xFF0000)
+            unban_embed04.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=unban_embed04)
+        finally:
+            pass
+
+
 
 @client.event
 async def on_reaction_add(reaction, user):
