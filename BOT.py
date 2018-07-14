@@ -44,8 +44,6 @@ async def on_message(message):
         msg_id = botmsg.id
         global msg_user
         msg_user = message.author
-    except discord.errors.HTTPException:
-        return
     finally:
         pass
 
