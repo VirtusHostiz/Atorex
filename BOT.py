@@ -409,13 +409,13 @@ async def on_message(message):
 async def on_reaction_add(reaction, user):
     msg = reaction.message
     if reaction.emoji == "⚙" and msg.id == msg_id:
-        await client.send_message(message.channel, "Usuários")
+        await client.send_message(user, "Usuários")
 
     if reaction.emoji == "🛠" and msg.id == msg_id:
-        await client.send_message(message.channel, "Staff")
+        await client.send_message(user, "Staff")
 
     if reaction.emoji == "🤖" and msg.id == msg_id:
-        await client.send_message(message.channel, "yWilliam")
+        await client.send_message(user, "yWilliam)
 
 
 
