@@ -34,6 +34,8 @@ async def on_message(message):
 
     if message.content.lower().startswith(prefix+'commands'):
         comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="\n• :gear: **Usuários** \n\n• :tools: **Staff**\n\n• :robot: **yWilliam**", color=0x00BFFF)
+        comandos_embed.set_image(url="https://i.imgur.com/P9o8NUE.png")
+        comandos_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
         botmsg = await client.send_message(message.channel, embed=comandos_embed)
         await client.add_reaction(botmsg, "⚙")
         await client.add_reaction(botmsg, "🛠")
