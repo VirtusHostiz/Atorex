@@ -24,7 +24,7 @@ async def on_message(message):
             reiniciar_embed02 = discord.Embed(title=":pushpin: Reiniciando...", color=0x00FF00)
             reiniciar_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=reiniciar_embed02)
-            os.system("python BOT.py restart")
+            os.system("python BOT.py reload")
         finally:
             pass
 
