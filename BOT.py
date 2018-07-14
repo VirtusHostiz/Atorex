@@ -280,10 +280,6 @@ async def on_message(message):
             mute_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             mute_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=mute_embed)
-        if not message.content[28:]:
-            mute_embed02 = discord.Embed(title="Utilize o comando: '/mute @usuário <motivo>'.", color=0xFF0000)
-            mute_embed02.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=mute_embed02)
         try:
             user = message.mentions[0]
             canal = client.get_channel("465673373201203210")
@@ -298,10 +294,6 @@ async def on_message(message):
             await client.add_roles(user, cargo)
             await client.send_message(message.channel, embed=mute_embed03)
             await client.send_message(canal, embed=mute_embed04)
-        except discord.errors.Forbidden:
-            mute_embed05 = discord.Embed(title="Utilize o comando: '/mute @usuário <motivo>'.", color=0xFF0000)
-            mute_embed05.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=mute_embed05)
         finally:
             pass
 
