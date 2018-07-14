@@ -79,7 +79,7 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'form'):
-            form_embed = discord.Embed(title="O formulário não está disponível no momento, as vagas estão encerradas!", color=0xFF0000)
+            form_embed = discord.Embed(title="Formulário: https://www.atorexmc.com/formulario.html", color=0xFF0000)
             form_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=form_embed)
 
@@ -412,20 +412,22 @@ async def on_message(message):
 async def on_reaction_add(reaction, user):
     msg = reaction.message
     if reaction.emoji == "⚙" and msg.id == msg_id:
-        comandos02_embed = discord.Embed(title="🤖 Comandos de Usuário:", description="• [/comandos] - Comandos do BOT.", color=0x00BFFF)
+        comandos02_embed = discord.Embed(title="⚙ Comandos dos usuário:", description="ㅤ", color=0x00BFFF)
         comandos02_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
-        comandos02_embed.add_field(name="• [/jogar] - Como jogar.", value="• [/site] - Site do servidor.", inline=False)
-        comandos02_embed.add_field(name="• [/form] - Formulário para ser staff.", value="• [/ping] - Saber seu ping.", inline=False)
-        comandos02_embed.add_field(name="• [/convidar] - Convide pessoas.", value="• [/denunciar @usuário <motivo>] - Denuncie algum usuário.", inline=False)
-        comandos02_embed.add_field(name="• [/sugerir <sugestão>] - Sugira mudanças.", value="• [/solicitar <link do vídeo>] - Solicite sua tag.", inline=False)
+        comandos02_embed.add_field(name="• [/comandos] - Comandos do BOT.", value="• [/jogar] - Como jogar.", inline=False)
+        comandos02_embed.add_field(name="• [/site] - Site do servidor.", value="• [/form] - Formulário para ser staff.", inline=False)
+        comandos02_embed.add_field(name="• [/ping] - Saber seu ping.", value="• [/convidar] - Convide pessoas.", inline=False)
+        comandos02_embed.add_field(name="• [/denunciar @usuário <motivo>] - Denuncie algum usuário.", value="• [/sugerir <sugestão>] - Sugira mudanças.", inline=False)
+        comandos02_embed.add_field(name="• [/solicitar <link do vídeo>] - Solicite sua tag.", value="ㅤ", inline=False)
         await client.send_message(user, embed=comandos02_embed)
 
     if reaction.emoji == "🛠" and msg.id == msg_id:
         await client.send_message(user, "Staff")
 
     if reaction.emoji == "🤖" and msg.id == msg_id:
-        comandos04_embed = discord.Embed(title="🤖 Comandos do yWilliam:", description="• [/reiniciar] - reiniciar o BOT.", color=0x00BFFF)
+        comandos04_embed = discord.Embed(title="🤖 Comandos do yWilliam:", description="ㅤ", color=0x00BFFF)
         comandos04_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
+        comandos04_embed.add_field(name="• [/reiniciar] - Reiniciar o BOT.", value="ㅤ", inline=False)
         await client.send_message(user, embed=comandos04_embed)
 
 
