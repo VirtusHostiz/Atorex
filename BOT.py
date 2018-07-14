@@ -7,6 +7,9 @@ import datetime
 client = discord.Client()
 prefix = "/"
 
+mensagem_id = None
+mensagem_user = None
+
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name=prefix+'comandos', type=2))
@@ -29,19 +32,29 @@ async def on_message(message):
             pass
 
 
+    if message.content.lower().startswith(prefix+'commands'):
+        comandos_embed =discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="• Usuários = :gear: \n• Staff = :tools:", color=0x00BFFF)
+            mensagem_bot = await client.send_message(message.channel, embed=comandos_embed)
+            await client.add_reaction(mensagem_bot, ":gear:")
+            await client.add_reaction(mensagem_bot, ":tools:")
+            global mensagem_id
+            mensagem_id = mensagem.id
+            global mensagem_user
+            mensagem_user = mensagem_bot.author
+
+
     if message.content.lower().startswith(prefix+'comandos'):
             comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="# Membros:", color=0x00BFFF)
-            comandos_embed.add_field(name="→ /comandos", value="→ /jogar")
-            comandos_embed.add_field(name="→ /site", value="→ /form")
-            comandos_embed.add_field(name="→ /ping", value="→ /convidar")
-            comandos_embed.add_field(name="→ /denunciar @usuário <motivo>", value="→ /sugerir <sugestão>")
-            comandos_embed.add_field(name="→ /solicitar <link do vídeo>", value="ㅤ")
-            comandos_embed.add_field(name="ㅤ", value="ㅤ", inline="False")
-            comandos_embed.add_field(name="# Staff:", value="ㅤ")
-            comandos_embed.add_field(name="→ /clear <quantidade>", value="→ /falar <mensagem>")
-            comandos_embed.add_field(name="→ /ban @usuário <motivo>", value="→ /unban <ID do usuário>")
-            comandos_embed.add_field(name="→ /kick @usuário <motivo>", value="→ /mute @usuário <motivo>")
-            comandos_embed.add_field(name="→ /unmute @usuário", value="ㅤ")
+            comandos_embed.add_field(name="→ /comandos", value="→ /jogar", inline=False)
+            comandos_embed.add_field(name="→ /site", value="→ /form", inline=False)
+            comandos_embed.add_field(name="→ /ping", value="→ /convidar", inline=False)
+            comandos_embed.add_field(name="→ /denunciar @usuário <motivo>", value="→ /sugerir <sugestão>", inline=False)
+            comandos_embed.add_field(name="→ /solicitar <link do vídeo>", value="ㅤ", inline=False)
+            comandos_embed.add_field(name="# Staff:", value="→ /clear <quantidade>", inline=False)
+            comandos_embed.add_field(name="→ /falar <mensagem>", value="→ /ban @usuário <motivo>", inline=False)
+            comandos_embed.add_field(name="→ /unban <ID do usuário>", value="→ /kick @usuário <motivo>", inline=False)
+            comandos_embed.add_field(name="→ /mute @usuário <motivo>", value="→ /unmute @usuário", inline=False)
+            comandos_embed.add_field(name="→ /warn @usuário <motivo>", value="→ /votar <assunto>", inline=False)
             comandos_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=comandos_embed)
 
@@ -388,6 +401,19 @@ async def on_message(message):
             await client.add_reaction(votar, "❎")
         finally:
             pass
+
+
+
+@client.event
+async def on_reaction_add(reaction, user):
+    msg = reaction.message
+    
+    if reaction.emoji == ":gear:" and mensagem.id == mensagem_id:
+        await client.send_message(message.channel, "Usuários")
+
+    if reaction.emoji == ":tools:" and mensagem.id == mensagem_id:
+        await client.send_message(message.channel, "Staff")
+        
 
 
 
