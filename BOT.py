@@ -422,7 +422,22 @@ async def on_reaction_add(reaction, user):
         await client.send_message(user, embed=comandos02_embed)
 
     if reaction.emoji == "🛠" and msg.id == msg_id:
-        await client.send_message(user, "Staff")
+        comandos04_embed = discord.Embed(title="🛠 Comandos da staff:", description="ㅤ", color=0x00BFFF)
+        comandos04_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
+        comandos04_embed.add_field(name="• [/clear <quantidade>] - Apagar mensagens.", value="• [/falar <mensagem>] - Faça o BOT falar.", inline=False)
+        comandos04_embed.add_field(name="• [/ban @usuário <motivo>] - Banir um usuário.", value="• [/unban <ID do usuário>] - Desbanir um usuário.", inline=False)
+        comandos04_embed.add_field(name="• [/kick @usuário <motivo>] - Expulsar um usuário.", value="• [/mute @usuário <motivo>] - Mutar um usuário.", inline=False)
+        comandos04_embed.add_field(name="• [/unmute @usuário] - Desmutar um usuário.", value="• [/warn @usuário <motivo>] - Alertar um usuário,.", inline=False)
+        comandos04_embed.add_field(name="• [/votar <assunto>] - Criar uma votação.", value="ㅤ", inline=False)
+        await client.send_message(user, embed=comandos04_embed)
+
+        
+            comandos_embed.add_field(name="# Staff:", value="→ /clear <quantidade>", inline=False)
+            comandos_embed.add_field(name="→ /falar <mensagem>", value="→ /ban @usuário <motivo>", inline=False)
+            comandos_embed.add_field(name="→ /unban <ID do usuário>", value="→ /kick @usuário <motivo>", inline=False)
+            comandos_embed.add_field(name="→ /mute @usuário <motivo>", value="→ /unmute @usuário", inline=False)
+            comandos_embed.add_field(name="→ /warn @usuário <motivo>", value="→ /votar <assunto>", inline=False)
+            comandos_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, 
 
     if reaction.emoji == "🤖" and msg.id == msg_id:
         comandos04_embed = discord.Embed(title="🤖 Comandos do yWilliam:", description="ㅤ", color=0x00BFFF)
