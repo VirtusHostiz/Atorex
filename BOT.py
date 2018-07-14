@@ -424,7 +424,7 @@ async def on_message(message):
             canal = client.get_channel("464089569969831938")
             darcargo_embed03 = discord.Embed(title="O usuário foi adicionado ao cargo com sucesso no servidor Discord!", color=0x00BFFF)
             darcargo_embed03.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            darcargo_embed04 = discord.Embed(title="O usuário {} foi adicionado ao cargo {}!".format(user, cargo), color=0x00BFFF)
+            darcargo_embed04 = discord.Embed(title="O usuário {} foi adicionado ao cargo {}!".format(user, role), color=0x00BFFF)
             darcargo_embed04.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.add_roles(user, role)
             await client.send_message(message.channel, embed=darcargo_embed03)
