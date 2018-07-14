@@ -7,8 +7,8 @@ import datetime
 client = discord.Client()
 prefix = "/"
 
-mensagem_id = None
-mensagem_user = None
+msg_id = None
+msg_user = None
 
 @client.event
 async def on_ready():
@@ -35,15 +35,13 @@ async def on_message(message):
     if message.content.lower().startswith(prefix+'commands'):
         comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="• Usuários - :gear: \n• Staff - :tools:\n• yWilliam - :robot:", color=0x00BFFF)
         mensagem_bot = await client.send_message(message.channel, embed=comandos_embed)
-        await client.add_reaction(mensagem_bot, "⚙")
-        await client.add_reaction(mensagem_bot, "🛠")
-        await client.add_reaction(mensagem_bot, "🤖")
-
-        global mensagem_id
-        mensagem_id = mensagem.id
-
-        global mensagem_user
-        mensagem_user = mensagem_bot.author
+        await client.add_reaction(botmsg, "⚙")
+        await client.add_reaction(botmsg, "🛠")
+        await client.add_reaction(botmsg, "🤖")
+        global msg_id
+        msg_id = botmsg.id
+        global msg_user
+        msg_user = message.author
 
 
     if message.content.lower().startswith(prefix+'comandos'):
@@ -410,14 +408,13 @@ async def on_message(message):
 @client.event
 async def on_reaction_add(reaction, user):
     msg = reaction.message
-
-    if reaction.emoji == "⚙" and msg.id == mensagem_id:
+    if reaction.emoji == "⚙" and msg.id == msg_id:
         await client.send_message(message.channel, "Usuários")
 
-    if reaction.emoji == "🛠" and msg.id == mensagem_id:
+    if reaction.emoji == "🛠" and msg.id == msg_id:
         await client.send_message(message.channel, "Staff")
 
-    if reaction.emoji == "🤖" and msg.id == mensagem_id:
+    if reaction.emoji == "🤖" and msg.id == msg_id:
         await client.send_message(message.channel, "yWilliam")
 
 
