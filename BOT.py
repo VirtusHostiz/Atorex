@@ -33,14 +33,14 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'commands'):
-        comandos_embed =discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="• Usuários = :gear: \n• Staff = :tools:", color=0x00BFFF)
-            mensagem_bot = await client.send_message(message.channel, embed=comandos_embed)
-            await client.add_reaction(mensagem_bot, ":gear:")
-            await client.add_reaction(mensagem_bot, ":tools:")
-            global mensagem_id
-            mensagem_id = mensagem.id
-            global mensagem_user
-            mensagem_user = mensagem_bot.author
+        comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="• Usuários = :gear: \n• Staff = :tools:", color=0x00BFFF)
+        mensagem_bot = await client.send_message(message.channel, embed=comandos_embed)
+        await client.add_reaction(mensagem_bot, ":gear:")
+        await client.add_reaction(mensagem_bot, ":tools:")
+        global mensagem_id
+        mensagem_id = mensagem.id
+        global mensagem_user
+        mensagem_user = mensagem_bot.author
 
 
     if message.content.lower().startswith(prefix+'comandos'):
@@ -407,7 +407,7 @@ async def on_message(message):
 @client.event
 async def on_reaction_add(reaction, user):
     msg = reaction.message
-    
+
     if reaction.emoji == ":gear:" and mensagem.id == mensagem_id:
         await client.send_message(message.channel, "Usuários")
 
