@@ -421,6 +421,7 @@ async def on_reaction_add(reaction, user):
         comandos02_embed.add_field(name="• [/solicitar <link do vídeo>] - Solicite sua tag.", value="ㅤ", inline=False)
         await client.send_message(user, embed=comandos02_embed)
 
+
     if reaction.emoji == "🛠" and msg.id == msg_id:
         comandos04_embed = discord.Embed(title="🛠 Comandos da staff:", description="ㅤ", color=0x00BFFF)
         comandos04_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
@@ -430,6 +431,7 @@ async def on_reaction_add(reaction, user):
         comandos04_embed.add_field(name="• [/unmute @usuário] - Desmutar um usuário.", value="• [/warn @usuário <motivo>] - Alertar um usuário,.", inline=False)
         comandos04_embed.add_field(name="• [/votar <assunto>] - Criar uma votação.", value="ㅤ", inline=False)
         await client.send_message(user, embed=comandos04_embed)
+
 
     if reaction.emoji == "🤖" and msg.id == msg_id:
         comandos04_embed = discord.Embed(title="🤖 Comandos do yWilliam:", description="ㅤ", color=0x00BFFF)
