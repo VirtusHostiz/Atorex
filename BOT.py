@@ -409,16 +409,15 @@ async def on_message(message):
 
 @client.event
 async def on_reaction_add(reaction, user):
-    usuario = client.get_user_info(user.id)
     msg = reaction.message
     if reaction.emoji == "⚙" and msg.id == msg_id:
-        await client.send_message(usuario, "Usuários")
+        await client.send_message(user, "Usuários")
 
     if reaction.emoji == "🛠" and msg.id == msg_id:
-        await client.send_message(usuario, "Staff")
+        await client.send_message(user, "Staff")
 
     if reaction.emoji == "🤖" and msg.id == msg_id:
-        await client.send_message(usuario, "yWilliam")
+        await client.send_message(user, "yWilliam")
 
 
 
