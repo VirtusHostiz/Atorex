@@ -415,7 +415,7 @@ async def on_reaction_add(reaction, user):
         await client.send_message(user, "Staff")
 
     if reaction.emoji == "🤖" and msg.id == msg_id:
-        await client.send_message(user, "yWilliam)
+        await client.send_message(user, "yWilliam")
 
 
 
