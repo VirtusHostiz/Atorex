@@ -418,7 +418,10 @@ async def on_reaction_add(reaction, user):
         await client.send_message(user, "Staff")
 
     if reaction.emoji == "🤖" and msg.id == msg_id:
-        await client.send_message(user, "yWilliam")
+        comandos04_embed = discord.Embed(title="🤖 Comandos do yWilliam:", color=0x00BFFF)
+        comandos04_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
+        comandos04_embed.add_field(name="• [/reiniciar] - Reiniciar o BOT.", value="ㅤ", inline=False)
+        await client.send_message(message.channel, embed=comandos04_embed)
 
 
 
