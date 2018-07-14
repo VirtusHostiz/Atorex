@@ -420,7 +420,7 @@ async def on_message(message):
         try:
             user = message.mentions[0]
             cargo = message.content[32:]
-            role = discord.utils.find[lambda r: r.name if r.name == cargo, message.server.roles]
+            role = discord.utils.find(lambda r: r.name == cargo, member.server.roles)
             canal = client.get_channel("464089569969831938")
             darcargo_embed03 = discord.Embed(title="O usuário foi adicionado ao cargo com sucesso no servidor Discord!", color=0x00BFFF)
             darcargo_embed03.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
