@@ -424,7 +424,7 @@ async def on_message(message):
             await client.send_message(message.channel, embed=darcargo_embed02)
             await client.send_message(canal, embed=darcargo_embed03)
         except:
-            unban_embed04 = discord.Embed(title="Utilize o comando: '/unban <ID do usuário>'.", color=0xFF0000)
+            unban_embed04 = discord.Embed(title="Utilize o comando: '/darcargo @usuário <cargo>'.", color=0xFF0000)
             unban_embed04.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=unban_embed04)
         finally:
