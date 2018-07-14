@@ -35,6 +35,7 @@ async def on_message(message):
     if message.content.lower().startswith(prefix+'comandos'):
         comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="• :gear: **Usuários** \n\n• :tools: **Staff**\n\n• :robot: **yWilliam**", color=0x00BFFF)
         comandos_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
+        comandos_embed.icon_url(message.author.avatar_url)
         comandos_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name,   message.author.discriminator))
         botmsg = await client.send_message(message.channel, embed=comandos_embed)
         await client.add_reaction(botmsg, "⚙")
@@ -421,7 +422,7 @@ async def on_reaction_add(reaction, user):
         comandos04_embed = discord.Embed(title="🤖 Comandos do yWilliam:", color=0x00BFFF)
         comandos04_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
         comandos04_embed.add_field(name="• [/reiniciar] - Reiniciar o BOT.", value="ㅤ", inline=False)
-        await client.send_message(message.channel, embed=comandos04_embed)
+        await client.send_message(user, embed=comandos04_embed)
 
 
 
