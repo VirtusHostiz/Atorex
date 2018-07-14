@@ -36,7 +36,7 @@ async def on_message(message):
             comandos_embed.add_field(name="→ /ping", value="→ /convidar")
             comandos_embed.add_field(name="→ /denunciar @usuário <motivo>", value="→ /sugerir <sugestão>")
             comandos_embed.add_field(name="→ /solicitar <link do vídeo>", value="ㅤ")
-            comandos_embed.add_field(name="ㅤ", value="ㅤ")
+            comandos_embed.add_field(name="ㅤ", value="ㅤ", inline="False")
             comandos_embed.add_field(name="# Staff:", value="ㅤ")
             comandos_embed.add_field(name="→ /clear <quantidade>", value="→ /falar <mensagem>")
             comandos_embed.add_field(name="→ /ban @usuário <motivo>", value="→ /unban <ID do usuário>")
