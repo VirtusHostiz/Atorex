@@ -32,7 +32,7 @@ async def on_message(message):
             pass
 
 
-    if message.content.lower().startswith(prefix+'commands'):
+    if message.content.lower().startswith(prefix+'102030'):
         comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="• :gear: **Usuários** \n\n• :tools: **Staff**\n\n• :robot: **yWilliam**", color=0x00BFFF)
         comandos_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
         comandos_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
