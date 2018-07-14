@@ -412,13 +412,16 @@ async def on_message(message):
 async def on_reaction_add(reaction, user):
     msg = reaction.message
     if reaction.emoji == "⚙" and msg.id == msg_id:
-        await client.send_message(user, "Usuários")
+        comandos02_embed = discord.Embed(title="🤖 Comandos do yWilliam:", description="• [/reiniciar] - Reiniciar o BOT.", color=0x00BFFF)
+        comandos02_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
+        comandos02_embed.add_field(name=" ", value=" ", inline=False)
+        await client.send_message(user, embed=comandos02_embed)
 
     if reaction.emoji == "🛠" and msg.id == msg_id:
         await client.send_message(user, "Staff")
 
     if reaction.emoji == "🤖" and msg.id == msg_id:
-        comandos04_embed = discord.Embed(title="🤖 Comandos do yWilliam:", description="• [/reiniciar] - Reiniciar o BOT.", color=0x00BFFF)
+        comandos04_embed = discord.Embed(title="🤖 Comandos do yWilliam:", description="• [/reiniciar] - reiniciar o BOT.", color=0x00BFFF)
         comandos04_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
         await client.send_message(user, embed=comandos04_embed)
 
