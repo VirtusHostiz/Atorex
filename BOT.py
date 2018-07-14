@@ -408,13 +408,13 @@ async def on_message(message):
             pass
 
 
-    if message.content.lower().startswith(prefix+'dar cargo'):
+    if message.content.lower().startswith(prefix+'darcargo'):
         if not message.author.server_permissions.administrator:
             darcargo_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             darcargo_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=darcargo_embed)
         if not message.content[32:]:
-            darcargo_embed02 = discord.Embed(title="Utilize o comando: '/votar <assunto>'.", color=0xFF0000)
+            darcargo_embed02 = discord.Embed(title="Utilize o comando: '/darcargo @usuário <cargo>'.", color=0xFF0000)
             darcargo_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=darcargo_embed02)
         try:
