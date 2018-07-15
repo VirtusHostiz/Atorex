@@ -327,7 +327,7 @@ async def on_message(message):
             await client.remove_roles(user, cargo)
             await client.send_message(message.channel, embed=unmute_embed02)
             await client.send_message(canal, embed=unmute_embed03)
-        except discord.errors.Forbidden:
+        except IndexError:
             unmute_embed04 = discord.Embed(title="Utilize o comando: '/unmute @usuário'.", color=0xFF0000)
             unmute_embed04.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=unmute_embed04)
