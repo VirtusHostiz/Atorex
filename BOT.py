@@ -155,6 +155,28 @@ async def on_message(message):
             pass
 
 
+    if message.content.lower().startswith(prefix+'parceria'):
+        if not message.content[10:]:
+            parceria_embed = discord.Embed(title="Utilize o comando: '/parceria <mensagem>'.", color=0xFF0000)
+            parceria_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=parceria_embed)
+        try:
+            canal = client.get_channel("468922164868022299")
+            parceria_embed02 = discord.Embed(title="Sua solicitação foi enviada com sucesso!", color=0x00BFFF)
+            parceria_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            parceria_embed03 = discord.Embed(title="Nova solicitação de parceria!", color=0xFF0000)
+            parceria_embed03.add_field(name="Mensagem:", value=message.content[10:], inline=False)
+            parceria_embed03.add_field(name="Autor:", value=message.author.mention, inline=False)
+            await client.send_message(message.channel, embed=parceria_embed02)
+            await client.send_message(canal, embed=parceria_embed03)
+        except discord.errors.Forbidden:
+            parceria_embed04 = discord.Embed(title="Utilize o comando: '/parceria <mensagem>'.", color=0xFF0000)
+            parceria_embed04.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=parceria_embed04)
+        finally:
+            pass
+
+
     if message.content.lower().startswith(prefix+'clear'):
         if not message.author.server_permissions.manage_messages:
             clear_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
@@ -403,7 +425,7 @@ async def on_reaction_add(reaction, user):
         comandos02_embed.add_field(name="• [/site] - Site do servidor.", value="• [/form] - Formulário para ser staff.", inline=False)
         comandos02_embed.add_field(name="• [/ping] - Saber seu ping.", value="• [/convidar] - Convide pessoas.", inline=False)
         comandos02_embed.add_field(name="• [/denunciar @usuário <motivo>] - Denuncie algum usuário.", value="• [/sugerir <sugestão>] - Sugira mudanças.", inline=False)
-        comandos02_embed.add_field(name="• [/solicitar <link do vídeo>] - Solicite sua tag.", value="ㅤ", inline=False)
+        comandos02_embed.add_field(name="• [/solicitar <link do vídeo>] - Solicite sua tag.", value="• [/parceria <mensagem>] - Solicite uma parceria.", inline=False)
         await client.send_message(user, embed=comandos02_embed)
 
 
