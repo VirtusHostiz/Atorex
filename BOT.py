@@ -193,7 +193,7 @@ async def on_message(message):
             oitoball_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=oitoball_embed)
         try:
-            respostas = ['Sim','Não','Talvez','Nunca','Claro']
+            respostas = ['Sim','Claro','Sempre','As vezes','Talvez','Quase sempre','Quase nunca','Não','Nunca','Jamais']
             resposta = choice(respostas)
             mensagem = message.content[7:]
             oitoball_embed02 = discord.Embed(color=0x00BFFF)
