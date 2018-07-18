@@ -188,19 +188,19 @@ async def on_message(message):
 
     if message.content.lower().startswith(prefix+'8ball'):
         if not message.content[7:]:
-            8ball_embed = discord.Embed(title="Utilize o comando: '/8ball <pergunta>'.", color=0xFF0000)
-            8ball_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=8ball_embed)
+            oitoball_embed = discord.Embed(title="Utilize o comando: '/8ball <pergunta>'.", color=0xFF0000)
+            oitoball_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=oitoball_embed)
         try:
             respostas = ['Sim','Não','Talvez','Nunca','Claro']
             resposta = choice(respostas)
             mensagem = message.content[7:]
-            8ball_embed2 = discord.Embed(color=0x00FF00)
-            8ball_embed2.add_field(name="Pergunta:", value='{}'.format(mensagem),inline=False)
-            8ball_embed2.add_field(name="Resposta:", value=resposta,inline=False)
-            8ball_embed2.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
-            8ball_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            await client.send_message(message.channel, embed=8ball_embed2)
+            oitoball_embed02 = discord.Embed(color=0x00FF00)
+            oitoball_embed02.add_field(name="Pergunta:", value='{}'.format(mensagem),inline=False)
+            oitoball_embed02.add_field(name="Resposta:", value=resposta,inline=False)
+            oitoball_embed02.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
+            oitoball_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.send_message(message.channel, embed=oitoball_embed02)
             await client.delete_message(message)
         finally:
             pass   
