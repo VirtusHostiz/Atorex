@@ -246,7 +246,7 @@ async def on_message(message):
 
     if message.content.lower().startswith(prefix+'loteria'):
         try:
-            test = int(message.content.strip('!loteria').strip())
+            test = int(message.content.strip(prefix+'loteria').strip())
             float(test)
             test += 1
         except ValueError:
