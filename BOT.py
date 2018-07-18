@@ -238,7 +238,7 @@ async def on_message(message):
         try:
             mensagem = str(message.content).replace(prefix+"falar", "")
             falar_embed03 = discord.Embed(color=0x00BFFF)
-            oitoball_embed02.add_field(name=mensagem)
+            falar_embed03.add_field(name=mensagem)
             await client.delete_message(message)
             await client.send_message(message.channel, embed=falar_embed03)
         finally:
