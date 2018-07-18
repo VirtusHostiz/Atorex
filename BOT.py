@@ -179,7 +179,7 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'moeda'):
-        choice = random.randint(1, 2)
+        choice = randint(1, 2)
         if choice == 1:
             await client.add_reaction(message, '😀')
         if choice == 2:
