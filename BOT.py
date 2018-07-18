@@ -255,7 +255,7 @@ async def on_message(message):
             number = randint(1,100)
             rol = await client.send_message(message.channel, '🎰 Rodando...')
             s(2)
-            if number == int(message.content.strip('!loteria').strip()):
+            if number == int(message.content.strip(prefix+'loteria').strip()):
                 await client.edit_message(rol,
                                           '<:white_check_mark:> | **Ganhou!** o numero foi  ' + str(number))
             else:
