@@ -195,7 +195,7 @@ async def on_message(message):
             respostas = ['Sim','Não','Talvez','Nunca','Claro']
             resposta = choice(respostas)
             mensagem = message.content[7:]
-            oitoball_embed02 = discord.Embed(color=0x00FF00)
+            oitoball_embed02 = discord.Embed(color=0x00BFFF)
             oitoball_embed02.add_field(name="Pergunta:", value='{}'.format(mensagem),inline=False)
             oitoball_embed02.add_field(name="Resposta:", value=resposta,inline=False)
             oitoball_embed02.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
