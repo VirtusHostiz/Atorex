@@ -196,9 +196,9 @@ async def on_message(message):
             resposta = choice(respostas)
             mensagem = message.content[7:]
             8ball_embed2 = discord.Embed(color=0x00FF00)
-            embed.add_field(name="Pergunta:", value='{}'.format(mensagem),inline=False)
-            embed.add_field(name="Resposta:", value=resposta,inline=False)
-            embed.set_thumbnail(url=message.server.icon_url)
+            8ball_embed2.add_field(name="Pergunta:", value='{}'.format(mensagem),inline=False)
+            8ball_embed2.add_field(name="Resposta:", value=resposta,inline=False)
+            8ball_embed2.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
             8ball_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=8ball_embed2)
             await client.delete_message(message)
