@@ -187,16 +187,20 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'8ball'):
+        if not message.content[7:]:
+            8ball_embed = discord.Embed(title="Utilize o comando: '/8ball <pergunta>'.", color=0xFF0000)
+            8ball_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=8ball_embed)
         try:
             respostas = ['Sim','Não','Talvez','Nunca','Claro']
             resposta = choice(respostas)
             mensagem = message.content[7:]
-            embed = discord.Embed(color=0xFF0000)
+            8ball_embed2 = discord.Embed(color=0x00FF00)
             embed.add_field(name="Pergunta:", value='{}'.format(mensagem),inline=False)
             embed.add_field(name="Resposta:", value=resposta,inline=False)
             embed.set_thumbnail(url=message.server.icon_url)
-            embed.set_footer(text="Comando dado por: {}".format(message.author.name))
-            await client.send_message(message.channel, embed=embed)
+            8ball_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.send_message(message.channel, embed=8ball_embed2)
             await client.delete_message(message)
         finally:
             pass   
