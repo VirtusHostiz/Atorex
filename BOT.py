@@ -179,10 +179,10 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'moeda'):
-        choice = randint(1, 2)
-        if choice == 1:
+        escolher = randint(1, 2)
+        if escolher == 1:
             await client.add_reaction(message, '😀')
-        if choice == 2:
+        if escolher == 2:
             await client.add_reaction(message, '👑')
 
 
@@ -191,7 +191,7 @@ async def on_message(message):
             await client.send_message(message.channel, 'Você precisa perguntar alguma coisa!')
         try:
             respostas = ['Sim','Não','Talvez','Nunca','Claro','Sempre','Concerteza','Nem pensar','Jamais']
-            resposta = random.escolher(respostas)
+            resposta = random.choice(respostas)
             mensagem = message.content[7:]
             embed = discord.Embed(color=0xFF0000)
             embed.add_field(name="Pergunta:", value='{}'.format(mensagem),inline=False)
