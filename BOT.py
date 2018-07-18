@@ -186,55 +186,18 @@ async def on_message(message):
             await client.add_reaction(message, '👑')
 
 
-    if message.content.lower().startswith(prefix+'ppt'):
-        await client.send_message(message.channel, "O que você escolhe? Pedra :full_moon: , papel :page_with_curl: ou tesoura ✂️?")
-        parametros = ['pedra', 'papel', 'tesoura']
-        wait = await client.wait_for_message(author=message.author)
-        if wait.content == 'pedra':
-            pedra = randint(1, 3)
-            if pedra == 1:
-                await client.send_message(message.channel,
-                                          "{}Você escolheu pedra :full_moon: e eu escolhi tesoura ✂️\n"
-                                          ":tada: Você venceu! Parabéns :clap: ".format(message.author.mention))
-            if pedra == 2:
-                await client.send_message(message.channel,
-                                          "{}Você escolheu pedra :full_moon: e eu escolhi papel :page_with_curl:\n"
-                                          ":tada: Eu ganhei! :stuck_out_tongue_winking_eye: ".format(message.author.mention))
-            if pedra == 3:
-                await client.send_message(message.channel,
-                                          "{}Você escolheu pedra :full_moon: e eu escolhi pedra :full_moon:\n"
-                                          ":tada: Empate!".format(message.author.mention))
-        if wait.content == 'tesoura':
-            tesoura = randint(1, 3)
-            if tesoura == 1:
-                await client.send_message(message.channel,
-                                          "{}Você escolheu tesoura ✂️ e eu escolhi papel :page_with_curl:\n"
-                                          ":tada: Você venceu! Parabéns :clap: ".format(message.author.mention))
-            if tesoura == 2:
-                await client.send_message(message.channel,
-                                          "{}Você escolheu tesoura ✂️ e eu escolhi pedra :full_moon:\n"
-                                          ":tada: Eu ganhei! :stuck_out_tongue_winking_eye: ".format(message.author.mention))
-            if tesoura == 3:
-                await client.send_message(message.channel,
-                                          "{}Você escolheu tesoura ✂️ e eu escolhi tesoura ✂️\n"
-                                          ":tada: Empate!".format(message.author.mention))
-        if wait.content == 'papel':
-            papel = randint(1, 3)
-            if papel == 1:
-                await client.send_message(message.channel,
-                                          "{}Você escolheu papel :page_with_curl: e eu escolhi pedra :full_moon:\n"
-                                          ":tada: Você venceu! Parabéns :clap: ".format(message.author.mention))
-            if papel == 2:
-                await client.send_message(message.channel,
-                                          "{}Você escolheu papel :page_with_curl: e eu escolhi tesoura ✂️\n"
-                                          ":tada: Eu ganhei! :stuck_out_tongue_winking_eye: ".format(message.author.mention))
-            if papel == 3:
-                await client.send_message(message.channel,
-                                          "{}Você escolheu papel :page_with_curl: e eu escolhi papel :page_with_curl:\n"
-                                          ":tada: Empate!".format(message.author.mention))
-        if not wait.content in parametros:
-            await client.send_message(message.channel, "{}Você escolheu merda :poop: e eu um humano :spy:\n"
-                                                       ":tada: Eu ganhei! Esmaguei você :stuck_out_tongue_winking_eye:!".format(message.author.mention))
+    if message.content.lower().startswith(prefix+'8ball'):
+        try:
+            respostas = ['Sim','Não','Talvez','Nunca','Claro','Sempre','Concerteza','Nem pensar','Jamais']
+            resposta = random.choice(respostas)
+            mensagem = message.content[7:]
+            embed = discord.Embed(color=0xFF0000)
+            embed.add_field(name="Pergunta:", value='{}'.format(mensagem),inline=False)
+            embed.add_field(name="Resposta:", value=resposta,inline=False)
+            await client.send_message(message.channel, embed=embed)
+            await client.delete_message(message)
+        except:
+            await client.send_message(message.channel, 'Você precisa perguntar alguma coisa!')
 
 
     if message.content.lower().startswith(prefix+'clear'):
