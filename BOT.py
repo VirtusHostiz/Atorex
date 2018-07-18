@@ -187,19 +187,19 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'8ball'):
-        if not message.content[7:]:
-            await client.send_message(message.channel, 'Você precisa perguntar alguma coisa!')
         try:
-            respostas = ['Sim','Não','Talvez','Nunca','Claro','Sempre','Concerteza','Nem pensar','Jamais']
-            resposta = random.choice(respostas)
+            respostas = ['Sim','Não','Talvez','Nunca','Claro']
+            resposta = choice(respostas)
             mensagem = message.content[7:]
             embed = discord.Embed(color=0xFF0000)
             embed.add_field(name="Pergunta:", value='{}'.format(mensagem),inline=False)
             embed.add_field(name="Resposta:", value=resposta,inline=False)
+            embed.set_thumbnail(url=message.server.icon_url)
+            embed.set_footer(text="Comando dado por: {}".format(message.author.name))
             await client.send_message(message.channel, embed=embed)
             await client.delete_message(message)
         finally:
-            pass
+            pass   
 
 
     if message.content.lower().startswith(prefix+'clear'):
