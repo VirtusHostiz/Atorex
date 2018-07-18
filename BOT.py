@@ -198,6 +198,8 @@ async def on_message(message):
             embed.add_field(name="Resposta:", value=resposta,inline=False)
             await client.send_message(message.channel, embed=embed)
             await client.delete_message(message)
+        finally:
+            pass
 
 
     if message.content.lower().startswith(prefix+'clear'):
