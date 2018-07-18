@@ -244,6 +244,25 @@ async def on_message(message):
             pass
 
 
+    if message.content.lower().startswith(prefix+'loteria'):
+        try:
+            test = int(message.content.strip('!loteria').strip())
+            float(test)
+            test += 1
+        except ValueError:
+            await client.send_message(message.channel, '😝 Escolha um numero e tente a sorte ')
+        else:
+            number = randint(1,100)
+            rol = await client.send_message(message.channel, '🎰 Rodando...')
+            s(2)
+            if number == int(message.content.strip('!loteria').strip()):
+                await client.edit_message(rol,
+                                          '<:white_check_mark:> | **Ganhou!** o numero foi  ' + str(number))
+            else:
+                await client.edit_message(rol,
+                                          '<:x:> |️**Perdeu!**. O numero foi ' + str(number))
+
+
     if message.content.lower().startswith(prefix+'ban'):
         if not message.author.server_permissions.ban_members:
             ban_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
