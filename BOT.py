@@ -231,16 +231,16 @@ async def on_message(message):
             falar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             falar_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=falar_embed)
+        if not message.content[7:]:
+            falar_embed02 = discord.Embed(title="Utilize o comando: '/falar <mensagem>'.", color=0xFF0000)
+            falar_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=falar_embed02)
         try:
             mensagem = str(message.content).replace(prefix+"falar", "")
-            falar_embed02 = discord.Embed(color=0x00BFFF)
+            falar_embed03 = discord.Embed(color=0x00BFFF)
             oitoball_embed02.add_field(name=mensagem)
             await client.delete_message(message)
-            await client.send_message(message.channel, embed=falar_embed02)
-        except:
-            falar_embed03 = discord.Embed(title="Utilize o comando: '/falar <mensagem>'.", color=0xFF0000)
-            falar_embed03.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=falar_embed03)
+            await client.send_message(message.channel, embed=falar_embed03)
         finally:
             pass
 
