@@ -191,7 +191,7 @@ async def on_message(message):
             await client.send_message(message.channel, 'Você precisa perguntar alguma coisa!')
         try:
             respostas = ['Sim','Não','Talvez','Nunca','Claro','Sempre','Concerteza','Nem pensar','Jamais']
-            resposta = random.choice(respostas)
+            resposta = choice(respostas)
             mensagem = message.content[7:]
             embed = discord.Embed(color=0xFF0000)
             embed.add_field(name="Pergunta:", value='{}'.format(mensagem),inline=False)
