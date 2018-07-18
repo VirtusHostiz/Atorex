@@ -34,12 +34,13 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'comandos'):
-        comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="• :gear: **Usuários** \n\n• :tools: **Staff**\n\n• :robot: **yWilliam**", color=0x00BFFF)
+        comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="• :gear: **Usuários** \n\n• :tools: **Staff**\n\n• :video_game: **Jogos**\n\n• :robot: **yWilliam**", color=0x00BFFF)
         comandos_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
         comandos_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
         botmsg = await client.send_message(message.channel, embed=comandos_embed)
         await client.add_reaction(botmsg, "⚙")
         await client.add_reaction(botmsg, "🛠")
+        await client.add_reaction(botmsg, "🎮")
         await client.add_reaction(botmsg, "🤖")
         await asyncio.sleep(2)
         global msg_id
@@ -467,6 +468,13 @@ async def on_reaction_add(reaction, user):
         comandos04_embed.add_field(name="• [/kick @usuário <motivo>] - Expulsar um usuário.", value="• [/mute @usuário <motivo>] - Mutar um usuário.", inline=False)
         comandos04_embed.add_field(name="• [/unmute @usuário] - Desmutar um usuário.", value="• [/warn @usuário <motivo>] - Alertar um usuário,.", inline=False)
         comandos04_embed.add_field(name="• [/votar <assunto>] - Criar uma votação.", value="ㅤ", inline=False)
+        await client.send_message(user, embed=comandos04_embed)
+
+
+    if reaction.emoji == "🎮" and msg.id == msg_id:
+        comandos04_embed = discord.Embed(title="🎮 Comandos de jogos:", description="ㅤ", color=0x00BFFF)
+        comandos04_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
+        comandos04_embed.add_field(name="• [/moeda] - Cara ou coroa?", value="• [/8ball] - Faça uma pergunta ao BOT.", inline=False)
         await client.send_message(user, embed=comandos04_embed)
 
 
