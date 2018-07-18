@@ -187,6 +187,8 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'8ball'):
+        if not message.content[7:]:
+            await client.send_message(message.channel, 'Você precisa perguntar alguma coisa!')
         try:
             respostas = ['Sim','Não','Talvez','Nunca','Claro','Sempre','Concerteza','Nem pensar','Jamais']
             resposta = random.choice(respostas)
@@ -196,8 +198,6 @@ async def on_message(message):
             embed.add_field(name="Resposta:", value=resposta,inline=False)
             await client.send_message(message.channel, embed=embed)
             await client.delete_message(message)
-        except:
-            await client.send_message(message.channel, 'Você precisa perguntar alguma coisa!')
 
 
     if message.content.lower().startswith(prefix+'clear'):
