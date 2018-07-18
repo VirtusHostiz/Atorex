@@ -3,6 +3,7 @@ import os
 import asyncio
 import time
 import datetime
+from random import *
 
 client = discord.Client()
 prefix = "/"
