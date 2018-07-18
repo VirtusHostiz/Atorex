@@ -177,6 +177,65 @@ async def on_message(message):
             pass
 
 
+    if message.content.lower().startswith(prefix+'moeda'):
+        choice = random.randint(1, 2)
+        if choice == 1:
+            await client.add_reaction(message, '😀')
+        if choice == 2:
+            await client.add_reaction(message, '👑')
+
+
+    if message.content.lower().startswith(prefix+'ppt'):
+        await client.send_message(message.channel, "O que você escolhe? Pedra :full_moon: , papel :page_with_curl: ou tesoura ✂️?")
+        parametros = ['pedra', 'papel', 'tesoura']
+        wait = await client.wait_for_message(author=message.author)
+        if wait.content == 'pedra':
+            pedra = randint(1, 3)
+            if pedra == 1:
+                await client.send_message(message.channel,
+                                          "{}Você escolheu pedra :full_moon: e eu escolhi tesoura ✂️\n"
+                                          ":tada: Você venceu! Parabéns :clap: ".format(message.author.mention))
+            if pedra == 2:
+                await client.send_message(message.channel,
+                                          "{}Você escolheu pedra :full_moon: e eu escolhi papel :page_with_curl:\n"
+                                          ":tada: Eu ganhei! :stuck_out_tongue_winking_eye: ".format(message.author.mention))
+            if pedra == 3:
+                await client.send_message(message.channel,
+                                          "{}Você escolheu pedra :full_moon: e eu escolhi pedra :full_moon:\n"
+                                          ":tada: Empate!".format(message.author.mention))
+        if wait.content == 'tesoura':
+            tesoura = randint(1, 3)
+            if tesoura == 1:
+                await client.send_message(message.channel,
+                                          "{}Você escolheu tesoura ✂️ e eu escolhi papel :page_with_curl:\n"
+                                          ":tada: Você venceu! Parabéns :clap: ".format(message.author.mention))
+            if tesoura == 2:
+                await client.send_message(message.channel,
+                                          "{}Você escolheu tesoura ✂️ e eu escolhi pedra :full_moon:\n"
+                                          ":tada: Eu ganhei! :stuck_out_tongue_winking_eye: ".format(message.author.mention))
+            if tesoura == 3:
+                await client.send_message(message.channel,
+                                          "{}Você escolheu tesoura ✂️ e eu escolhi tesoura ✂️\n"
+                                          ":tada: Empate!".format(message.author.mention))
+        if wait.content == 'papel':
+            papel = randint(1, 3)
+            if papel == 1:
+                await client.send_message(message.channel,
+                                          "{}Você escolheu papel :page_with_curl: e eu escolhi pedra :full_moon:\n"
+                                          ":tada: Você venceu! Parabéns :clap: ".format(message.author.mention))
+            if papel == 2:
+                await client.send_message(message.channel,
+                                          "{}Você escolheu papel :page_with_curl: e eu escolhi tesoura ✂️\n"
+                                          ":tada: Eu ganhei! :stuck_out_tongue_winking_eye: ".format(message.author.mention))
+            if papel == 3:
+                await client.send_message(message.channel,
+                                          "{}Você escolheu papel :page_with_curl: e eu escolhi papel :page_with_curl:\n"
+                                          ":tada: Empate!".format(message.author.mention))
+        if not wait.content in parametros:
+            await client.send_message(message.channel, "{}Você escolheu merda :poop: e eu um humano :spy:\n"
+                                                       ":tada: Eu ganhei! Esmaguei você :stuck_out_tongue_winking_eye:!".format(message.author.mention))
+
+
     if message.content.lower().startswith(prefix+'clear'):
         if not message.author.server_permissions.manage_messages:
             clear_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
