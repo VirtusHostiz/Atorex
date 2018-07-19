@@ -2,6 +2,7 @@ import discord
 import os
 import asyncio
 import time
+from time import sleep as s
 import datetime
 from random import *
 
@@ -204,7 +205,26 @@ async def on_message(message):
             await client.send_message(message.channel, embed=oitoball_embed02)
             await client.delete_message(message)
         finally:
-            pass   
+            pass
+
+
+    if message.content.lower().startswith(prefix+'loteria'):
+        try:
+            test = int(message.content.strip(prefix+'loteria').strip())
+            float(test)
+            test += 1
+        except ValueError:
+            await client.send_message(message.channel, '😝 Escolha um numero e tente a sorte ')
+        else:
+            number = randint(1,100)
+            rol = await client.send_message(message.channel, '🎰 Rodando...')
+            s(2)
+            if number == int(message.content.strip(prefix+'loteria').strip()):
+                await client.edit_message(rol,
+                                          '<:white_check_mark:> | **Ganhou!** o numero foi  ' + str(number))
+            else:
+                await client.edit_message(rol,
+                                          '<:x:> |️**Perdeu!**. O numero foi ' + str(number))
 
 
     if message.content.lower().startswith(prefix+'clear'):
@@ -242,25 +262,6 @@ async def on_message(message):
             await client.send_message(message.channel, embed=falar_embed03)
         finally:
             pass
-
-
-    if message.content.lower().startswith(prefix+'loteria'):
-        try:
-            test = int(message.content.strip(prefix+'loteria').strip())
-            float(test)
-            test += 1
-        except ValueError:
-            await client.send_message(message.channel, '😝 Escolha um numero e tente a sorte ')
-        else:
-            number = randint(1,100)
-            rol = await client.send_message(message.channel, '🎰 Rodando...')
-            s(2)
-            if number == int(message.content.strip(prefix+'loteria').strip()):
-                await client.edit_message(rol,
-                                          '<:white_check_mark:> | **Ganhou!** o numero foi  ' + str(number))
-            else:
-                await client.edit_message(rol,
-                                          '<:x:> |️**Perdeu!**. O numero foi ' + str(number))
 
 
     if message.content.lower().startswith(prefix+'ban'):
