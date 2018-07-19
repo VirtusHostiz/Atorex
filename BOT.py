@@ -214,17 +214,23 @@ async def on_message(message):
             float(test)
             test += 1
         except ValueError:
-            await client.send_message(message.channel, '😝 Escolha um numero e tente a sorte ')
+            loteria_embed = discord.Embed(title="Utilize o comando: '/loteria <número>'.", color=0xFF0000)
+            loteria_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=loteria_embed)
         else:
             number = randint(1,100)
-            rol = await client.send_message(message.channel, '🎰 Rodando...')
+            loteria_embed02 = discord.Embed(title="🎰 Rodando...'.", color=0x00BFFF)
+            loteria_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            rol = await client.send_message(message.channel, embed=loteria_embed02)
             s(2)
             if number == int(message.content.strip(prefix+'loteria').strip()):
-                await client.edit_message(rol,
-                                          '<:white_check_mark:> | **Ganhou!** o numero foi  ' + str(number))
+                loteria_embed03 = discord.Embed(title=":white_check_mark: | Você **ganhou**, o número foi "+ str(number)), color=0xFF0000)
+                loteria_embed03.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+                await client.edit_message(rol, embed=loteria_embed03)
             else:
-                await client.edit_message(rol,
-                                          '<:x:> |️**Perdeu!**. O numero foi ' + str(number))
+                loteria_embed04 = discord.Embed(title=":x: | Você **perdeu**, o número foi "+ str(number)), color=0xFF0000)
+                loteria_embed04.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+                await client.edit_message(rol, embed=loteria_embed04)
 
 
     if message.content.lower().startswith(prefix+'clear'):
