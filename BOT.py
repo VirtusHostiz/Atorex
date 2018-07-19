@@ -219,16 +219,16 @@ async def on_message(message):
             return await client.send_message(message.channel, embed=loteria_embed)
         else:
             number = randint(1,100)
-            loteria_embed02 = discord.Embed(title="🎰 Rodando...'.", color=0x00BFFF)
+            loteria_embed02 = discord.Embed(title="🎰 Rodando....", color=0x00BFFF)
             loteria_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             rol = await client.send_message(message.channel, embed=loteria_embed02)
-            s(2)
+            s(3)
             if number == int(message.content.strip(prefix+'loteria').strip()):
-                loteria_embed03 = discord.Embed(title=":white_check_mark: | Você **ganhou**, o número foi "+ str(number), color=0xFF0000)
+                loteria_embed03 = discord.Embed(title=":white_check_mark:ㅤㅤVocê **ganhou**, o número foi " + str(number) + "!", color=0x00FF00)
                 loteria_embed03.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
                 await client.edit_message(rol, embed=loteria_embed03)
             else:
-                loteria_embed04 = discord.Embed(title=":x: | Você **perdeu**, o número foi "+ str(number), color=0xFF0000)
+                loteria_embed04 = discord.Embed(title=":x:ㅤㅤVocê **perdeu**, o número foi " + str(number) + "!", color=0xFF0000)
                 loteria_embed04.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
                 await client.edit_message(rol, embed=loteria_embed04)
 
