@@ -254,6 +254,10 @@ async def on_message(message):
             clear_embed03.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.purge_from(message.channel, limit=lim)
             await client.send_message(message.channel, embed=clear_embed03)
+        except discord.errors.NotFound:
+            ban_embed04 = discord.Embed(title="Ocorreu um erro ao apagar as mensagens!'.", color=0xFF0000)
+            ban_embed04.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=ban_embed04)
         finally:
             pass
 
