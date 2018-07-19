@@ -219,10 +219,10 @@ async def on_message(message):
             return await client.send_message(message.channel, embed=loteria_embed)
         else:
             number = randint(1,100)
-            loteria_embed02 = discord.Embed(title="🎰 Rodando....", color=0x00BFFF)
+            loteria_embed02 = discord.Embed(title="🎰 Rodando...", color=0x00BFFF)
             loteria_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             rol = await client.send_message(message.channel, embed=loteria_embed02)
-            s(3)
+            s(2)
             if number == int(message.content.strip(prefix+'loteria').strip()):
                 loteria_embed03 = discord.Embed(title=":white_check_mark:ㅤVocê **ganhou**, o número foi " + str(number) + "!", color=0x00FF00)
                 loteria_embed03.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
