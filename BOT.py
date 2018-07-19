@@ -224,11 +224,11 @@ async def on_message(message):
             rol = await client.send_message(message.channel, embed=loteria_embed02)
             s(2)
             if number == int(message.content.strip(prefix+'loteria').strip()):
-                loteria_embed03 = discord.Embed(title=":white_check_mark: | Você **ganhou**, o número foi "+ str(number)), color=0xFF0000)
+                loteria_embed03 = discord.Embed(title=":white_check_mark: | Você **ganhou**, o número foi "+ str(number), color=0xFF0000)
                 loteria_embed03.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
                 await client.edit_message(rol, embed=loteria_embed03)
             else:
-                loteria_embed04 = discord.Embed(title=":x: | Você **perdeu**, o número foi "+ str(number)), color=0xFF0000)
+                loteria_embed04 = discord.Embed(title=":x: | Você **perdeu**, o número foi "+ str(number), color=0xFF0000)
                 loteria_embed04.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
                 await client.edit_message(rol, embed=loteria_embed04)
 
