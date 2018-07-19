@@ -488,7 +488,8 @@ async def on_reaction_add(reaction, user):
     if reaction.emoji == "🎮" and msg.id == msg_id:
         comandos_embed02 = discord.Embed(title="🎮 Comandos de jogos:", description="ㅤ", color=0x00BFFF)
         comandos_embed02.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
-        comandos_embed02.add_field(name="• [/moeda] - Cara ou coroa?", value="• [/8ball] - Faça uma pergunta ao BOT.", inline=False)
+        comandos_embed02.add_field(name="• [/moeda] - Cara ou coroa?", value="• [/8ball <pergunta>] - Faça uma pergunta ao BOT.", inline=False)
+        comandos_embed02.add_field(name="• [/loteria <número>] - Teste sua sorte.", value="ㅤ", inline=False)
         await client.send_message(user, embed=comandos_embed02)
 
 
