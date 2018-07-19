@@ -65,7 +65,7 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'form'):
-        form_embed = discord.Embed(title="Formulário: https://www.atorexmc.com/formulario.html", color=0x00BFFF)
+        form_embed = discord.Embed(title="Formulário não disponível no momento, vagas encerradas!", color=0xFF0000)
         form_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
         await client.send_message(message.channel, embed=form_embed)
 
