@@ -232,6 +232,13 @@ async def on_message(message):
                 await client.edit_message(rol, embed=loteria_embed04)
 
 
+    if message.content.startswith(prefix+'dado'):
+        dado_embed = randint(1, 6)
+        dado_embed = discord.Embed(title="🎲 Dado", description=" Joguei o dado e o resultado foi : {}!".format(escolher6), color=0x00BFFF)
+        dado_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+        await client.send_message(message.channel, embed=dado_embed)
+
+
     if message.content.lower().startswith(prefix+'clear'):
         if not message.author.server_permissions.manage_messages:
             clear_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
@@ -489,7 +496,7 @@ async def on_reaction_add(reaction, user):
         comandos_embed02 = discord.Embed(title="🎮 Comandos de jogos:", description="ㅤ", color=0x00BFFF)
         comandos_embed02.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
         comandos_embed02.add_field(name="• [/moeda] - Cara ou coroa?", value="• [/8ball <pergunta>] - Faça uma pergunta ao BOT.", inline=False)
-        comandos_embed02.add_field(name="• [/loteria <número>] - Teste sua sorte.", value="ㅤ", inline=False)
+        comandos_embed02.add_field(name="• [/loteria <número>] - Teste sua sorte.", value="• [/dado] - Jogue o dado.", inline=False)
         await client.send_message(user, embed=comandos_embed02)
 
 
