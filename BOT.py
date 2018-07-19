@@ -35,7 +35,7 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'comandos'):
-        comandos_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="• :gear: **Usuários**\n\n• :video_game: **Jogos**\n\n• :tools: **Staff**\n\n• :robot: **yWilliam**", color=0x00BFFF)
+        comandos_embed = discord.Embed(title="Atorex Network", description="• :gear: **Usuários**\n\n• :video_game: **Jogos**\n\n• :tools: **Staff**\n\n• :robot: **yWilliam**", color=0x00BFFF)
         comandos_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
         comandos_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
         botmsg = await client.send_message(message.channel, embed=comandos_embed)
@@ -51,16 +51,15 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'jogar'):
-        jogar_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
-        jogar_embed.add_field(name="Para jogar utilize o IP:", value="ATOREXMC.NET", inline=False)
+        jogar_embed = discord.Embed(title="Atorex Network", color=0x00BFFF)
+        jogar_embed.add_field(name="Para jogar utilize o IP:", value="JOGAR.ATOREXMC.COM", inline=False)
         jogar_embed.add_field(name="Versão:", value="1.8.x", inline=False)
         jogar_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
         await client.send_message(message.channel, embed=jogar_embed)
 
 
     if message.content.lower().startswith(prefix+'site'):
-        loja_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", color=0x00BFFF)
-        loja_embed.add_field(name="Acesse nosso site:", value="http://atorexmc.com/", inline=False)
+        loja_embed = discord.Embed(title="Atorex Network", value="http://atorexmc.com/", inline=False)
         loja_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
         await client.send_message(message.channel, embed=loja_embed)
 
@@ -517,7 +516,7 @@ async def on_reaction_add(reaction, user):
 async def on_member_join(member):
     canal = client.get_channel("467096925087465489")
     cargo = discord.utils.find(lambda r: r.name == "Membro", member.server.roles)
-    entrar_embed = discord.Embed(title=":regional_indicator_a: :regional_indicator_t: :regional_indicator_o: :regional_indicator_r: :regional_indicator_e: :regional_indicator_x:", description="**{}** seja bem-vindo(a) ao servidor Discord do **Atorex Network**!".format(member.mention), color=0x00BFFF)
+    entrar_embed = discord.Embed(title="Atorex Network", description="**{}** seja bem-vindo(a) ao servidor Discord do **Atorex Network**!".format(member.mention), color=0x00BFFF)
     entrar_embed.add_field(name="IP do servidor: ATOREXMC.NET", value="Site do servidor: **http://atorexmc.com/**", inline=False)
     entrar_embed.add_field(name="Formulário: Não disponível no momento.", value="Utilize **/comandos** para saber os comandos do BOT.", inline=False)
     await client.send_message(canal, embed=entrar_embed)
