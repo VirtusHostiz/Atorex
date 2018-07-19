@@ -52,7 +52,7 @@ async def on_message(message):
 
     if message.content.lower().startswith(prefix+'jogar'):
         jogar_embed = discord.Embed(title="Atorex Network", color=0x00BFFF)
-        jogar_embed.add_field(name="Para jogar utilize o IP:", value="JOGAR.ATOREXMC.COM", inline=False)
+        jogar_embed.add_field(name="Para jogar utilize o IP:", value="PLAY.ATOREXMC.COM", inline=False)
         jogar_embed.add_field(name="Versão:", value="1.8.x", inline=False)
         jogar_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
         await client.send_message(message.channel, embed=jogar_embed)
