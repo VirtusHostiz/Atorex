@@ -234,7 +234,7 @@ async def on_message(message):
 
     if message.content.startswith(prefix+'dado'):
         escolher = randint(1, 6)
-        dado_embed = discord.Embed(title="🎲 Dado", description=" Joguei o dado e o resultado foi : (**{}**)!".format(escolher), color=0x00BFFF)
+        dado_embed = discord.Embed(title="🎲 Dado", description=" Joguei o dado e o resultado foi (**{}**)!".format(escolher), color=0x00BFFF)
         dado_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
         await client.send_message(message.channel, embed=dado_embed)
 
