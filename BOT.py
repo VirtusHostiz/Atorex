@@ -244,12 +244,12 @@ async def on_message(message):
             clear_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             clear_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=clear_embed)
-        if not int(message.content[7:]) > 0 and int(message.content[7:]) < 100:
-            clear_embed02 = discord.Embed(title="Escolha um número de mensagens entre 1 e 100.", color=0xFF0000)
+        if not message.content[7:]:
+            clear_embed02 = discord.Embed(title="Utilize o comando: '/clear <quantidade>'.", color=0xFF0000)
             clear_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=clear_embed02)
-        if not message.content[7:]:
-            clear_embed03 = discord.Embed(title="Utilize o comando: '/clear <quantidade>'.", color=0xFF0000)
+        if not int(message.content[7:]) > 0 and int(message.content[7:]) < 100:
+            clear_embed03 = discord.Embed(title="Escolha um número de mensagens entre 1 e 100.", color=0xFF0000)
             clear_embed03.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=clear_embed03)
         try:
