@@ -22,9 +22,9 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith(prefix+'teste'):
         requests.get("https://mcapi.us/server/status?ip=play.atorexmc.com")
-        json = r.json():
-            servermine = json['now']['now']
-        await client.send_message(message.channel, embed=servermine)
+        json = r.json()
+            online = json['now']['now']
+        await client.send_message(message.channel, online)
 
     if message.content.startswith(prefix+'reiniciar'):
         if not message.author.id == "322488685973209109":
