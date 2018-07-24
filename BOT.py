@@ -5,6 +5,7 @@ import time
 from time import sleep as s
 import datetime
 from random import *
+import requests
 
 client = discord.Client()
 prefix = "/"
