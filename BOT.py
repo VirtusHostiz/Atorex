@@ -6,6 +6,7 @@ from time import sleep as s
 import datetime
 from random import *
 import json
+from discord.ext import commands
 import requests
 
 client = discord.Client()
