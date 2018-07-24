@@ -26,7 +26,7 @@ async def on_message(message):
     if message.content.startswith(prefix+'teste'):
         r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com')
         json_data = json.loads(r.text)
-        status_server = json_data['online:']
+        status_server = json_data['"online":']
         await client.send_message(message.chanel, "Jogadores online: " + status_server + "!")
 
 
