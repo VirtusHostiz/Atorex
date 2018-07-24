@@ -7,6 +7,7 @@ import datetime
 from random import *
 import json
 from discord.ext import commands
+import requests
 
 client = discord.Client()
 prefix = "/"
@@ -27,6 +28,7 @@ async def on_message(message):
         json_data = json.loads(r.text)
         online = json_data['now']
         await client.send_message(message.channel, "Jogadores online: " + online + "!")
+
 
     if message.content.startswith(prefix+'reiniciar'):
         if not message.author.id == "322488685973209109":
