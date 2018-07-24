@@ -23,9 +23,9 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.content.startswith(prefix+'teste'):
-        r = requests.get('https://mcapi.us/server/status?ip=play.atorexmc.com')
+        r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com')
         json = r.json()
-        online = json['now']['now']
+        online = json['online']['online']
         await client.send_message(message.channel, "Jogadores online: " + online + "!")
 
 
