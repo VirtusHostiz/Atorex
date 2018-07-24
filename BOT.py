@@ -25,9 +25,9 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith(prefix+'teste'):
         r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com')
-        json = r.json()
-        online = json['online']['online']
-        await client.send_message(message.channel, "Jogadores online: " + online + "!")
+        json_data = json.loads(r.text)
+        status_server = json_data['online']
+        await client.send_message(message.chanel, "Jogadores online: " + status_server + "!")
 
 
     if message.content.startswith(prefix+'reiniciar'):
