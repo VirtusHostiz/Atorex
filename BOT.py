@@ -6,7 +6,6 @@ from time import sleep as s
 import datetime
 from random import *
 import json
-from discord.ext import commands
 import requests
 
 client = discord.Client()
@@ -24,9 +23,9 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.content.startswith(prefix+'teste'):
-        r = requests.get('https://mcapi.us/server/status?ip=play.atorexmc.com')
-        json_data = json.loads(r.text)
-        online = json_data['now']
+        requests.get("https://mcapi.us/server/status?ip=play.atorexmc.com")
+        json = r.json()
+            online = json['now']['now']
         await client.send_message(message.channel, "Jogadores online: " + online + "!")
 
 
