@@ -49,7 +49,6 @@ async def on_ready():
             await client.edit_channel(channel=canal05, name="🌌| Versão: ❌")
             await client.edit_channel(channel=canal06, name="🔗| discord.gg/XRZuePw")
             await client.edit_channel(channel=canal07, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
-        await asyncio.sleep(1)
 
 
 @client.event
