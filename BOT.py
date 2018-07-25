@@ -28,23 +28,27 @@ async def on_ready():
         canal04 = client.get_channel('471512376261214238')
         canal05 = client.get_channel('471476555051434008')
         canal06 = client.get_channel('471491546924187670')
+        canal07 = client.get_channel('471705665912438810')
         if r['debug']['ping'] is True:
             jogadores = r['players']['online']
             maximo = r['players']['max']
+            ping = r['debug']['dns']['a'][0]['ttl']
             versao = r['version']
             await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
             await client.edit_channel(channel=canal02, name="🎇| Status: Online")
             await client.edit_channel(channel=canal03, name="👥| Jogadores: {}/{}".format(jogadores, maximo))
-            await client.edit_channel(channel=canal04, name="🌌| Versão: {}".format(versao))
-            await client.edit_channel(channel=canal05, name="🔗| discord.gg/XRZuePw")
-            await client.edit_channel(channel=canal06, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
+            await client.edit_channel(channel=canal04, name="⌛| Ping: {}".format(ping))
+            await client.edit_channel(channel=canal05, name="🌌| Versão: {}".format(versao))
+            await client.edit_channel(channel=canal06, name="🔗| discord.gg/XRZuePw")
+            await client.edit_channel(channel=canal07, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
         elif r['debug']['ping'] is False:
             await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
             await client.edit_channel(channel=canal02, name="🎇| Status: Offline")
             await client.edit_channel(channel=canal03, name="👥| Jogadores: ❌")
-            await client.edit_channel(channel=canal04, name="🌌| Versão: ❌")
-            await client.edit_channel(channel=canal05, name="🔗| discord.gg/XRZuePw")
-            await client.edit_channel(channel=canal06, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
+            await client.edit_channel(channel=canal04, name="⌛| Ping: ❌")
+            await client.edit_channel(channel=canal05, name="🌌| Versão: ❌")
+            await client.edit_channel(channel=canal06, name="🔗| discord.gg/XRZuePw")
+            await client.edit_channel(channel=canal07, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
         await asyncio.sleep(1)
 
 
