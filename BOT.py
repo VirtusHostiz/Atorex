@@ -21,6 +21,7 @@ async def on_ready():
     print('[BOT ONLINE]')    
     while True:
         r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.coma').json()
+        ip = r['hostname']
         canal01 = client.get_channel('471476150804283393')
         canal02 = client.get_channel('471476854331801601')
         canal03 = client.get_channel('471513680614260737')
@@ -28,7 +29,6 @@ async def on_ready():
         canal05 = client.get_channel('471476555051434008')
         canal06 = client.get_channel('471491546924187670')
         if r['debug']['ping'] is True:
-            ip = r['hostname']
             jogadores = r['players']['online']
             maximo = r['players']['max']
             versao = r['version']
@@ -39,7 +39,7 @@ async def on_ready():
             await client.edit_channel(channel=canal05, name="🔗| discord.gg/XRZuePw")
             await client.edit_channel(channel=canal06, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
         elif r['debug']['ping'] is False:
-            await client.edit_channel(channel=canal01, name="🎮| IP: ❌")
+            await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
             await client.edit_channel(channel=canal02, name="🎇| Status: Offline")
             await client.edit_channel(channel=canal03, name="👥| Jogadores: ❌")
             await client.edit_channel(channel=canal04, name="🌌| Versão: ❌")
