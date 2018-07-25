@@ -21,7 +21,7 @@ async def on_ready():
     print('[BOT ONLINE]')    
     while True:
         r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
-        ip = r['debug']['dns']['a']['host']
+        ip = r['a']['host']
         jogadores = r['players']['online']
         maximo = r['players']['max']
         versao = r['version']
