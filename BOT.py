@@ -31,7 +31,7 @@ async def on_ready():
         await client.edit_channel(channel=canal03, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
         if status == 'true':
             await client.edit_channel(channel=canal02, name="🎇| Status: Online")
-        if status == 'false':
+        else:
             await client.edit_channel(channel=canal02, name="🎇| Status: Offline")
         await asyncio.sleep(1)
 
