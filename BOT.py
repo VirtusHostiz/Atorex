@@ -22,13 +22,6 @@ async def on_ready():
     while True:
         r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
         ip = r['hostname']
-        canal01 = client.get_channel('471476150804283393')
-        canal02 = client.get_channel('471476854331801601')
-        canal03 = client.get_channel('471513680614260737')
-        canal04 = client.get_channel('471512376261214238')
-        canal05 = client.get_channel('471476555051434008')
-        canal06 = client.get_channel('471491546924187670')
-        canal07 = client.get_channel('471705665912438810')
         if r['debug']['ping'] is True:
             jogadores = r['players']['online']
             maximo = r['players']['max']
@@ -72,10 +65,6 @@ async def on_message(message):
             darcargo_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             darcargo_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=darcargo_embed)
-        if not message.content[32:]:
-            darcargo_embed02 = discord.Embed(title="Utilize o comando: '/darcargo @usuário <cargo>'.", color=0xFF0000)
-            darcargo_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=darcargo_embed02)
         try:
             user = message.mentions[0]
             cargo = message.content[32:]
@@ -88,10 +77,6 @@ async def on_message(message):
             await client.add_roles(user, role)
             await client.send_message(message.channel, embed=darcargo_embed03)
             await client.send_message(canal, embed=darcargo_embed04)
-        except discord.errors.Forbidden:
-            darcargo_embed05 = discord.Embed(title="Utilize o comando: '/darcargo @usuário <cargo>'.", color=0xFF0000)
-            darcargo_embed05.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=darcargo_embed05)
         finally:
             pass
 
