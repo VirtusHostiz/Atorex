@@ -67,6 +67,35 @@ async def on_message(message):
             pass
 
 
+    if message.content.lower().startswith(prefix+'darcargo'):
+        if not message.author.id == "322488685973209109":
+            darcargo_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+            darcargo_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=darcargo_embed)
+        if not message.content[32:]:
+            darcargo_embed02 = discord.Embed(title="Utilize o comando: '/darcargo @usuário <cargo>'.", color=0xFF0000)
+            darcargo_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=darcargo_embed02)
+        try:
+            user = message.mentions[0]
+            cargo = message.content[32:]
+            role = discord.utils.find(lambda r: r.name == cargo, message.server.roles)
+            canal = client.get_channel("464089569969831938")
+            darcargo_embed03 = discord.Embed(title="O usuário foi adicionado ao cargo com sucesso no servidor Discord!", color=0x00BFFF)
+            darcargo_embed03.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            darcargo_embed04 = discord.Embed(title="O usuário {} foi adicionado ao cargo {}!".format(user, role), color=0x00BFFF)
+            darcargo_embed04.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.add_roles(user, role)
+            await client.send_message(message.channel, embed=darcargo_embed03)
+            await client.send_message(canal, embed=darcargo_embed04)
+        except discord.errors.Forbidden:
+            darcargo_embed05 = discord.Embed(title="Utilize o comando: '/darcargo @usuário <cargo>'.", color=0xFF0000)
+            darcargo_embed05.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=darcargo_embed05)
+        finally:
+            pass
+
+
     if message.content.lower().startswith(prefix+'comandos'):
         comandos_embed = discord.Embed(title="Atorex Network", description="• :gear: **Usuários**\n\n• :video_game: **Jogos**\n\n• :tools: **Staff**", color=0x00BFFF)
         comandos_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
