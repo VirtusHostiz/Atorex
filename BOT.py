@@ -542,7 +542,7 @@ async def on_member_join(member):
     canal = client.get_channel("467096925087465489")
     cargo = discord.utils.find(lambda r: r.name == "Membro", member.server.roles)
     entrar_embed = discord.Embed(title="Atorex Network", description="**{}** seja bem-vindo(a) ao servidor Discord do **Atorex Network**!".format(member.mention), color=0x00BFFF)
-    entrar_embed.add_field(name="IP do servidor: ATOREXMC.NET", value="Site do servidor: **http://atorexmc.com/**", inline=False)
+    entrar_embed.add_field(name="IP do servidor: PLAY.ATOREXMC.COM", value="Site do servidor: **http://atorexmc.com/**", inline=False)
     entrar_embed.add_field(name="Formulário: Não disponível no momento.", value="Utilize **/comandos** para saber os comandos do BOT.", inline=False)
     await client.send_message(canal, embed=entrar_embed)
     await client.add_roles(member, cargo)
