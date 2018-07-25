@@ -1,4 +1,4 @@
-import discord
+﻿import discord
 import os
 import asyncio
 import time
@@ -37,7 +37,7 @@ async def on_ready():
             await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
             await client.edit_channel(channel=canal02, name="🎇| Status: Online")
             await client.edit_channel(channel=canal03, name="👥| Jogadores: {}/{}".format(jogadores, maximo))
-            await client.edit_channel(channel=canal04, name="⏰| Ping: {}ms".format(ping / 1000))
+            await client.edit_channel(channel=canal04, name="⏰| Ping: {}ms".format(ping / 100))
             await client.edit_channel(channel=canal05, name="🌌| Versão: {}".format(versao))
             await client.edit_channel(channel=canal06, name="🔗| discord.gg/XRZuePw")
             await client.edit_channel(channel=canal07, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
@@ -49,6 +49,7 @@ async def on_ready():
             await client.edit_channel(channel=canal05, name="🌌| Versão: ❌")
             await client.edit_channel(channel=canal06, name="🔗| discord.gg/XRZuePw")
             await client.edit_channel(channel=canal07, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
+        await asyncio.sleep(2)
 
 
 @client.event
