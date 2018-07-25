@@ -18,7 +18,14 @@ msg_user = None
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name=prefix+'comandos', type=2))
-    print('[BOT ONLINE]')
+    print('[BOT ONLINE]')    
+    while True:
+        r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
+        online = r['players']['online']
+        maximo = r['players']['max']
+        canal = client.get_channel('471476854331801601')
+        await client.edit_channel(channel=canal, name="👤| Jogadores: {}/{}".format(online, maximo))
+        await asyncio.sleep(10)
 
 
 @client.event
