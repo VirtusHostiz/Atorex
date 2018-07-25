@@ -20,8 +20,8 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name=prefix+'comandos', type=2))
     print('[BOT ONLINE]')    
     while True:
-        r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
-        ip = r['debug']['dns']['a'][0]['host']
+        r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.coma').json()
+        ip = r['hostname']
         jogadores = r['players']['online']
         maximo = r['players']['max']
         versao = r['version']
