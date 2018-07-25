@@ -20,8 +20,15 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name=prefix+'comandos', type=2))
     print('[BOT ONLINE]')    
     while True:
-        r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
+        r = requests.get('https://api.mcsrvstat.us/1/atorex.teste).json()
         ip = r['hostname']
+        canal01 = client.get_channel('471476150804283393')
+        canal02 = client.get_channel('471476854331801601')
+        canal03 = client.get_channel('471513680614260737')
+        canal04 = client.get_channel('471512376261214238')
+        canal05 = client.get_channel('471476555051434008')
+        canal06 = client.get_channel('471491546924187670')
+        canal07 = client.get_channel('471705665912438810')
         if r['debug']['ping'] is True:
             jogadores = r['players']['online']
             maximo = r['players']['max']
@@ -30,7 +37,7 @@ async def on_ready():
             await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
             await client.edit_channel(channel=canal02, name="🎇| Status: Online")
             await client.edit_channel(channel=canal03, name="👥| Jogadores: {}/{}".format(jogadores, maximo))
-            await client.edit_channel(channel=canal04, name="⌛| Ping: {}ms".format(ping / 1000))
+            await client.edit_channel(channel=canal04, name="⏰| Ping: {}ms".format(ping / 1000))
             await client.edit_channel(channel=canal05, name="🌌| Versão: {}".format(versao))
             await client.edit_channel(channel=canal06, name="🔗| discord.gg/XRZuePw")
             await client.edit_channel(channel=canal07, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
@@ -38,7 +45,7 @@ async def on_ready():
             await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
             await client.edit_channel(channel=canal02, name="🎇| Status: Offline")
             await client.edit_channel(channel=canal03, name="👥| Jogadores: ❌")
-            await client.edit_channel(channel=canal04, name="⌛| Ping: ❌")
+            await client.edit_channel(channel=canal04, name="⏰| Ping: ❌")
             await client.edit_channel(channel=canal05, name="🌌| Versão: ❌")
             await client.edit_channel(channel=canal06, name="🔗| discord.gg/XRZuePw")
             await client.edit_channel(channel=canal07, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
@@ -56,27 +63,6 @@ async def on_message(message):
             reiniciar_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=reiniciar_embed02)
             os.system("python BOT.py reload")
-        finally:
-            pass
-
-
-    if message.content.lower().startswith(prefix+'darcargo'):
-        if not message.author.id == "322488685973209109":
-            darcargo_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
-            darcargo_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=darcargo_embed)
-        try:
-            user = message.mentions[0]
-            cargo = message.content[32:]
-            role = discord.utils.find(lambda r: r.name == cargo, message.server.roles)
-            canal = client.get_channel("464089569969831938")
-            darcargo_embed03 = discord.Embed(title="O usuário foi adicionado ao cargo com sucesso no servidor Discord!", color=0x00BFFF)
-            darcargo_embed03.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            darcargo_embed04 = discord.Embed(title="O usuário {} foi adicionado ao cargo {}!".format(user, role), color=0x00BFFF)
-            darcargo_embed04.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            await client.add_roles(user, role)
-            await client.send_message(message.channel, embed=darcargo_embed03)
-            await client.send_message(canal, embed=darcargo_embed04)
         finally:
             pass
 
