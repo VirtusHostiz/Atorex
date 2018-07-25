@@ -32,10 +32,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content.startswith(prefix+'teste'):
-        await client.send_message(message.channel, message.server.members)
-
-
     if message.content.startswith(prefix+'reiniciar'):
         if not message.author.id == "322488685973209109":
             reiniciar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
@@ -51,14 +47,13 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'comandos'):
-        comandos_embed = discord.Embed(title="Atorex Network", description="• :gear: **Usuários**\n\n• :video_game: **Jogos**\n\n• :tools: **Staff**\n\n• :robot: **yWilliam**", color=0x00BFFF)
+        comandos_embed = discord.Embed(title="Atorex Network", description="• :gear: **Usuários**\n\n• :video_game: **Jogos**\n\n• :tools: **Staff**", color=0x00BFFF)
         comandos_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
         comandos_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
         botmsg = await client.send_message(message.channel, embed=comandos_embed)
         await client.add_reaction(botmsg, "⚙")
         await client.add_reaction(botmsg, "🎮")
         await client.add_reaction(botmsg, "🛠")
-        await client.add_reaction(botmsg, "🤖")
         await asyncio.sleep(2)
         global msg_id
         msg_id = botmsg.id
