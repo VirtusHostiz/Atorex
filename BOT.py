@@ -20,7 +20,7 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name=prefix+'comandos', type=2))
     print('[BOT ONLINE]')    
     while True:
-        r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
+        r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.coma').json()
         canal01 = client.get_channel('471476150804283393')
         canal02 = client.get_channel('471476854331801601')
         canal03 = client.get_channel('471513680614260737')
