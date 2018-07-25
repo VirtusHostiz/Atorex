@@ -28,6 +28,7 @@ async def on_ready():
         canal02 = client.get_channel('471513680614260737')
         canal03 = client.get_channel('471491546924187670')
         await client.edit_channel(channel=canal01, name="👥| Jogadores: {}/{}".format(online, maximo))
+        await client.edit_channel(channel=canal02, name="🎇| Status: {}".format(status))
         await client.edit_channel(channel=canal03, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
         if status == "true":
             await client.edit_channel(channel=canal02, name="🎇| Status: Online")
