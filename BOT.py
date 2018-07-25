@@ -22,11 +22,14 @@ async def on_ready():
     while True:
         r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
         online = r['players']['online']
+        memoria = r['debug']['cachetime']
         maximo = r['players']['max']
         canal01 = client.get_channel('471476854331801601')
-        canal02 = client.get_channel('471491546924187670')
+        canal02 = client.get_channel('471513680614260737')
+        canal03 = client.get_channel('471491546924187670')
         await client.edit_channel(channel=canal01, name="👥| Jogadores: {}/{}".format(online, maximo))
-        await client.edit_channel(channel=canal02, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
+        await client.edit_channel(channel=canal02, name="💾| Memória: {}".format(memoria))
+        await client.edit_channel(channel=canal03, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
         await asyncio.sleep(1)
 
 
