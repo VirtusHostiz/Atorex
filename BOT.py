@@ -25,7 +25,7 @@ async def on_ready():
         maximo = r['players']['max']
         canal = client.get_channel('471476854331801601')
         await client.edit_channel(channel=canal, name="👤 | Jogadores: {}/{}".format(online, maximo))
-        await asyncio.sleep(10)
+        await asyncio.sleep(1)
 
 
 @client.event
