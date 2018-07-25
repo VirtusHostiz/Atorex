@@ -26,7 +26,8 @@ async def on_message(message):
     if message.content.startswith(prefix+'teste'):
         r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
         online = r['players']['online']
-        await client.send_message(message.channel, online)
+        maximo = r['players']['max']
+        await client.send_message(message.channel, online + "/" + maximo)
 
 
     if message.content.startswith(prefix+'reiniciar'):
