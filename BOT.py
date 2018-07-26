@@ -22,6 +22,8 @@ async def on_ready():
     while True:
         try:
             r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
+            r02 = requests.get('https://api.mcsrvstat.us/1/pingrankup.mcpe.network').json()
+            r03 = requests.get('https://api.mcsrvstat.us/1/pingkitpvp.mcpe.network').json()
             ip = r['hostname']
             canal01 = client.get_channel('471476150804283393')
             canal02 = client.get_channel('471476854331801601')
@@ -33,23 +35,27 @@ async def on_ready():
             if r['debug']['ping'] is True:
                 jogadores = r['players']['online']
                 maximo = r['players']['max']
+                jogadores02 = r02['players']['online']
+                maximo02 = r02['players']['max']
+                jogadores03 = r03['players']['online']
+                maximo03 = r03['players']['max']
                 ping = r['debug']['dns']['a'][0]['ttl']
                 versao = r['version']
                 await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
                 await client.edit_channel(channel=canal02, name="🎇| Status: Online")
                 await client.edit_channel(channel=canal03, name="👥| Jogadores: {}/{}".format(jogadores, maximo))
-                await client.edit_channel(channel=canal04, name="⏰| Ping: {}ms".format(ping / 100))
-                await client.edit_channel(channel=canal05, name="🌌| Versão: {}".format(versao))
-                await client.edit_channel(channel=canal06, name="🔗| discord.gg/XRZuePw")
-                await client.edit_channel(channel=canal07, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
+                await client.edit_channel(channel=canal04, name="👥| Rankup: {}/{}".format(jogadores02, maximo02))
+                await client.edit_channel(channel=canal05, name="👥| KitPvP: {}/{}".format(jogadores03, maximo03))
+                await client.edit_channel(channel=canal06, name="⏰| Ping: {}ms".format(ping / 100))
+                await client.edit_channel(channel=canal07, name="🌌| Versão: {}".format(versao))
             elif r['debug']['ping'] is False:
                 await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
                 await client.edit_channel(channel=canal02, name="🎇| Status: Offline")
                 await client.edit_channel(channel=canal03, name="👥| Jogadores: ❌")
-                await client.edit_channel(channel=canal04, name="⏰| Ping: ❌")
-                await client.edit_channel(channel=canal05, name="🌌| Versão: ❌")
-                await client.edit_channel(channel=canal06, name="🔗| discord.gg/XRZuePw")
-                await client.edit_channel(channel=canal07, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
+                await client.edit_channel(channel=canal04, name="👥| Rankup: ❌")
+                await client.edit_channel(channel=canal05, name="👥| KitPvP: ❌")
+                await client.edit_channel(channel=canal06, name="⏰| Ping: ❌")
+                await client.edit_channel(channel=canal07, name="🌌| Versão: ❌")
             await asyncio.sleep(2)
         except (requests.exceptions.ConnectionError, discord.errors.HTTPException):
             os.system("python BOT.py reload")
