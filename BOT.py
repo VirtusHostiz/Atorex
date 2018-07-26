@@ -51,7 +51,7 @@ async def on_ready():
                 await client.edit_channel(channel=canal06, name="🔗| discord.gg/XRZuePw")
                 await client.edit_channel(channel=canal07, name="👥| Membros: {}".format(str(len(set(client.get_all_members())))))
             await asyncio.sleep(2)
-        except requests.exceptions.ConnectionError:
+        except (requests.exceptions.ConnectionError, discord.errors.HTTPException):
             os.system("python BOT.py reload")
         finally:
             pass
