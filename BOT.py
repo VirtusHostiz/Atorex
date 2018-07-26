@@ -73,6 +73,17 @@ async def on_message(message):
             pass
 
 
+    if message.content.lower().startswith(prefix+'eval'):
+        if not message.author.id == "322488685973209109":
+            eval_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+            eval_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=eval_embed)
+        try:
+            await client.send_message(message.channel, str(eval(message.content[6:])))
+        except Exception as e:
+            await client.send_message(message.channel, repr(e))
+
+
     if message.content.lower().startswith(prefix+'comandos'):
         comandos_embed = discord.Embed(title="Atorex Network", description="• :gear: **Usuários**\n\n• :video_game: **Jogos**\n\n• :tools: **Staff**", color=0x00BFFF)
         comandos_embed.set_thumbnail(url="https://i.imgur.com/P9o8NUE.png")
