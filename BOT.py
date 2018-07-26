@@ -39,7 +39,7 @@ async def on_ready():
                 jogadores02 = r03['players']['online']
                 maximo02 = r03['players']['max']
                 jogadores03 = r04['players']['online']
-                maximo03 = r04'players']['max']
+                maximo03 = r04['players']['max']
                 ping = r['debug']['dns']['a'][0]['ttl']
                 versao = r['version']
                 await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
