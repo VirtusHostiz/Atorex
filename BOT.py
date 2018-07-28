@@ -607,7 +607,7 @@ async def on_message(message):
                 await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
             elif manu == "off":
                 await client.edit_channel(channel=canal, name="🎇| Status: 🔎")
-        except Exception as e:
+        except:
             manu_embed02 = discord.Embed(title="Utilize o comando: '/manu on' ou '/manu off'.", color=0xFF0000)
             manu_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=manu_embed02)
