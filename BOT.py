@@ -597,29 +597,23 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'manu'):
-        manu = message.content[6:]
         if not message.author.server_permissions.administrator:
             manu_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             manu_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=manu_embed)
-        if manu != "on":
+        if message.content[6:] != "on" of "off":
             manu_embed02 = discord.Embed(title="Utilize o comando: '/manu on' ou '/manu off'.", color=0xFF0000)
             manu_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=manu_embed02)
-        if manu != "off":
-            manu_embed03 = discord.Embed(title="Utilize o comando: '/manu on' ou '/manu off'.", color=0xFF0000)
-            manu_embed03.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=manu_embed03)
         try:
-            manu = message.content[6:]
             canal = client.get_channel('472868023473274882')
-            if manu == "on":
+            if message.content[6:] == "on":
                 await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
                 await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
                 await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
                 await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
                 await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
-            if manu == "off":
+            if message.content[6:] == "off":
                 await client.edit_channel(channel=canal, name="🎇| Status: 🔎")
         finally:
             pass
