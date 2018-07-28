@@ -53,9 +53,9 @@ async def on_ready():
             await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
             await client.edit_channel(channel=canal02, name="🎇| Status: 🔎")
             await client.edit_channel(channel=canal03, name="👥| Rankup: 🔎")
-            await client.edit_channel(channel=canal05, name="👥| Kitpvp: 🔎")
-            await client.edit_channel(channel=canal06, name="⏰| Ping: 🔎")
-            await client.edit_channel(channel=canal07, name="💠| Versão: 🔎")
+            await client.edit_channel(channel=canal04, name="👥| Kitpvp: 🔎")
+            await client.edit_channel(channel=canal05, name="⏰| Ping: 🔎")
+            await client.edit_channel(channel=canal06, name="💠| Versão: 🔎")
         finally:
             pass
 
