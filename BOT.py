@@ -48,7 +48,7 @@ async def on_ready():
             if b['serverStatus'] == "online":
                 ip = a['hostname']
                 await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
-                if b['serverStatus'] == "online" and canal02.name != "🎇| Status: Manutenção":
+                if b['serverStatus'] == "online":
                     await client.edit_channel(channel=canal02, name="🎇| Status: Online")
                 if b['serverStatus'] == "online":
                     jogadores01 = c['players']
@@ -66,8 +66,7 @@ async def on_ready():
                     await client.edit_channel(channel=canal06, name="💠| Versão: {}".format(versao))
             elif b['serverStatus'] == "offline":
                 await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
-                if not canal02.name == "🎇| Status: Manutenção":
-                    await client.edit_channel(channel=canal02, name="🎇| Status: Offline")
+                await client.edit_channel(channel=canal02, name="🎇| Status: Offline")
                 await client.edit_channel(channel=canal03, name="👥| Rankup: ❌")
                 await client.edit_channel(channel=canal04, name="👥| Kitpvp: ❌")
                 await client.edit_channel(channel=canal05, name="⏰| Ping: ❌")
@@ -76,8 +75,7 @@ async def on_ready():
             a = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
             ip = a['hostname']
             await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
-            if not canal02.name == "🎇| Status: Manutenção":
-                await client.edit_channel(channel=canal02, name="🎇| Status: 🔎")
+            await client.edit_channel(channel=canal02, name="🎇| Status: 🔎")
             await client.edit_channel(channel=canal03, name="👥| Rankup: 🔎")
             await client.edit_channel(channel=canal05, name="👥| Kitpvp: 🔎")
             await client.edit_channel(channel=canal06, name="⏰| Ping: 🔎")
@@ -592,25 +590,6 @@ async def on_message(message):
             votar = await client.send_message(canal, embed=votar_embed04)
             await client.add_reaction(votar, "✅")
             await client.add_reaction(votar, "❎")
-        finally:
-            pass
-
-
-    if message.content.lower().startswith(prefix+'manu'):
-        if not message.author.server_permissions.administrator:
-            manu_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
-            manu_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=manu_embed)
-        try:
-            canal = client.get_channel('472868023473274882')
-            if message.content[6:] == "on":
-                await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
-                await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
-                await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
-                await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
-                await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
-            if message.content[6:] == "off":
-                await client.edit_channel(channel=canal, name="🎇| Status: 🔎")
         finally:
             pass
 
