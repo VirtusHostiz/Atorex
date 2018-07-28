@@ -15,51 +15,68 @@ prefix = "/"
 msg_id = None
 msg_user = None
 
+tradutor = Translator(service_urls=[
+      'translate.google.com',
+      'translate.google.co.kr',
+    ])
+
+def wiki_summary(arg):
+    wikipedia.set_lang("pt")
+    definition = wikipedia.summary(arg, sentences=1, chars=100, auto_suggest=True, redirect=True)
+    return definition
+
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name=prefix+'comandos', type=2))
-    print('[BOT ONLINE]')    
+    print('[BOT ONLINE]')
     while True:
         try:
-            r = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
-            r02 = requests.get('https://api.mcsrvstat.us/1/atorexl.mc-server.net').json()
-            r03 = requests.get('https://api.mcsrvstat.us/1/pingrankup.mcpe.network').json()
-            r04 = requests.get('https://api.mcsrvstat.us/1/pingkitpvp.mcpe.network').json()
-            ip = r['hostname']
-            canal01 = client.get_channel('471476150804283393')
-            canal02 = client.get_channel('471476854331801601')
-            canal03 = client.get_channel('471513680614260737')
-            canal04 = client.get_channel('471512376261214238')
-            canal05 = client.get_channel('471476555051434008')
-            canal06 = client.get_channel('471491546924187670')
-            canal07 = client.get_channel('471705665912438810')
-            if r['debug']['ping'] is True:
-                jogadores = r02['players']['online']
-                maximo = r02['players']['max']
-                jogadores02 = r03['players']['online']
-                maximo02 = r03['players']['max']
-                jogadores03 = r04['players']['online']
-                maximo03 = r04['players']['max']
-                ping = r['debug']['dns']['a'][0]['ttl']
-                versao = r['version']
+            a = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
+            b = requests.get('https://mcapi.xdefcon.com/server/play.atorexmc.com/full/json').json()
+            c = requests.get('https://mcapi.xdefcon.com/server/pingrankup.mcpe.network:25615/full/json').json()
+            d = requests.get('https://mcapi.xdefcon.com/server/pingkitpvp.mcpe.network:25663/full/json').json()
+            canal01 = client.get_channel('472867146360160258')
+            canal02 = client.get_channel('472868023473274882')
+            canal03 = client.get_channel('472868040879505409')
+            canal04 = client.get_channel('472868064799621120')
+            canal05 = client.get_channel('472868078942814211')
+            canal06 = client.get_channel('472868095665504266')
+            if b['serverStatus'] == "online":
+                ip = a['hostname']
                 await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
-                await client.edit_channel(channel=canal02, name="🎇| Status: Online")
-                await client.edit_channel(channel=canal03, name="👥| Lobby: {}/{}".format(jogadores, maximo))
-                await client.edit_channel(channel=canal04, name="👥| Rankup: {}/{}".format(jogadores02, maximo02))
-                await client.edit_channel(channel=canal05, name="👥| KitPvP: {}/{}".format(jogadores03, maximo03))
-                await client.edit_channel(channel=canal06, name="⏰| Ping: {}ms".format(ping / 100))
-                await client.edit_channel(channel=canal07, name="🌌| Versão: {}".format(versao))
-            elif r['debug']['ping'] is False:
+                if b['serverStatus'] == "online" and canal02.name != "🎇| Status: Manutenção":
+                    await client.edit_channel(channel=canal02, name="🎇| Status: Online")
+                if b['serverStatus'] == "online":
+                    jogadores01 = c['players']
+                    maximo01 = c['maxplayers']
+                    await client.edit_channel(channel=canal03, name="👥| Rankup: {}/{}".format(jogadores01, maximo01))
+                if b['serverStatus'] == "online":
+                    jogadores02 = d['players']
+                    maximo02 = d['maxplayers']
+                    await client.edit_channel(channel=canal04, name="👥| KitPvp: {}/{}".format(jogadores02, maximo02))
+                if b['serverStatus'] == "online":
+                    ping = b['ping']
+                    await client.edit_channel(channel=canal05, name="⏰| Ping: {}ms".format(ping))
+                if b['serverStatus'] == "online":   
+                    versao = a['version']
+                    await client.edit_channel(channel=canal06, name="💠| Versão: {}".format(versao))
+            if b['serverStatus'] == "offline":
                 await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
-                await client.edit_channel(channel=canal02, name="🎇| Status: Offline")
-                await client.edit_channel(channel=canal03, name="👥| Lobby: ❌")
-                await client.edit_channel(channel=canal04, name="👥| Rankup: ❌")
-                await client.edit_channel(channel=canal05, name="👥| KitPvP: ❌")
-                await client.edit_channel(channel=canal06, name="⏰| Ping: ❌")
-                await client.edit_channel(channel=canal07, name="🌌| Versão: ❌")
-            await asyncio.sleep(2)
-        except (requests.exceptions.ConnectionError, discord.errors.HTTPException):
-            os.system("python BOT.py reload")
+                if not canal02.name == "🎇| Status: Manutenção":
+                    await client.edit_channel(channel=canal02, name="🎇| Status: Offline")
+                await client.edit_channel(channel=canal03, name="👥| Rankup: ❌")
+                await client.edit_channel(channel=canal04, name="👥| KitPvp: ❌")
+                await client.edit_channel(channel=canal05, name="⏰| Ping: ❌")
+                await client.edit_channel(channel=canal06, name="💠| Versão: ❌")
+        except (requests.exceptions.ConnectionError, discord.errors.HTTPException, aiohttp.errors.ClientResponseError, json.decoder.JSONDecodeError, KeyError):
+            a = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
+            ip = a['hostname']
+            await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
+            if not canal02.name == "🎇| Status: Manutenção":
+                await client.edit_channel(channel=canal02, name="🎇| Status: 🔎")
+            await client.edit_channel(channel=canal03, name="👥| Jogadores: 🔎")
+            await client.edit_channel(channel=canal04, name="⏰| Ping: 🔎")
+            await client.edit_channel(channel=canal05, name="💠| Versão: 🔎")
         finally:
             pass
 
@@ -80,15 +97,17 @@ async def on_message(message):
             pass
 
 
-    if message.content.lower().startswith(prefix+'eval'):
+    if message.content.lower().startswith(prefix+'testar'):
         if not message.author.id == "322488685973209109":
-            eval_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
-            eval_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            return await client.send_message(message.channel, embed=eval_embed)
+            testar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+            testar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=testar_embed)
         try:
-            await client.send_message(message.channel, str(eval(message.content[6:])))
+            await client.send_message(message.channel, str(eval(message.content[8:])))
         except Exception as e:
             await client.send_message(message.channel, repr(e))
+        finally:
+            pass
 
 
     if message.content.lower().startswith(prefix+'comandos'):
@@ -231,6 +250,38 @@ async def on_message(message):
             parceria_embed04 = discord.Embed(title="Utilize o comando: '/parceria <mensagem>'.", color=0xFF0000)
             parceria_embed04.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=parceria_embed04)
+        finally:
+            pass
+
+
+    if message.content.lower().startswith(prefix+'traduzir'):
+        try:
+            msg = message.content[10:12]
+            msg2 = message.content[13:]
+            traduzido = tradutor.translate(msg2, dest=msg).text
+            traduzir_embed = discord.Embed(color=0x00BFFF)
+            traduzir_embed.add_field(name="Tradutor", value="Texto original: ```{}```\nTradução: ```{}```".format(msg2, traduzido))
+            traduzir_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.send_message(message.channel, embed=traduzir_embed)
+        except Exception as e:
+            traduzir_embed02 = discord.Embed(title="Ocorreu um erro ao traduzir a mensagem.", color=0xFF0000)
+            traduzir_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=traduzir_embed02)
+        finally:
+            pass
+
+
+    if message.content.lower().startswith(prefix+'pesquisar'):
+        try:
+            words = message.content.split()
+            pergunta = message.content[11:]
+            important_words = words[1:]
+            pesquisar_embed = discord.Embed(title="Definição de {}:".format(pergunta), description="```" + wiki_summary(important_words) + "```", color=0x00BFFF)
+            await client.send_message(message.channel, embed=pesquisar_embed)
+        except Exception as e:
+            pesquisar_embed02 = discord.Embed(title="Ocorreu um erro ao pesquisar definições para esta palavra.", color=0xFF0000)
+            pesquisar_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=pesquisar_embed02)
         finally:
             pass
 
@@ -536,6 +587,26 @@ async def on_message(message):
             votar = await client.send_message(canal, embed=votar_embed04)
             await client.add_reaction(votar, "✅")
             await client.add_reaction(votar, "❎")
+        finally:
+            pass
+
+
+    if message.content.lower().startswith(prefix+'manu'):
+        if not message.author.server_permissions.administrator:
+            manu_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+            manu_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=manu_embed)
+        try:
+            manu = message.content[5:]
+            canal = client.get_channel('472868023473274882')
+            if manu == "on":
+                await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
+            elif manu == "off":
+                await client.edit_channel(channel=canal, name="🎇| Status: 🔎")
+        except Exception as e:
+            manu_embed02 = discord.Embed(title="Utilize o comando: '/manu on' ou '/manu off'.", color=0xFF0000)
+            manu_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=manu_embed02)
         finally:
             pass
 
