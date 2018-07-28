@@ -605,7 +605,11 @@ async def on_message(message):
             manu = message.content[6:]
             canal = client.get_channel('472868023473274882')
             if manu == "on":
-                return await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
+                await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
+                await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
+                await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
+                await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
+                await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
             if manu == "off":
                 return await client.edit_channel(channel=canal, name="🎇| Status: 🔎")
             if not manu == "on" or "off":
