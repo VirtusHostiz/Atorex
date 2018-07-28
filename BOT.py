@@ -597,6 +597,7 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'manu'):
+        manu = message.content[6:]
         if not message.author.server_permissions.administrator:
             manu_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             manu_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
