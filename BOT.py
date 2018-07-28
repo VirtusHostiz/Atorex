@@ -8,6 +8,10 @@ from random import *
 import json
 from discord.ext import commands
 import requests
+import aiohttp
+import googletrans
+from googletrans import Translator
+import wikipedia
 
 client = discord.Client()
 prefix = "/"
