@@ -665,4 +665,4 @@ async def on_member_join(member):
 
 
 
-client.run('NDY3MTA0MzkwODA1ODQ4MDk0.DilwYQ.BU9JpZPsMlAcs2-Petl-TrIg238')
+client.run('NDcyODY4NzA0OTUxMDc0ODE4.Dj5o4Q.PNP-saG5-ToyZtWyPe2XZM_LTXA')
