@@ -57,7 +57,7 @@ async def on_ready():
                 if b['serverStatus'] == "online":
                     jogadores02 = d['players']
                     maximo02 = d['maxplayers']
-                    await client.edit_channel(channel=canal04, name="👥| KitPvp: {}/{}".format(jogadores02, maximo02))
+                    await client.edit_channel(channel=canal04, name="👥| Kitpvp: {}/{}".format(jogadores02, maximo02))
                 if b['serverStatus'] == "online":
                     ping = b['ping']
                     await client.edit_channel(channel=canal05, name="⏰| Ping: {}ms".format(ping))
@@ -69,7 +69,7 @@ async def on_ready():
                 if not canal02.name == "🎇| Status: Manutenção":
                     await client.edit_channel(channel=canal02, name="🎇| Status: Offline")
                 await client.edit_channel(channel=canal03, name="👥| Rankup: ❌")
-                await client.edit_channel(channel=canal04, name="👥| KitPvp: ❌")
+                await client.edit_channel(channel=canal04, name="👥| Kitpvp: ❌")
                 await client.edit_channel(channel=canal05, name="⏰| Ping: ❌")
                 await client.edit_channel(channel=canal06, name="💠| Versão: ❌")
         except (requests.exceptions.ConnectionError, discord.errors.HTTPException, aiohttp.errors.ClientResponseError, json.decoder.JSONDecodeError, KeyError):
@@ -78,9 +78,10 @@ async def on_ready():
             await client.edit_channel(channel=canal01, name="🎮| IP: {}".format(ip))
             if not canal02.name == "🎇| Status: Manutenção":
                 await client.edit_channel(channel=canal02, name="🎇| Status: 🔎")
-            await client.edit_channel(channel=canal03, name="👥| Jogadores: 🔎")
-            await client.edit_channel(channel=canal04, name="⏰| Ping: 🔎")
-            await client.edit_channel(channel=canal05, name="💠| Versão: 🔎")
+            await client.edit_channel(channel=canal03, name="👥| Rankup: 🔎")
+            await client.edit_channel(channel=canal05, name="👥| Kitpvp: 🔎")
+            await client.edit_channel(channel=canal06, name="⏰| Ping: 🔎")
+            await client.edit_channel(channel=canal07, name="💠| Versão: 🔎")
         finally:
             pass
         await asyncio.sleep(1)
@@ -601,7 +602,7 @@ async def on_message(message):
             manu_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             manu_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=manu_embed)
-        if message.content[6:] != "on" or "off":
+        if not message.content[6:] == "on" or "off":
             manu_embed02 = discord.Embed(title="Utilize o comando: '/manu on' ou '/manu off'.", color=0xFF0000)
             manu_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=manu_embed02)
