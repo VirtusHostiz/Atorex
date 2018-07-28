@@ -7,7 +7,7 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-    await client.change_presence(game=discord.Game(name=prefix+'comandos', type=2))
+    await client.change_presence(game=discord.Game(name='yWilliam#7959', type=2))
     print('[BOT ONLINE]')
     while True:
         try:
