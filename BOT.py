@@ -601,6 +601,10 @@ async def on_message(message):
             manu_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             manu_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=manu_embed)
+        if not manu == "on" or "off":
+            manu_embed02 = discord.Embed(title="Utilize o comando: '/manu on' ou '/manu off'.", color=0xFF0000)
+            manu_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=manu_embed02)
         try:
             manu = message.content[6:]
             canal = client.get_channel('472868023473274882')
@@ -611,11 +615,7 @@ async def on_message(message):
                 await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
                 await client.edit_channel(channel=canal, name="🎇| Status: Manutenção")
             if manu == "off":
-                return await client.edit_channel(channel=canal, name="🎇| Status: 🔎")
-            if not manu == "on" or "off":
-                manu_embed02 = discord.Embed(title="Utilize o comando: '/manu on' ou '/manu off'.", color=0xFF0000)
-                manu_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-                return await client.send_message(message.channel, embed=manu_embed02)
+                await client.edit_channel(channel=canal, name="🎇| Status: 🔎")
         finally:
             pass
 
