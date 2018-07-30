@@ -55,7 +55,7 @@ async def on_message(message):
             rankup_embed.add_field(name="Status:", value="Online")
             rankup_embed.add_field(name="Jogando:", value="{}/{}".format(online, maximo))
             rankup_embed.add_field(name="Ping:", value="{}".format(ping))
-            rankup_embed.add_field(name="Versão:", value="1.8.x".format(ping))
+            rankup_embed.add_field(name="Versão:", value="1.8.x")
             rankup_embed.add_field(name="Jogadores online:", value="{}".format(', '.join(jogadores)), inline=False)
             rankup_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=rankup_embed)
