@@ -3,7 +3,7 @@ import json
 import requests
 import aiohttp
 import time
-from time import *
+from time import sleep as s
 
 client = discord.Client()
 prefix = "/"
