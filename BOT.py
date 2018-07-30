@@ -94,6 +94,7 @@ async def on_message(message):
 
 
     if message.content.startswith(prefix+'rankup'):
+        e = requests.get('https://api.minetools.eu/query/pingrankup.mcpe.network/25615').json()
         if e['status'] == "OK":
             jogadores = e['Playerlist']
             rankup_embed = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00FF00)
