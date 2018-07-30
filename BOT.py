@@ -11,12 +11,13 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name='yWilliam#7959', type=2))
     print('[BOT ONLINE]')
     while True:
+        e = requests.get('https://api.minetools.eu/query/pingrankup.mcpe.network/25615').json()
+        f = requests.get('https://api.minetools.eu/query/pingkitpvp.mcpe.network/25663').json()
         try:
             a = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
             b = requests.get('https://mcapi.xdefcon.com/server/play.atorexmc.com/full/json').json()
             c = requests.get('https://mcapi.xdefcon.com/server/pingrankup.mcpe.network:25615/full/json').json()
             d = requests.get('https://mcapi.xdefcon.com/server/pingkitpvp.mcpe.network:25663/full/json').json()
-            e = requests.get('https://api.minetools.eu/query/pingrankup.mcpe.network/25615').json()
             canal01 = client.get_channel('472867146360160258')
             canal02 = client.get_channel('472868023473274882')
             canal03 = client.get_channel('472868040879505409')
@@ -58,8 +59,11 @@ async def on_ready():
             await client.edit_channel(channel=canal04, name="👥| Kitpvp: 🔎")
             await client.edit_channel(channel=canal05, name="⏰| Ping: 🔎")
             await client.edit_channel(channel=canal06, name="💠| Versão: 🔎")
+        except RuntimeError:
+            os.system("python BOT.py reload")
         finally:
             pass
+
 
 
 @client.event
