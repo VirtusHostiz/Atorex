@@ -45,8 +45,8 @@ async def on_message(message):
 
 
     if message.content.startswith(prefix+'rankup'):
-        a = requests.get('https://mcapi.xdefcon.com/server/pingrankup.mcpe.network:256152/full/json').json()
-        b = requests.get('https://api.minetools.eu/query/pingrankup.mcpe.network/256154').json()
+        a = requests.get('https://mcapi.xdefcon.com/server/pingrankup.mcpe.network:25615/full/json').json()
+        b = requests.get('https://api.minetools.eu/query/pingrankup.mcpe.network/25615').json()
         tempo01 = time.perf_counter()
         await client.send_typing(message.channel)
         tempo02 = time.perf_counter()
