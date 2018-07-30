@@ -45,15 +45,14 @@ async def on_message(message):
 
 
     if message.content.startswith(prefix+'rankup'):
-        a = requests.get('https://mcapi.xdefcon.com/server/pingrankup.mcpe.network:25615/full/json').json()
-        b = requests.get('https://api.minetools.eu/query/pingrankup.mcpe.network/25615').json()
+        a = requests.get('https://mcapi.xdefcon.com/server/pingrankup.mcpe.network:256152/full/json').json()
+        b = requests.get('https://api.minetools.eu/query/pingrankup.mcpe.network/256154').json()
         tempo01 = time.perf_counter()
         await client.send_typing(message.channel)
         tempo02 = time.perf_counter()
         if a['serverStatus'] == "online":
             online = a['players']
             maximo = a['maxplayers']
-            ping = a['ping']
             jogadores = b['Playerlist']
             rankup_embed = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00BFFF)
             rankup_embed.add_field(name="IP:", value="jogar.atorexmc.com")
@@ -62,6 +61,17 @@ async def on_message(message):
             rankup_embed.add_field(name="Ping:", value="{}ms".format(round((tempo02 - tempo01) * 1000)))
             rankup_embed.add_field(name="Versão:", value="1.8.x")
             rankup_embed.add_field(name="Jogadores online:", value="{}".format(', '.join(jogadores)))
+            rankup_embed.set_thumbnail(url="https://i.imgur.com/Cy4vDsc.png")
+            rankup_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.send_message(message.channel, embed=rankup_embed)
+        if a['serverStatus'] == "offline":
+            rankup_embed = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00BFFF)
+            rankup_embed.add_field(name="IP:", value="jogar.atorexmc.com")
+            rankup_embed.add_field(name="Status:", value="Offline")
+            rankup_embed.add_field(name="Jogando:", value="❌".format(online, maximo))
+            rankup_embed.add_field(name="Ping:", value="{}ms".format(round((tempo02 - tempo01) * 1000)))
+            rankup_embed.add_field(name="Versão:", value="1.8.x")
+            rankup_embed.add_field(name="Jogadores online:", value="❌")
             rankup_embed.set_thumbnail(url="https://i.imgur.com/Cy4vDsc.png")
             rankup_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=rankup_embed)
