@@ -55,9 +55,9 @@ async def on_message(message):
             maximo = a['maxplayers']
             jogadores = b['Playerlist']
             rankup_embed = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00BFFF)
-            rankup_embed.add_field(name="IP:", value="jogar.atorexmc.com")
+            rankup_embed.add_field(name="IP do servidor:", value="jogar.atorexmc.com")
             rankup_embed.add_field(name="Status:", value="Online")
-            rankup_embed.add_field(name="Jogando:", value="{}/{}".format(online, maximo))
+            rankup_embed.add_field(name="Jogando atualmente:", value="{}/{} jogadores".format(online, maximo))
             rankup_embed.add_field(name="Ping:", value="{}ms".format(round((tempo02 - tempo01) * 1000)))
             rankup_embed.add_field(name="Versão:", value="1.8.x")
             rankup_embed.add_field(name="Jogadores online:", value="{}".format(', '.join(jogadores)))
@@ -66,9 +66,9 @@ async def on_message(message):
             await client.send_message(message.channel, embed=rankup_embed)
         elif a['serverStatus'] == "offline":
             rankup_embed02 = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00BFFF)
-            rankup_embed02.add_field(name="IP:", value="jogar.atorexmc.com")
+            rankup_embed02.add_field(name="IP do servidor:", value="jogar.atorexmc.com")
             rankup_embed02.add_field(name="Status:", value="Offline")
-            rankup_embed02.add_field(name="Jogando:", value="❌")
+            rankup_embed02.add_field(name="Jogando atualmente:", value="❌")
             rankup_embed02.add_field(name="Ping:", value="{}ms".format(round((tempo02 - tempo01) * 1000)))
             rankup_embed02.add_field(name="Versão:", value="1.8.x")
             rankup_embed02.add_field(name="Jogadores online:", value="❌")
