@@ -64,17 +64,22 @@ async def on_message(message):
             rankup_embed.set_thumbnail(url="https://i.imgur.com/Cy4vDsc.png")
             rankup_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=rankup_embed)
-        if a['serverStatus'] == "offline":
-            rankup_embed = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00BFFF)
-            rankup_embed.add_field(name="IP:", value="jogar.atorexmc.com")
-            rankup_embed.add_field(name="Status:", value="Offline")
-            rankup_embed.add_field(name="Jogando:", value="❌".format(online, maximo))
-            rankup_embed.add_field(name="Ping:", value="{}ms".format(round((tempo02 - tempo01) * 1000)))
-            rankup_embed.add_field(name="Versão:", value="1.8.x")
-            rankup_embed.add_field(name="Jogadores online:", value="❌")
-            rankup_embed.set_thumbnail(url="https://i.imgur.com/Cy4vDsc.png")
-            rankup_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-            await client.send_message(message.channel, embed=rankup_embed)
+        elif a['serverStatus'] == "offline":
+            rankup_embed02 = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00BFFF)
+            rankup_embed02.add_field(name="IP:", value="jogar.atorexmc.com")
+            rankup_embed02.add_field(name="Status:", value="Offline")
+            rankup_embed02.add_field(name="Jogando:", value="❌")
+            rankup_embed02.add_field(name="Ping:", value="{}ms".format(round((tempo02 - tempo01) * 1000)))
+            rankup_embed02.add_field(name="Versão:", value="1.8.x")
+            rankup_embed02.add_field(name="Jogadores online:", value="❌")
+            rankup_embed02.set_thumbnail(url="https://i.imgur.com/Cy4vDsc.png")
+            rankup_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.send_message(message.channel, embed=rankup_embed02)
+        else:
+            rankup_embed03 = discord.Embed(title="⚔️ Rankup ⚔️", color=0xFF0000)
+            rankup_embed02.add_field(name="Ocorreu algum erro, tente novamente mais tarde!", value="ㅤ")
+            rankup_embed03.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=rankup_embed03)
 
 
 
