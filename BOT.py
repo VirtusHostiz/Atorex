@@ -50,7 +50,7 @@ async def on_message(message):
         tempo01 = time.perf_counter()
         await client.send_typing(message.channel)
         tempo02 = time.perf_counter()
-        if a['serverStatus'] == "online" and b['Playerlist'] =! "false":
+        if a['serverStatus'] == "online" and b['Playerlist'] != "false":
             online = a['players']
             maximo = a['maxplayers']
             jogadores = b['Playerlist']
