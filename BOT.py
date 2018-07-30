@@ -45,6 +45,9 @@ async def on_message(message):
     if message.content.startswith(prefix+'rankup'):
         a = requests.get('https://mcapi.xdefcon.com/server/pingrankup.mcpe.network:25615/full/json').json()
         b = requests.get('https://api.minetools.eu/query/pingrankup.mcpe.network/25615').json()
+        tempo01 = time.perf_counter()
+        await client.send_typing(canal)
+        tempo02 = time.perf_counter()
         if a['serverStatus'] == "online":
             online = a['players']
             maximo = a['maxplayers']
@@ -54,7 +57,7 @@ async def on_message(message):
             rankup_embed.add_field(name="IP:", value="jogar.atorexmc.com")
             rankup_embed.add_field(name="Status:", value="Online")
             rankup_embed.add_field(name="Jogando:", value="{}/{}".format(online, maximo))
-            rankup_embed.add_field(name="Ping:", value="{}".format(ping))
+            rankup_embed.add_field(name="Ping:", value="{}ms".format(round((tempo02 - tempo01) * 1000)
             rankup_embed.add_field(name="Versão:", value="1.8.x")
             rankup_embed.add_field(name="Jogadores online:", value="{}".format(', '.join(jogadores)))
             rankup_embed.set_thumbnail(url="https://i.imgur.com/Cy4vDsc.png")
