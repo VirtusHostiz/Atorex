@@ -2,6 +2,8 @@ import discord
 import json
 import requests
 import aiohttp
+import time
+from time import *
 
 client = discord.Client()
 prefix = "/"
