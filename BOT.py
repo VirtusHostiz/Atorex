@@ -77,12 +77,17 @@ async def on_message(message):
             pass
 
 
-    if message.content.startswith(prefix+'rankup'):
-        jogadores = e['Playerlist']
-        rankup_embed = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00FF00)
-        rankup_embed.add_field(name="Jogadores online no momento:", value="{}".format(', '.join(jogadores)), inline=False)
-        rankup_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
-        await client.send_message(message.channel, embed=rankup_embed)
+    if message.content.lower().startswith(prefix+'testar'):
+        if not message.author.id == "322488685973209109":
+            testar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+            testar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=testar_embed)
+        try:
+            await client.send_message(message.channel, str(eval(message.content[8:])))
+        except Exception as e:
+            await client.send_message(message.channel, repr(e))
+        finally:
+            pass
 
 
     if message.content.startswith(prefix+'rankup'):
@@ -110,7 +115,7 @@ async def on_message(message):
             rankup_embed04.add_field(name="O **Rankup** não está online no momento, tente novamente mais tarde!", value="{}".format(', '.join(jogadores)), inline=False)
             rankup_embed04.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=rankup_embed04)
-        elif:
+        else:
             rankup_embed05 = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00FF00)
             rankup_embed05.add_field(name="Ocorreu um erro, tente novamente mais tarde!", value="{}".format(', '.join(jogadores)), inline=False)
             rankup_embed05.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
@@ -142,7 +147,7 @@ async def on_message(message):
             kitpvp_embed04.add_field(name="O **Kitpvp** não está online no momento, tente novamente mais tarde!", value="{}".format(', '.join(jogadores)), inline=False)
             kitpvp_embed04.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=kitpvp_embed04)
-        elif:
+        else:
             kitpvp_embed05 = discord.Embed(title="⚔️ Kitpvp ⚔️", color=0x00FF00)
             kitpvp_embed05.add_field(name="Ocorreu um erro, tente novamente mais tarde!", value="{}".format(', '.join(jogadores)), inline=False)
             kitpvp_embed05.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
