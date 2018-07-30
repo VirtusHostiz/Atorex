@@ -50,7 +50,7 @@ async def on_message(message):
         tempo01 = time.perf_counter()
         await client.send_typing(message.channel)
         tempo02 = time.perf_counter()
-        if a['serverStatus'] == "online":
+        if a['serverStatus'] == "online" and b['Playerlist'] =! "false":
             online = a['players']
             maximo = a['maxplayers']
             jogadores = b['Playerlist']
@@ -64,6 +64,17 @@ async def on_message(message):
             rankup_embed.set_thumbnail(url="https://i.imgur.com/Cy4vDsc.png")
             rankup_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=rankup_embed)
+        elif a['serverStatus'] == "online" b['Playerlist'] == "false":
+            rankup_embed02 = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00BFFF)
+            rankup_embed02.add_field(name="IP do servidor:", value="jogar.atorexmc.com")
+            rankup_embed02.add_field(name="Status:", value="Offline")
+            rankup_embed.add_field(name="Jogando atualmente:", value="{}/{} jogadores".format(online, maximo))
+            rankup_embed02.add_field(name="Ping:", value="{}ms".format(round((tempo02 - tempo01) * 1000)))
+            rankup_embed02.add_field(name="Versão:", value="1.8.x")
+            rankup_embed02.add_field(name="Jogadores online:", value="❌")
+            rankup_embed02.set_thumbnail(url="https://i.imgur.com/Cy4vDsc.png")
+            rankup_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.send_message(message.channel, embed=rankup_embed02)
         elif a['serverStatus'] == "offline":
             rankup_embed02 = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00BFFF)
             rankup_embed02.add_field(name="IP do servidor:", value="jogar.atorexmc.com")
