@@ -97,19 +97,20 @@ async def on_message(message):
         e = requests.get('https://api.minetools.eu/query/pingrankup.mcpe.network/25615').json()
         f = requests.get('https://api.minetools.eu/query/pingkitpvp.mcpe.network/25663').json()
         if e['status'] == "OK":
-            if e['Players'] == "0":
+            players = e['Players']
+            if players == "0":
                 jogadores = e['Playerlist']
                 rankup_embed = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00FF00)
                 rankup_embed.add_field(name="Jogadores online no momento:", value="{}".format(', '.join(jogadores)), inline=False)
                 rankup_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
                 await client.send_message(message.channel, embed=rankup_embed)
-            elif e['Players'] == "1":
+            elif players == "1":
                 jogadores = e['Playerlist']
                 rankup_embed02 = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00FF00)
                 rankup_embed02.add_field(name="Jogador online no momento:", value="{}".format(', '.join(jogadores)), inline=False)
                 rankup_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
                 await client.send_message(message.channel, embed=rankup_embed02)
-            elif e['Players'] > "1":
+            elif players > "1":
                 jogadores = e['Playerlist']
                 rankup_embed03 = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00FF00)
                 rankup_embed03.add_field(name="Jogadores online no momento:", value="{}".format(', '.join(jogadores)), inline=False)
@@ -129,19 +130,20 @@ async def on_message(message):
 
     if message.content.startswith(prefix+'kitpvp'):
         if f['status'] == "OK":
-            if f['Players'] == "0":
+            players02 = f['Players']
+            if players02 == "0":
                 jogadores = f['Playerlist']
                 kitpvp_embed = discord.Embed(title="⚔️ Kitpvp ⚔️", color=0x00FF00)
                 kitpvp_embed.add_field(name="Jogadores online no momento:", value="{}".format(', '.join(jogadores)), inline=False)
                 kitpvp_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
                 await client.send_message(message.channel, embed=kitpvp_embed)
-            elif f['Players'] == "1":
+            elif players02 == "1":
                 jogadores = f['Playerlist']
                 kitpvp_embed02 = discord.Embed(title="⚔️ Kitpvp ⚔️", color=0x00FF00)
                 kitpvp_embed02.add_field(name="Jogador online no momento:", value="{}".format(', '.join(jogadores)), inline=False)
                 kitpvp_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
                 await client.send_message(message.channel, embed=kitpvp_embed02)
-            elif f['Players'] > "1":
+            elif players02 > "1":
                 jogadores = f['Playerlist']
                 kitpvp_embed03 = discord.Embed(title="⚔️ Kitpvp ⚔️", color=0x00FF00)
                 kitpvp_embed03.add_field(name="Jogadores online no momento:", value="{}".format(', '.join(jogadores)), inline=False)
