@@ -64,7 +64,7 @@ async def on_message(message):
             rankup_embed.set_thumbnail(url="https://i.imgur.com/Cy4vDsc.png")
             rankup_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=rankup_embed)
-        elif a['serverStatus'] == "online" b['Playerlist'] == "false":
+        elif a['serverStatus'] == "online" and b['Playerlist'] == "false":
             rankup_embed02 = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00BFFF)
             rankup_embed02.add_field(name="IP do servidor:", value="jogar.atorexmc.com")
             rankup_embed02.add_field(name="Status:", value="Offline")
