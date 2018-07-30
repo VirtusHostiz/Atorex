@@ -15,6 +15,7 @@ async def on_ready():
             b = requests.get('https://mcapi.xdefcon.com/server/play.atorexmc.com/full/json').json()
             c = requests.get('https://mcapi.xdefcon.com/server/pingrankup.mcpe.network:25615/full/json').json()
             d = requests.get('https://mcapi.xdefcon.com/server/pingkitpvp.mcpe.network:25663/full/json').json()
+            e = requests.get('https://api.minetools.eu/query/pingrankup.mcpe.network/25615').json()
             canal01 = client.get_channel('472867146360160258')
             canal02 = client.get_channel('472868023473274882')
             canal03 = client.get_channel('472868040879505409')
@@ -58,6 +59,30 @@ async def on_ready():
             await client.edit_channel(channel=canal06, name="💠| Versão: 🔎")
         finally:
             pass
+
+
+@client.event
+async def on_message(message):
+    if message.content.startswith(prefix+'reiniciar'):
+        if not message.author.id == "322488685973209109":
+            reiniciar_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
+            reiniciar_embed.set_footer(text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            return await client.send_message(message.channel, embed=reiniciar_embed)
+        try:
+            reiniciar_embed02 = discord.Embed(title=":pushpin: Reiniciando...", color=0x00FF00)
+            reiniciar_embed02.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.send_message(message.channel, embed=reiniciar_embed02)
+            os.system("python BOT.py reload")
+        finally:
+            pass
+
+
+    if message.content.startswith(prefix+'rankup'):
+            jogadores = e['Playerlist']
+            rankup_embed = discord.Embed(title="⚔️ Rankup ⚔️", color=0x00FF00)
+            rankup_embed.add_field(name="Jogadores online no momento:", value="{}".format(', '.join(jogadores)), inline=False)
+            rankup_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
+            await client.send_message(message.channel, embed=rankup_embed)
 
 
 
