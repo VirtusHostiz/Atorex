@@ -48,7 +48,7 @@ async def on_message(message):
         a = requests.get('https://mcapi.xdefcon.com/server/pingrankup.mcpe.network:25615/full/json').json()
         b = requests.get('https://api.minetools.eu/query/pingrankup.mcpe.network/25615').json()
         tempo01 = time.perf_counter()
-        await client.send_typing(canal)
+        await client.send_typing(message.channel)
         tempo02 = time.perf_counter()
         if a['serverStatus'] == "online":
             online = a['players']
