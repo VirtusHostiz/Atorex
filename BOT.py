@@ -57,7 +57,7 @@ async def on_message(message):
             rankup_embed.add_field(name="Ping:", value="{}".format(ping))
             rankup_embed.add_field(name="Versão:", value="1.8.x")
             rankup_embed.add_field(name="Jogadores online:", value="{}".format(', '.join(jogadores)))
-            rankup_embed.set_thumbnail(url=message.server.icon_url)
+            rankup_embed.set_thumbnail(url="https://i.imgur.com/qtSRVWc.png")
             rankup_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             await client.send_message(message.channel, embed=rankup_embed)
 
