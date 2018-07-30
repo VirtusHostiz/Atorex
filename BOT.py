@@ -57,7 +57,7 @@ async def on_message(message):
             rankup_embed.add_field(name="IP:", value="jogar.atorexmc.com")
             rankup_embed.add_field(name="Status:", value="Online")
             rankup_embed.add_field(name="Jogando:", value="{}/{}".format(online, maximo))
-            rankup_embed.add_field(name="Ping:", value="{}ms".format(round((tempo02 - tempo01) * 1000)
+            rankup_embed.add_field(name="Ping:", value="{}ms".format(round((tempo02 - tempo01) * 1000)))
             rankup_embed.add_field(name="Versão:", value="1.8.x")
             rankup_embed.add_field(name="Jogadores online:", value="{}".format(', '.join(jogadores)))
             rankup_embed.set_thumbnail(url="https://i.imgur.com/Cy4vDsc.png")
