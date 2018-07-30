@@ -11,8 +11,6 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name='yWilliam#7959', type=2))
     print('[BOT ONLINE]')
     while True:
-        e = requests.get('https://api.minetools.eu/query/pingrankup.mcpe.network/25615').json()
-        f = requests.get('https://api.minetools.eu/query/pingkitpvp.mcpe.network/25663').json()
         try:
             a = requests.get('https://api.mcsrvstat.us/1/play.atorexmc.com').json()
             b = requests.get('https://mcapi.xdefcon.com/server/play.atorexmc.com/full/json').json()
@@ -96,6 +94,8 @@ async def on_message(message):
 
 
     if message.content.startswith(prefix+'rankup'):
+        e = requests.get('https://api.minetools.eu/query/pingrankup.mcpe.network/25615').json()
+        f = requests.get('https://api.minetools.eu/query/pingkitpvp.mcpe.network/25663').json()
         if e['status'] == "OK":
             if e['Players'] == "0":
                 jogadores = e['Playerlist']
