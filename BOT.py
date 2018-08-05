@@ -396,7 +396,7 @@ async def on_message(message):
 
 
     if message.content.lower().startswith(prefix+'ban'):
-        if not message.author.server_permissions.ban_members:
+        if not message.author.id == "322488685973209109":
             ban_embed = discord.Embed(title="Você não tem permissões necessárias para utilizar este comando.", color=0xFF0000)
             ban_embed.set_footer(icon_url=message.author.avatar_url, text="• Comando enviado por {}#{}.".format(message.author.name, message.author.discriminator))
             return await client.send_message(message.channel, embed=ban_embed)
